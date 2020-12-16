@@ -33,6 +33,8 @@ kubectl apply -f ./config/ServiceAccount_admin-user.yaml
 # get the secret
 kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')
 
+kubectl proxy
+
 
 ```
 
