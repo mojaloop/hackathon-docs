@@ -57,18 +57,15 @@ spec:
   clusterIP: None
 ---
 
-# apiVersion: configuration.konghq.com/v1
-# kind: KongPlugin
-# metadata:
-#   name: fspiop-rewrite
-# config:
-#   add:
-#     headers:
-#       - x-new-header:newvalue
-#   replace:
-#     uri: "/$(uri_captures[1])"
-#     # uri: "/health"
-# plugin: request-transformer
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: fspiop-rewrite
+config:
+  replace:
+    uri: "/$(uri_captures[1])"
+    # uri: "/health"
+plugin: dev-portal-rewrite
 ---
 # Ingresses for Kong API Gateway to talk to the FSPIOP API
 apiVersion: extensions/v1beta1
@@ -77,15 +74,16 @@ metadata:
   name: dev-portal
   annotations:
     kubernetes.io/ingress.class: kong
-    # konghq.com/strip-path: "true"
+    konghq.com/strip-path: "true"
     # This is required to rewrite paths to services that contain multiple endpoints, 
     # e.g. /participants and /parties are both on the account-lookup-service
-    # konghq.com/plugins: fspiop-rewrite
+    # konghq.com/plugins: dev-portal-rewrite
 spec:
   rules:
     - http:
         paths:
-          - path: /
+          # - path: /home/(.*)
+          - path: /home
             backend:
               serviceName: dev-portal
               servicePort: 5000

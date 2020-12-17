@@ -271,8 +271,9 @@ TODO!!
 ```bash
 cd dev-portal
 docker-compose build
+docker push lewisdaly/dev-portal:latest
 
-# docker login, docker push?
+kubectl apply -f ./config/dev-portal.yaml
 
 
 ```
