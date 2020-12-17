@@ -147,14 +147,75 @@ I think the issue is still related to ingress and routing - the js doesn't load:
 ```bash
 #set postInstallHook in ./config/mojaloop_values.yaml to true
 kubens ml-app
-helm --namespace ml-app upgrade --install mojaloop mojaloop/mojaloop -f ./config/mojaloop_values.yaml
+helm --namespace ml-app upgrade --install mojaloop mojaloop/mojaloop -f ./config/mojaloop_values.yaml --wait --timeout 30m
 
+helm upgrade --install  --namespace ml-app mojaloop mojaloop/mojaloop  -f ./config/values-dev2-mojaloop-harness.yaml --wait --timeout 10m  --set ml-ttk-posthook-setup.postInstallHook.enabled=true,ml-ttk-posthook-tests.postInstallHook.enabled=true
+
+```
+
+this fails with the following:
+```
+kubectl logs -f mojaloop-ml-ttk-posthook-setup-j8jgl
+...
+Listening on http://mojaloop-ml-testing-toolkit-backend:5050 outboundProgress events...
+Error: getaddrinfo ENOTFOUND mojaloop-ml-testing-toolkit-backend
 ```
 ## 3. Set Up an API Gateway
 
-- kong? 
 - AWS API Gateway? I'm not sure what's the easiest
+	- fspiop-v1.1
+	- admin api
+	- pisp api
+	- API keys for each team
 
+
+https://docs.konghq.com/2.2.x/kong-for-kubernetes/install/
+
+1. Installing kong:
+```bash
+kubens ml-app
+
+helm repo add kong https://charts.konghq.com
+helm repo update
+helm install kong kong/kong --set ingressController.installCRDs=false
+```
+
+
+2. Set up some ingress I suppose
+
+
+```bash
+HOST=a287d03f90bf14e589d90fd2335651e1-1901765432.eu-west-2.elb.amazonaws.com
+PORT=80
+export PROXY_IP=${HOST}:${PORT}
+echo $PROXY_IP
+curl -i $PROXY_IP
+
+# example:
+kubectl apply -f https://bit.ly/echo-service
+kubectl apply -f ./config/ingress_demo.yaml
+
+# now test it out
+curl -i $PROXY_IP/foo
+
+kubectl apply -f ./config/ingress_demo_plugin.yaml
+curl -i -H "Host: example.com" $PROXY_IP/bar/sample
+
+
+kubectl apply -f ./config/ingress_demo_service.yaml
+kubectl patch svc echo \
+  -p '{"metadata":{"annotations":{"konghq.com/plugins": "rl-by-ip\n"}}}'
+```
+
+## 4. Homepage
+
+- What type of homepage for Mojaloop could we throw together in a couple hours?
+
+"Welcome to Mojaloop"
+- get your API Key
+- links to docs
+- hosted swagger that points directly to the 
+- use cases + code snippets
 
 
 
@@ -165,6 +226,9 @@ helm --namespace ml-app upgrade --install mojaloop mojaloop/mojaloop -f ./config
 - [ ] install an api gateway
   - dns: `oss-lab-beta.mojaloop.live`
   - use path based routing, eg:
+
+- [ ] setup seed environment
+
 
 ```
 oss-lab-beta.mojaloop.live/ui - any UI components
