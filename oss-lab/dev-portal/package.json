@@ -4,9 +4,9 @@
   "description": "A starter kit for https://github.com/sqrthree/vuepress-theme-api",
   "private": true,
   "scripts": {
-    "dev": "vuepress dev .",
+    "dev": "vuepress dev docs",
     "start": "npm run build && npm run serve",
-    "build": "vuepress build .",
+    "build": "vuepress build docs",
     "serve": "serve .vuepress/dist"
   },
   "repository": {

@@ -1,0 +1,7 @@
+version: "3.7"
+
+services:
+  dev-portal:
+    build:
+      context: .
+    container_name: dev-portal
