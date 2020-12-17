@@ -38,28 +38,9 @@ spec:
             backend:
               serviceName: mojaloop-account-lookup-service-admin
               servicePort: 80
-          # - path: /api/fspiop/(parties.*)
-          #   backend:
-          #     serviceName: mojaloop-account-lookup-service
-          #     servicePort: 80
-          # - path: /api/fspiop/(transactionRequests.*)
-          #   backend:
-          #     serviceName: mojaloop-transaction-requests-service
-          #     servicePort: 80
-          # - path: /api/fspiop/(authorizations.*)
-          #   backend:
-          #     serviceName: mojaloop-transaction-requests-service
-          #     servicePort: 80
-          # - path: /api/fspiop/(quotes.*)
-          #   backend:
-          #     serviceName: mojaloop-quoting-service
-          #     servicePort: 80
-          # - path: /api/fspiop/(transfers.*)
-          #   backend:
-          #     serviceName: mojaloop-ml-api-adapter-service
-          #     servicePort: 80
-          # # Example - for testing out rewrite rules
-          # - path: /api/bar/(participants.*)
-          #   backend:
-          #     serviceName: echo
-          #     servicePort: 80
+          # - path: /api/admin/dashboard/(.*)
+          - path: /admin/dashboard
+            backend:
+              serviceName: kubernetes-dashboard
+              servicePort: 443
+         

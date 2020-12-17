@@ -220,6 +220,14 @@ kubectl delete -f https://bit.ly/echo-service
 kubectl apply -f ./config/ingress_kong_fspiop.yaml
 kubectl apply -f ./config/ingress_kong_admin.yaml
 
+# expose the kubernetes dashboard using nginx ingress - this is easier than kong... but might come back to bite us
+helm --namespace kubernetes-dashboard install ingress ingress-nginx/ingress-nginx
+kubens kubernetes-dashboard
+kubectl get service/ingress-ingress-nginx-controller
+
+kubectl apply -f ./config/ingress_nginx_dashboard.yaml
+kubectl apply -f https://bit.ly/echo-service
+
 # health checks:
 http://beta.moja-lab.live/api/admin/participants/health
 http://beta.moja-lab.live/api/admin/parties/health
@@ -227,7 +235,6 @@ http://beta.moja-lab.live/api/admin/transactionRequests/health
 http://beta.moja-lab.live/api/admin/authorizations/health
 http://beta.moja-lab.live/api/admin/quotes/health
 http://beta.moja-lab.live/api/admin/transfers/health
-
 
 # FSPIOP API endpoints
 http://beta.moja-lab.live/api/fspiop/participants
@@ -242,14 +249,12 @@ http://beta.moja-lab.live/api/admin/central-ledger
 http://beta.moja-lab.live/api/admin/account-lookup-service
 http://beta.moja-lab.live/api/admin/account-lookup-service-admin
 
-
+# k8s dashboard? That would be nice...
+https://dashboard.beta.moja-lab.live
 
 # PISP API
-
-# k8s dashboard? That would be nice...
+TODO!!
 ```
-
-
 
 ## 4. Homepage
 
@@ -267,12 +272,16 @@ http://beta.moja-lab.live/api/admin/account-lookup-service-admin
 
 ## TODO 
 - [x] change name prefix to something more readable
-
-- [ ] install an api gateway
+- [x] install an api gateway
   - dns: `oss-lab-beta.mojaloop.live`
   - use path based routing, eg:
-
 - [ ] setup seed environment
+- [ ] deploy simulator UIs and expose
+- [ ] 
+
+
+
+
 
 
 ```
