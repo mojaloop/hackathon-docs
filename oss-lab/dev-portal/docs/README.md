@@ -1,13 +1,13 @@
 ---
 home: true
-title: Hello, World.
-description: Not sure where to start? We’ve put together some handy guides and reference documentation you can use to start building.
+title: Mojaloop Dev Portal
+description: Get started with your Mojaloop Deployment
 actionText: Getting Started
 actionLink: /0-getting-started
 footer: Open Source on [GitHub](https://github.com/sqrthree/vuepress-theme-api), Made by [@sqrthree](https://github.com/sqrthree), Power by [vuepress](https://github.com/vuejs/vuepress).
 ---
 
-### As Easy as 1, 2, 3
+<!-- ### As Easy as 1, 2, 3
 
 ```bash
 # install vuepress
@@ -28,7 +28,7 @@ vuepress build
 
 ::: tip
 VuePress requires [Node.js](http://nodejs.org/) >= 8.
-:::
+::: -->
 
 <Section>
 

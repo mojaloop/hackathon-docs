@@ -2,16 +2,17 @@
 title: Overview
 ---
 
-<Block>
 
 # Overview
 
 Our API is exposed as an HTTP/1 and HTTP/2 service over SSL. All endpoints live under the URL `https://api.example.com` and then generally follow the REST architecture.
 
-</Block>
+## APIs
 
-<Block>
+Mojaloop has a variety of APIs you can interact with:
 
+<!-- TODO: nice table -->
+<!-- 
 ## Current Version
 
 By default, all requests to `https://api.example.com` receive the v1 version of the REST API.
@@ -111,4 +112,4 @@ Status: 429 Too Many Requests
 
 </Example>
 
-</Block>
+</Block> -->
