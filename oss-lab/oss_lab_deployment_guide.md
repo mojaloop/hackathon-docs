@@ -268,6 +268,16 @@ TODO!!
 - demos 
 
 
+```bash
+cd dev-portal
+docker-compose build
+
+# docker login, docker push?
+
+
+```
+
+
 
 ## TODO 
 - [x] change name prefix to something more readable

@@ -2,6 +2,9 @@ version: "3.7"
 
 services:
   dev-portal:
+    image: lewisdaly/dev-portal:latest
     build:
       context: .
     container_name: dev-portal
+    ports:
+      - "5000:5000"

@@ -7,7 +7,7 @@
     "dev": "vuepress dev docs",
     "start": "npm run build && npm run serve",
     "build": "vuepress build docs",
-    "serve": "serve .vuepress/dist"
+    "serve": "serve ./docs/.vuepress/dist"
   },
   "repository": {
     "type": "git",
