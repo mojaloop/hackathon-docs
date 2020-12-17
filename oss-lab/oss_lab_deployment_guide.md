@@ -191,7 +191,7 @@ export PROXY_IP=${HOST}:${PORT}
 echo $PROXY_IP
 curl -i $PROXY_IP
 
-# example:
+# examples
 kubectl apply -f https://bit.ly/echo-service
 kubectl apply -f ./config/ingress_demo.yaml
 
@@ -203,19 +203,64 @@ curl -i -H "Host: example.com" $PROXY_IP/bar/sample
 
 
 kubectl apply -f ./config/ingress_demo_service.yaml
-kubectl patch svc echo \
-  -p '{"metadata":{"annotations":{"konghq.com/plugins": "rl-by-ip\n"}}}'
+kubectl patch svc echo -p '{"metadata":{"annotations":{"konghq.com/plugins": "rl-by-ip\n"}}}'
+curl -I $PROXY_IP/foo
+
+# clean up
+
+kubectl delete -f ./config/ingress_demo_service.yaml
+kubectl delete -f ./config/ingress_demo_plugin.yaml
+kubectl delete -f ./config/ingress_demo.yaml
+kubectl delete -f https://bit.ly/echo-service
 ```
+
+
+```bash
+# now trying out our own stuff
+kubectl apply -f ./config/ingress_kong_fspiop.yaml
+kubectl apply -f ./config/ingress_kong_admin.yaml
+
+# health checks:
+http://beta.moja-lab.live/api/admin/participants/health
+http://beta.moja-lab.live/api/admin/parties/health
+http://beta.moja-lab.live/api/admin/transactionRequests/health
+http://beta.moja-lab.live/api/admin/authorizations/health
+http://beta.moja-lab.live/api/admin/quotes/health
+http://beta.moja-lab.live/api/admin/transfers/health
+
+
+# FSPIOP API endpoints
+http://beta.moja-lab.live/api/fspiop/participants
+http://beta.moja-lab.live/api/fspiop/parties
+http://beta.moja-lab.live/api/fspiop/transactionRequests
+http://beta.moja-lab.live/api/fspiop/authorizations
+http://beta.moja-lab.live/api/fspiop/quotes
+http://beta.moja-lab.live/api/fspiop/transfers
+
+# Admin API
+http://beta.moja-lab.live/api/admin/central-ledger
+http://beta.moja-lab.live/api/admin/account-lookup-service
+http://beta.moja-lab.live/api/admin/account-lookup-service-admin
+
+
+
+# PISP API
+
+# k8s dashboard? That would be nice...
+```
+
+
 
 ## 4. Homepage
 
 - What type of homepage for Mojaloop could we throw together in a couple hours?
 
-"Welcome to Mojaloop"
+"Welcome to Mojaloop - Dev Portal"
 - get your API Key
 - links to docs
-- hosted swagger that points directly to the 
+- hosted swagger that points directly to the apis
 - use cases + code snippets
+- demos 
 
 
 

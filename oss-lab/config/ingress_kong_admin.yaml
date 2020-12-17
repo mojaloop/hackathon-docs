@@ -1,0 +1,65 @@
+
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: admin-rewrite
+config:
+  add:
+    headers:
+      - x-new-header:newvalue
+  replace:
+    uri: "/$(uri_captures[1])"
+plugin: request-transformer
+---
+# Ingresses for Kong API Gateway to talk to the FSPIOP API
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: admin
+  annotations:
+    kubernetes.io/ingress.class: kong
+    # konghq.com/strip-path: "true"
+    # This is required to rewrite paths to services that contain multiple endpoints, 
+    # e.g. /participants and /parties are both on the account-lookup-service
+    konghq.com/plugins: admin-rewrite
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /api/admin/central-ledger/(.*)
+            backend:
+              serviceName: mojaloop-centralledger-service
+              servicePort: 80
+          - path: /api/admin/account-lookup-service/(.*)
+            backend:
+              serviceName: mojaloop-account-lookup-service
+              servicePort: 80
+          - path: /api/admin/account-lookup-service-admin/(.*)
+            backend:
+              serviceName: mojaloop-account-lookup-service-admin
+              servicePort: 80
+          # - path: /api/fspiop/(parties.*)
+          #   backend:
+          #     serviceName: mojaloop-account-lookup-service
+          #     servicePort: 80
+          # - path: /api/fspiop/(transactionRequests.*)
+          #   backend:
+          #     serviceName: mojaloop-transaction-requests-service
+          #     servicePort: 80
+          # - path: /api/fspiop/(authorizations.*)
+          #   backend:
+          #     serviceName: mojaloop-transaction-requests-service
+          #     servicePort: 80
+          # - path: /api/fspiop/(quotes.*)
+          #   backend:
+          #     serviceName: mojaloop-quoting-service
+          #     servicePort: 80
+          # - path: /api/fspiop/(transfers.*)
+          #   backend:
+          #     serviceName: mojaloop-ml-api-adapter-service
+          #     servicePort: 80
+          # # Example - for testing out rewrite rules
+          # - path: /api/bar/(participants.*)
+          #   backend:
+          #     serviceName: echo
+          #     servicePort: 80
