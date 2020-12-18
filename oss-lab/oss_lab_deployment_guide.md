@@ -285,14 +285,18 @@ arn is:
 ```
 arn:aws:acm:eu-west-2:886403637725:certificate/87c897e0-2e4b-4b88-9d01-cd4e212a0dcb
 ```
-
+<!-- 
 2. Manually logged into console and assigned SSL cert:
 https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/
 
 [ todo: maybe we can do this differently and more automated in the future ]
+ -->
 
 
-
+2. Add the annotations to the kong load balancer:
+service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
+service.beta.kubernetes.io/aws-load-balancer-ssl-cert:  arn:aws:acm:eu-west-2:886403637725:certificate/87c897e0-2e4b-4b88-9d01-cd4e212a0dcb
+service.beta.kubernetes.io/aws-load-balancer-ssl-ports: https
 
 
 

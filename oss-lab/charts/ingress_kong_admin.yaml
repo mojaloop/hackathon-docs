@@ -1,3 +1,4 @@
+# Ingresses for Kong API Gateway to talk to the Admin APIs
 
 apiVersion: configuration.konghq.com/v1
 kind: KongPlugin
@@ -11,7 +12,6 @@ config:
     uri: "/$(uri_captures[1])"
 plugin: request-transformer
 ---
-# Ingresses for Kong API Gateway to talk to the FSPIOP API
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
