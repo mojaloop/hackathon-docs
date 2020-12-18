@@ -256,7 +256,7 @@ https://dashboard.beta.moja-lab.live
 TODO!!
 ```
 
-## 4. Homepage
+## 4. dev-portal
 
 - What type of homepage for Mojaloop could we throw together in a couple hours?
 
@@ -275,9 +275,30 @@ docker push lewisdaly/dev-portal:latest
 
 kubectl apply -f ./config/dev-portal.yaml
 ```
+## 5. Add optional HTTPS
+
+https://aws.amazon.com/premiumsupport/knowledge-center/terminate-https-traffic-eks-acm/
+
+1. ACM > Request Certificate > Request Certificate for `beta.moja-lab.live` and `*.beta.moja-lab.live`
+
+arn is:  
+```
+arn:aws:acm:eu-west-2:886403637725:certificate/87c897e0-2e4b-4b88-9d01-cd4e212a0dcb
+```
+
+2. Manually logged into console and assigned SSL cert:
+https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/
+
+[ todo: maybe we can do this differently and more automated in the future ]
 
 
-TODO:
+
+
+
+
+
+## TODO:
+
 - [ ] placeholder demo pages
 - [ ] better homepage
 - [ ] start P2P guide (from DFSP perspective)
