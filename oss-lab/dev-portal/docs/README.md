@@ -1,11 +1,23 @@
 ---
 home: true
-title: Mojaloop Dev Portal
-description: Get started with your Mojaloop Deployment
+title: Mojaloop Sandbox
+description: Get started with Mojaloop
 actionText: Getting Started
 actionLink: /0-getting-started
 footer: Open Source on [GitHub](https://github.com/sqrthree/vuepress-theme-api), Made by [@sqrthree](https://github.com/sqrthree), Power by [vuepress](https://github.com/vuejs/vuepress).
 ---
+
+<Section>
+## Here's what you can do with this Mojaloop Sandbox
+
+<Button type="big" to="/0-getting-started/">Access the Mojaloop APIs</Button>
+
+<Button type="big" to="/0-getting-started/">Play with Demos and Learn</Button>
+
+<Button type="big" to="/getting-started/">Test your idea live</Button>
+
+</Section>
+
 
 <!-- ### As Easy as 1, 2, 3
 

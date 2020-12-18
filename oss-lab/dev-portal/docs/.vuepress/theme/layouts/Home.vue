@@ -60,6 +60,7 @@ export default {
 .home
   &__header
     margin: 10rem 0
+
     text-align: center
 
   &__title

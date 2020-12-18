@@ -274,8 +274,6 @@ docker-compose build
 docker push lewisdaly/dev-portal:latest
 
 kubectl apply -f ./config/dev-portal.yaml
-
-
 ```
 
 
@@ -287,7 +285,7 @@ kubectl apply -f ./config/dev-portal.yaml
   - use path based routing, eg:
 - [ ] setup seed environment
 - [ ] deploy simulator UIs and expose
-- [ ] 
+- [ ] learn about security, and implement JWS? 
 
 
 

@@ -7,7 +7,7 @@ Now that your Mojaloop Sandbox is up and running, here's what you can do next:
 3. [Take the DFSP Onboarding Tutorial](/3-guides/1-dfsp-setup) 
 4. [Explore the Different APIs](1-overview/#apis) Mojaloop Offers
 
-This is where it all begins...
+<!-- This is where it all begins...
 
 You can write anything in here.
 
@@ -15,4 +15,4 @@ You can write anything in here.
 - Maybe what is needed to set up the dev environment.
 - Maybe a contributing guide.
 
-
+ -->

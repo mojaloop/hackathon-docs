@@ -96,6 +96,20 @@ export default {
       color: $white
       background-color: $black
 
+  &--big
+    max-width: 18rem
+    // max-height: 7rem
+    font-size: 1.2rem
+    padding: 4rem
+    margin: 2rem 3rem
+    color: $black
+    border-color: $white
+    background-color: $white
+
+    &:hover
+      color: $white
+      background-color: $black
+
   &--small
     padding: 1em 4em
   &--large
