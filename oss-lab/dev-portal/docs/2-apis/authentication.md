@@ -1,6 +1,8 @@
 <Block>
 
-# Authentication
+# Authentication 
+
+> Note: section left in as an example
 
 </Block>
 

@@ -11,6 +11,13 @@ Our API is exposed as an HTTP/1 and HTTP/2 service over SSL. All endpoints live 
 
 Mojaloop has a variety of APIs you can interact with:
 
+[ todo - nice table]
+
+
+## Understanding Async APIs
+
+The Mojaloop APIs follow an asychronous pattern.
+
 <!-- TODO: nice table -->
 <!-- 
 ## Current Version

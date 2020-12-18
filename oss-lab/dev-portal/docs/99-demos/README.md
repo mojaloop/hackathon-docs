@@ -25,5 +25,7 @@ This demo shows how Mojaloop can be used to send funds from one account to anoth
 ## PISP Transfer
 <!-- https://drive.google.com/file/d/1-0CPUopZYWNcznwAUn_8agO1zv61J8XR/view?usp=sharing -->
 
-[ todo - waiting for proper video to be uploaded]
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bTqVqk7FSmY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+[ todo - waiting for proper video to be uploaded]

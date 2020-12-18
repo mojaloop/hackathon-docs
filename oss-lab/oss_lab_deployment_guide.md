@@ -281,6 +281,7 @@ TODO:
 - [ ] placeholder demo pages
 - [ ] better homepage
 - [ ] start P2P guide (from DFSP perspective)
+  Here's a great example of a good developer guide: https://uat-isac.happay.in/v2/docs
 
 
 
