@@ -277,12 +277,23 @@ kubectl apply -f ./config/dev-portal.yaml
 ```
 
 
+TODO:
+- [ ] placeholder demo pages
+- [ ] better homepage
+- [ ] start P2P guide (from DFSP perspective)
+
+
+
 
 ## TODO 
 - [x] change name prefix to something more readable
 - [x] install an api gateway
   - dns: `oss-lab-beta.mojaloop.live`
   - use path based routing, eg:
+
+
+
+
 - [ ] setup seed environment
 - [ ] deploy simulator UIs and expose
 - [ ] learn about security, and implement JWS? 
