@@ -15,10 +15,12 @@ plugin: request-transformer
 apiVersion: configuration.konghq.com/v1
 kind: KongConsumer
 metadata:
-  name: consumer-user123
-username: user123 
+  name: user123
+  annotations:
+    kubernetes.io/ingress.class: kong
+username: harry 
 credentials:
-  - user123-key
+  - harry-basicauth
 ---
 apiVersion: v1
 kind: Secret
@@ -27,30 +29,15 @@ metadata:
 stringData:
   username: user123
   kongCredType: basic-auth
-  password: "OpenSesame"
----
-# expose kong service for kong
-apiVersion: v1
-kind: Service
-metadata:
-  name: kong-admin-api
-  namespace: kong
-spec:
-  type: NodePort
-  ports:
-  - port: 8001
-    targetPort: 8444
-    protocol: TCP
-  selector:
-    app: ingress-kong
+  password: OpenSesame
 ---
 # KongPlugin for basic auth - for the demo we can just configure this manually and provide to users
 apiVersion: configuration.konghq.com/v1
 kind: KongPlugin
 metadata:
   name: basic-auth-example
-config: 
-  hide_credentials: false
+# config: 
+  # hide_credentials: false
   # consumers:
     # - username: user123
     # - username: user456
@@ -69,9 +56,9 @@ metadata:
     # konghq.com/strip-path: "true"
     # This is required to rewrite paths to services that contain multiple endpoints, 
     # e.g. /participants and /parties are both on the account-lookup-service
-    konghq.com/plugins: admin-rewrite
+    konghq.com/plugins: admin-rewrite, basic-auth-example
     # enable basic auth for these routes
-    konghq.com/plugins: basic-auth-example
+    # konghq.com/plugins: basic-auth-example
 spec:
   rules:
     - http:
