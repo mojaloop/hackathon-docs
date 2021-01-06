@@ -149,7 +149,7 @@ I think the issue is still related to ingress and routing - the js doesn't load:
 kubens ml-app
 helm --namespace ml-app upgrade --install mojaloop mojaloop/mojaloop -f ./config/mojaloop_values.yaml --wait --timeout 30m
 
-helm upgrade --install  --namespace ml-app mojaloop mojaloop/mojaloop  -f ./config/values-dev2-mojaloop-harness.yaml --wait --timeout 10m  --set ml-ttk-posthook-setup.postInstallHook.enabled=true,ml-ttk-posthook-tests.postInstallHook.enabled=true
+helm upgrade --install  --namespace ml-app mojaloop mojaloop/mojaloop  -f ./config/values-dev2-mojaloop-harness.yaml --wait --timeout 10m  --set ml-ttk-posthook-setup.postInstallHook.enabled=false,ml-ttk-posthook-tests.postInstallHook.enabled=false
 
 ```
 
@@ -282,7 +282,7 @@ docker push lewisdaly/dev-portal:latest
 
 kubectl apply -f ./config/dev-portal.yaml
 ```
-## 5. Add optional HTTPS
+## 5. Add optional HTTPS - todo: come back to this.
 
 https://aws.amazon.com/premiumsupport/knowledge-center/terminate-https-traffic-eks-acm/
 
@@ -305,6 +305,20 @@ service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
 service.beta.kubernetes.io/aws-load-balancer-ssl-cert:  arn:aws:acm:eu-west-2:886403637725:certificate/87c897e0-2e4b-4b88-9d01-cd4e212a0dcb
 service.beta.kubernetes.io/aws-load-balancer-ssl-ports: https
 
+
+
+## 6. Deploy Simulators
+
+
+1. get the simulator-ui working locally... (we will deploy globally later)
+
+2. apply some ingress to the existing simulators
+```bash
+kubectl apply -f ./charts/ingress_simulators.yaml
+
+curl payeefsp-backend.beta.moja-lab.live/repository/parties
+
+```
 
 
 

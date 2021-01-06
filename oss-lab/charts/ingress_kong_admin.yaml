@@ -36,15 +36,6 @@ apiVersion: configuration.konghq.com/v1
 kind: KongPlugin
 metadata:
   name: basic-auth-example
-# config: 
-  # hide_credentials: false
-  # consumers:
-    # - username: user123
-    # - username: user456
-  # basicauth_credentials:
-  #   - consumer: user123
-  #     username: Aladdin
-  #     password: OpenSesame
 plugin: basic-auth
 ---
 apiVersion: extensions/v1beta1
@@ -56,9 +47,8 @@ metadata:
     # konghq.com/strip-path: "true"
     # This is required to rewrite paths to services that contain multiple endpoints, 
     # e.g. /participants and /parties are both on the account-lookup-service
-    konghq.com/plugins: admin-rewrite, basic-auth-example
     # enable basic auth for these routes
-    # konghq.com/plugins: basic-auth-example
+    konghq.com/plugins: admin-rewrite, basic-auth-example
 spec:
   rules:
     - http:

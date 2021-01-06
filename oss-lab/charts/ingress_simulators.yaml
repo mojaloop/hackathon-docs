@@ -1,0 +1,45 @@
+# Ingresses for Kong API Gateway to talk to the Admin APIs
+
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: simulators-rewrite
+config:
+  replace:
+    uri: "/$(uri_captures[1])"
+plugin: request-transformer
+---
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: simulators
+  annotations:
+    kubernetes.io/ingress.class: kong
+    # konghq.com/strip-path: "true"
+    # This is required to rewrite paths to services that contain multiple endpoints, 
+    # e.g. /participants and /parties are both on the account-lookup-service
+    konghq.com/plugins: simulators-rewrite
+spec:
+  rules:
+    - host: payeefsp-backend.beta.moja-lab.live
+      http:
+        paths:
+          - path: /(.*)
+            backend:
+              serviceName: mojaloop-sim-payeefsp-backend
+              servicePort: 3003
+          # - path: /api/admin/account-lookup-service/(.*)
+          #   backend:
+          #     serviceName: mojaloop-account-lookup-service
+          #     servicePort: 80
+          # - path: /api/admin/account-lookup-service-admin/(.*)
+          #   backend:
+          #     serviceName: mojaloop-account-lookup-service-admin
+          #     servicePort: 80
+          # # todo: this isn't currently working
+          # # - path: /api/admin/dashboard/(.*)
+          # - path: /admin/dashboard
+          #   backend:
+          #     serviceName: kubernetes-dashboard
+          #     servicePort: 443
+         
