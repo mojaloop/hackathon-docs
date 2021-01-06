@@ -4,14 +4,38 @@ This guide will help you set up your own bare-bones DFSP server to send and rece
 
 ## Prerequisites:
 
+- A DFSP_ID, this will be assigned to you
 - `localtunnel` 
 - `sdk-scheme-adapter` ?? - [todo - or should we make some sort of 'starter kit'?]
   - or can we run a super simple server to get callbacks from the switch?
 
+- `docker run -p 8081:8080 -p 8443:8443 --rm -t mendhak/http-https-echo:15`
 
 <Block>
 
-## Enrol your DFSP
+## Run a Mock server and Enrol your DFSP
+
+In this step, we run a simple web server to listen to callbacks 
+
+
+```bash
+docker run -p 8081:8080 -p 8443:8443 --rm -t mendhak/http-https-echo:15
+npx localtunnel --port 8081 --print-requests
+
+# prints:
+#  your url is: https://curvy-panda-37.loca.lt
+
+
+# now try curling the localtunnel, and check the docker logs
+curl -X POST https://curvy-panda-37.loca.lt -d '{"hello":true}'
+
+# register your endpoints with the hub
+
+
+http://beta.moja-lab.live/api/admin/central-ledger
+
+
+```
 
 ```
 POST /something/
