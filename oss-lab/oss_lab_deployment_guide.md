@@ -380,3 +380,11 @@ oss-lab-beta.mojaloop.live/api/thirdparty
 - What yaml file to use when installing? not easy to find
 - Make dashboard optional, and add to the end - it's not important
 - `helm --namespace kube-public install stable/nginx-ingress` fails, it should be `helm --namespace kube-public install ingress ingress-nginx/ingress-nginx`
+
+
+## Demo Tonight:
+
+
+http://beta.moja-lab.live/home/
+http://beta.moja-lab.live/home/3-guides/1_dfsp_setup.html
+http://simulator-ui.beta.moja-lab.live/transfer
