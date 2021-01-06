@@ -33,7 +33,7 @@ spec:
           -O downloaded-test-collections.zip; mkdir tmp_test_cases; unzip -d tmp_test_cases
           -o downloaded-test-collections.zip; npm run cli -- -c cli-default-config.json
           -e cli-testcase-environment.json -i tmp_test_cases/testing-toolkit-test-cases-master/collections/hub/provisioning
-          -u http://mojaloop-ml-testing-toolkit-backend:5050 --report-format html
+          -u http://ttk-ml-testing-toolkit-backend:5050 --report-format html
           --report-auto-filename-enable true --extra-summary-information="Test Suite:GP
           Tests,Environment:Development"; echo "Done";
         command:

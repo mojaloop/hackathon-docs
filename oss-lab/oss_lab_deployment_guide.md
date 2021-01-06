@@ -149,7 +149,7 @@ I think the issue is still related to ingress and routing - the js doesn't load:
 kubens ml-app
 helm --namespace ml-app upgrade --install mojaloop mojaloop/mojaloop -f ./config/mojaloop_values.yaml --wait --timeout 30m
 
-helm upgrade --install  --namespace ml-app mojaloop mojaloop/mojaloop  -f ./config/values-dev2-mojaloop-harness.yaml --wait --timeout 10m  --set ml-ttk-posthook-setup.postInstallHook.enabled=false,ml-ttk-posthook-tests.postInstallHook.enabled=false
+helm upgrade --install  --namespace ml-app mojaloop mojaloop/mojaloop  -f ./config/values-dev2-mojaloop-harness.yaml --wait --timeout 15m  --set ml-ttk-posthook-setup.postInstallHook.enabled=false,ml-ttk-posthook-tests.postInstallHook.enabled=false
 
 ```
 
@@ -320,6 +320,17 @@ curl payeefsp-backend.beta.moja-lab.live/repository/parties
 
 ```
 
+
+## 7. Try again with deploy hooks?
+
+```bash
+
+# install ttk manually (since the main chart doesn't deploy ttk)
+helm upgrade --install --namespace ml-app ttk mojaloop/ml-testing-toolkit
+
+helm upgrade --install  --namespace ml-app mojaloop mojaloop/mojaloop  -f ./config/values-dev2-mojaloop-harness.yaml --wait --timeout 15m  --set ml-ttk-posthook-setup.postInstallHook.enabled=true,ml-ttk-posthook-tests.postInstallHook.enabled=true
+
+```
 
 
 ## TODO:

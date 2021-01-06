@@ -1,0 +1,363 @@
+NAME: mojaloop
+LAST DEPLOYED: Wed Jan  6 16:57:41 2021
+NAMESPACE: ml-app
+STATUS: pending-install
+REVISION: 1
+TEST SUITE: None
+HOOKS:
+MANIFEST:
+---
+# Source: ml-testing-toolkit/charts/ml-testing-toolkit-backend/templates/config.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mojaloop-ml-testing-toolkit-backend-config-default
+  labels:
+    app.kubernetes.io/name: ml-testing-toolkit-backend
+    app.kubernetes.io/instance: mojaloop
+    app.kubernetes.io/version: 11.3.0
+    app.kubernetes.io/managed-by: Helm
+    helm.sh/chart: ml-testing-toolkit-backend-11.0.0
+data:
+    system_config.json: '{
+  "API_DEFINITIONS": [
+    {
+      "asynchronous": true,
+      "folderPath": "fspiop_1.0",
+      "type": "fspiop",
+      "version": "1.0"
+    },
+    {
+      "asynchronous": true,
+      "folderPath": "fspiop_1.1",
+      "type": "fspiop",
+      "version": "1.1"
+    },
+    {
+      "folderPath": "settlements_1.0",
+      "type": "settlements",
+      "version": "1.0"
+    },
+    {
+      "folderPath": "central_admin_9.3",
+      "type": "central_admin",
+      "version": "9.3"
+    },
+    {
+      "folderPath": "als_admin_1.1",
+      "type": "als_admin",
+      "version": "1.1"
+    }
+  ],
+  "API_PORT": 5000,
+  "CONFIG_VERSIONS": {
+    "callback": 1,
+    "forward": 1,
+    "response": 1,
+    "userSettings": 1,
+    "validation": 1
+  },
+  "CONNECTION_MANAGER": {
+    "API_URL": "http://mojaloop-connection-manager-backend:5061",
+    "AUTH_ENABLED": false,
+    "HUB_PASSWORD": "hub",
+    "HUB_USERNAME": "hub"
+  },
+  "CONNECTION_MANAGER_AUTH_ENABLED": false,
+  "DB": {
+    "URI": "mongodb://ttk:ttk@mojaloop-ttk-mongodb:27017/ttk"
+  },
+  "HOSTING_ENABLED": false,
+  "KEYCLOAK": {
+    "API_URL": "http://localhost:5050",
+    "ENABLED": false,
+    "PASSWORD": "hub",
+    "REALM": "testingtoolkit",
+    "USERNAME": "hub"
+  },
+  "OAUTH": {
+    "APP_OAUTH_CLIENT_KEY": "ttk",
+    "APP_OAUTH_CLIENT_SECRET": "23b898a5-63d2-4055-bbe1-54efcda37e7d",
+    "AUTH_ENABLED": false,
+    "EMBEDDED_CERTIFICATE": "password",
+    "EVERYONE_ROLE": "Internal/everyone",
+    "JWT_COOKIE_NAME": "TTK-API_ACCESS_TOKEN",
+    "MTA_ROLE": "Application/MTA",
+    "OAUTH2_ISSUER": "http://localhost:5050/api/oauth2/token",
+    "OAUTH2_TOKEN_ISS": "http://localhost:5050/api/oauth2/token",
+    "P12_PASS_PHRASE": "SOME_S3C4R3_P@SS",
+    "PTA_ROLE": "Application/PTA"
+  }
+}'
+    user_config.json: '{
+  "ADVANCED_FEATURES_ENABLED": true,
+  "CALLBACK_ENDPOINT": "http://localhost:4000",
+  "CALLBACK_RESOURCE_ENDPOINTS": {
+    "enabled": true,
+    "endpoints": [
+      {
+        "endpoint": "http://moja-account-lookup-service.demo",
+        "method": "put",
+        "path": "/parties/{Type}/{ID}"
+      },
+      {
+        "endpoint": "http://moja-quoting-service.demo",
+        "method": "put",
+        "path": "/quotes/{ID}"
+      },
+      {
+        "endpoint": "http://moja-ml-api-adapter-service.demo",
+        "method": "put",
+        "path": "/transfers/{ID}"
+      }
+    ]
+  },
+  "CALLBACK_TIMEOUT": 10000,
+  "DEFAULT_USER_FSPID": "userdfsp",
+  "ENDPOINTS_DFSP_WISE": {
+    "dfsps": {
+      "userdfsp": {
+        "defaultEndpoint": "http://scheme-adapter:4000",
+        "endpoints": []
+      },
+      "userdfsp2": {
+        "defaultEndpoint": "http://scheme-adapter2:4000",
+        "endpoints": []
+      }
+    }
+  },
+  "FSPID": "testingtoolkitdfsp",
+  "HUB_ONLY_MODE": false,
+  "ILP_SECRET": "secret",
+  "INBOUND_MUTUAL_TLS_ENABLED": false,
+  "JWS_SIGN": false,
+  "JWS_SIGN_PUT_PARTIES": false,
+  "OUTBOUND_MUTUAL_TLS_ENABLED": false,
+  "SEND_CALLBACK_ENABLE": true,
+  "TRANSFERS_VALIDATION_CONDITION": true,
+  "TRANSFERS_VALIDATION_ILP_PACKET": true,
+  "TRANSFERS_VALIDATION_WITH_PREVIOUS_QUOTES": true,
+  "VALIDATE_INBOUND_JWS": false,
+  "VALIDATE_INBOUND_PUT_PARTIES_JWS": false,
+  "VERSION": 1,
+  "VERSIONING_SUPPORT_ENABLE": true
+}'
+---
+# Source: ml-testing-toolkit/charts/ml-testing-toolkit-backend/templates/config.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mojaloop-ml-testing-toolkit-backend-config-extra-environments
+  labels:
+    app.kubernetes.io/name: ml-testing-toolkit-backend
+    app.kubernetes.io/instance: mojaloop
+    app.kubernetes.io/version: 11.3.0
+    app.kubernetes.io/managed-by: Helm
+    helm.sh/chart: ml-testing-toolkit-backend-11.0.0
+data:
+---
+# Source: ml-testing-toolkit/charts/ml-testing-toolkit-frontend/templates/config.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mojaloop-ml-testing-toolkit-frontend-config
+  labels:
+    app.kubernetes.io/name: ml-testing-toolkit-frontend
+    app.kubernetes.io/instance: mojaloop
+    app.kubernetes.io/version: 11.3.0
+    app.kubernetes.io/managed-by: Helm
+    helm.sh/chart: ml-testing-toolkit-frontend-11.0.0
+data:
+    API_BASE_URL: "http://testing-toolkit.local"
+    AUTH_ENABLED: "FALSE"
+---
+# Source: ml-testing-toolkit/charts/ml-testing-toolkit-backend/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mojaloop-ml-testing-toolkit-backend
+  labels:
+    app.kubernetes.io/name: ml-testing-toolkit-backend
+    app.kubernetes.io/instance: mojaloop
+    app.kubernetes.io/version: 11.3.0
+    app.kubernetes.io/managed-by: Helm
+    helm.sh/chart: ml-testing-toolkit-backend-11.0.0
+spec:
+  type: ClusterIP
+  ports:
+    - port: 5000
+      targetPort: 5000
+      name: spec-api
+    - port: 5050
+      targetPort: 5050
+      name: admin-api
+  selector:
+    app.kubernetes.io/name: ml-testing-toolkit-backend
+    app.kubernetes.io/instance: mojaloop
+---
+# Source: ml-testing-toolkit/charts/ml-testing-toolkit-frontend/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mojaloop-ml-testing-toolkit-frontend
+  labels:
+    app.kubernetes.io/name: ml-testing-toolkit-frontend
+    app.kubernetes.io/instance: mojaloop
+    app.kubernetes.io/version: 11.3.0
+    app.kubernetes.io/managed-by: Helm
+    helm.sh/chart: ml-testing-toolkit-frontend-11.0.0
+spec:
+  type: ClusterIP
+  ports:
+    - port: 6060
+      targetPort: 6060
+      name: web-ui
+  selector:
+    app.kubernetes.io/name: ml-testing-toolkit-frontend
+    app.kubernetes.io/instance: mojaloop
+---
+# Source: ml-testing-toolkit/charts/ml-testing-toolkit-frontend/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mojaloop-ml-testing-toolkit-frontend
+  labels:
+    app.kubernetes.io/name: ml-testing-toolkit-frontend
+    app.kubernetes.io/instance: mojaloop
+    app.kubernetes.io/version: 11.3.0
+    app.kubernetes.io/managed-by: Helm
+    helm.sh/chart: ml-testing-toolkit-frontend-11.0.0
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: ml-testing-toolkit-frontend
+      app.kubernetes.io/instance: mojaloop
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: ml-testing-toolkit-frontend
+        app.kubernetes.io/instance: mojaloop
+        app.kubernetes.io/version: 11.3.0
+        app.kubernetes.io/managed-by: Helm
+        helm.sh/chart: ml-testing-toolkit-frontend-11.0.0
+    spec:
+      containers:
+        - name: ml-testing-toolkit-frontend
+          image: "mojaloop/ml-testing-toolkit-ui:v11.5.0"
+          imagePullPolicy: Always
+          command: ["sh", "/usr/share/nginx/start.sh"]
+          ports:
+            - containerPort: 6060
+          envFrom:
+          - configMapRef:
+              name: mojaloop-ml-testing-toolkit-frontend-config
+---
+# Source: ml-testing-toolkit/charts/ml-testing-toolkit-backend/templates/statefulset.yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mojaloop-ml-testing-toolkit-backend
+  labels:
+    app.kubernetes.io/name: ml-testing-toolkit-backend
+    app.kubernetes.io/instance: mojaloop
+    app.kubernetes.io/version: 11.3.0
+    app.kubernetes.io/managed-by: Helm
+    helm.sh/chart: ml-testing-toolkit-backend-11.0.0
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: ml-testing-toolkit-backend
+      app.kubernetes.io/instance: mojaloop
+  serviceName: mojaloop-ml-testing-toolkit-backend
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: ml-testing-toolkit-backend
+        app.kubernetes.io/instance: mojaloop
+        app.kubernetes.io/version: 11.3.0
+        app.kubernetes.io/managed-by: Helm
+        helm.sh/chart: ml-testing-toolkit-backend-11.0.0
+    spec:
+      initContainers:
+      containers:
+        - name: ml-testing-toolkit-backend
+          image: "mojaloop/ml-testing-toolkit:v11.5.0"
+          imagePullPolicy: Always
+          command: ["sh", "-c", "cd /opt/mojaloop-testing-toolkit; if [ -f /opt/default_config/user_config.json ]; then cp /opt/default_config/user_config.json spec_files; fi; if [ -f /opt/default_config/system_config.json ]; then cp /opt/default_config/system_config.json spec_files; fi; npm run start;"]
+          ports:
+            - containerPort: 5000
+            - containerPort: 5050
+          volumeMounts:
+            - name: mojaloop-ml-testing-toolkit-backend-volume-config-default
+              mountPath: /opt/default_config
+      volumes:
+        - name: mojaloop-ml-testing-toolkit-backend-volume-config-default
+          configMap:
+            name: mojaloop-ml-testing-toolkit-backend-config-default
+            items:
+              - key: system_config.json
+                path: system_config.json
+              - key: user_config.json
+                path: user_config.json
+        - name: mojaloop-ml-testing-toolkit-backend-volume-extra-environments
+          configMap:
+            name: mojaloop-ml-testing-toolkit-backend-config-extra-environments
+            items:
+---
+# Source: ml-testing-toolkit/charts/ml-testing-toolkit-backend/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: mojaloop-ml-testing-toolkit-backend
+  labels:
+    app.kubernetes.io/name: ml-testing-toolkit-backend
+    app.kubernetes.io/instance: mojaloop
+    app.kubernetes.io/version: 11.3.0
+    app.kubernetes.io/managed-by: Helm
+    helm.sh/chart: ml-testing-toolkit-backend-11.0.0
+  annotations:
+spec:
+  rules:
+    - host: testing-toolkit-specapi.local
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: mojaloop-ml-testing-toolkit-backend
+              servicePort: 5000
+    - host: testing-toolkit.local
+      http:
+        paths:
+          - path: /api/
+            backend:
+              serviceName: mojaloop-ml-testing-toolkit-backend
+              servicePort: 5050
+          - path: /socket.io/
+            backend:
+              serviceName: mojaloop-ml-testing-toolkit-backend
+              servicePort: 5050
+---
+# Source: ml-testing-toolkit/charts/ml-testing-toolkit-frontend/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: mojaloop-ml-testing-toolkit-frontend
+  labels:
+    app.kubernetes.io/name: ml-testing-toolkit-frontend
+    app.kubernetes.io/instance: mojaloop
+    app.kubernetes.io/version: 11.3.0
+    app.kubernetes.io/managed-by: Helm
+    helm.sh/chart: ml-testing-toolkit-frontend-11.0.0
+  annotations:
+spec:
+  rules:
+    - host: testing-toolkit.local
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: mojaloop-ml-testing-toolkit-frontend
+              servicePort: 6060
+
