@@ -12,6 +12,54 @@ config:
     uri: "/$(uri_captures[1])"
 plugin: request-transformer
 ---
+apiVersion: configuration.konghq.com/v1
+kind: KongConsumer
+metadata:
+  name: consumer-user123
+username: user123 
+credentials:
+  - user123-key
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: user123-key
+stringData:
+  username: user123
+  kongCredType: basic-auth
+  password: "OpenSesame"
+---
+# expose kong service for kong
+apiVersion: v1
+kind: Service
+metadata:
+  name: kong-admin-api
+  namespace: kong
+spec:
+  type: NodePort
+  ports:
+  - port: 8001
+    targetPort: 8444
+    protocol: TCP
+  selector:
+    app: ingress-kong
+---
+# KongPlugin for basic auth - for the demo we can just configure this manually and provide to users
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: basic-auth-example
+config: 
+  hide_credentials: false
+  # consumers:
+    # - username: user123
+    # - username: user456
+  # basicauth_credentials:
+  #   - consumer: user123
+  #     username: Aladdin
+  #     password: OpenSesame
+plugin: basic-auth
+---
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -22,6 +70,8 @@ metadata:
     # This is required to rewrite paths to services that contain multiple endpoints, 
     # e.g. /participants and /parties are both on the account-lookup-service
     konghq.com/plugins: admin-rewrite
+    # enable basic auth for these routes
+    konghq.com/plugins: basic-auth-example
 spec:
   rules:
     - http:
@@ -38,6 +88,7 @@ spec:
             backend:
               serviceName: mojaloop-account-lookup-service-admin
               servicePort: 80
+          # todo: this isn't currently working
           # - path: /api/admin/dashboard/(.*)
           - path: /admin/dashboard
             backend:

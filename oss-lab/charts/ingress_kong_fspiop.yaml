@@ -12,12 +12,15 @@ plugin: request-transformer
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: fspiop
+  name: fspiop-main
   annotations:
     kubernetes.io/ingress.class: kong
     # This is required to rewrite paths to services that contain multiple endpoints, 
     # e.g. /participants and /parties are both on the account-lookup-service
     konghq.com/plugins: fspiop-rewrite
+    # enable basic auth for these routes
+    # konghq.com/plugins: basic-auth-example
+
 spec:
   rules:
     - http:
@@ -47,7 +50,8 @@ spec:
               serviceName: mojaloop-ml-api-adapter-service
               servicePort: 80
           # Example - for testing out rewrite rules
-          - path: /api/bar/(participants.*)
+          # - path: /api/bar/(participants.*)
+          - path: /api/bar
             backend:
               serviceName: echo
               servicePort: 80
@@ -70,7 +74,7 @@ plugin: request-transformer
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: fspiop
+  name: fspiop-health
   annotations:
     kubernetes.io/ingress.class: kong
     konghq.com/plugins: fspiop-rewrite-health

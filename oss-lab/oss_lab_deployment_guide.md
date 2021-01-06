@@ -178,6 +178,13 @@ kubens ml-app
 helm repo add kong https://charts.konghq.com
 helm repo update
 helm install kong kong/kong --set ingressController.installCRDs=false
+
+
+#switching to file based config for kong 
+helm upgrade --install --namespace ml-app kong kong/kong -f ./config/kong_values.yaml
+
+
+
 ```
 
 
@@ -302,7 +309,9 @@ service.beta.kubernetes.io/aws-load-balancer-ssl-ports: https
 
 
 ## TODO:
-
+- [ ] API key setup for each DFSP
+- [ ] proper https
+- [ ] talk to Ed and Istvan about hooking up to our environment 
 - [ ] placeholder demo pages
 - [ ] better homepage
 - [ ] start P2P guide (from DFSP perspective)

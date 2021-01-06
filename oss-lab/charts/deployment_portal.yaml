@@ -59,15 +59,16 @@ spec:
   clusterIP: None
 
 ---
-apiVersion: configuration.konghq.com/v1
-kind: KongPlugin
-metadata:
-  name: fspiop-rewrite
-config:
-  replace:
-    uri: "/$(uri_captures[1])"
-    # uri: "/health"
-plugin: dev-portal-rewrite
+# apiVersion: configuration.konghq.com/v1
+# kind: KongPlugin
+# metadata:
+#   name: fspiop-rewrite
+# config:
+#   replace:
+#     uri: "/$(uri_captures[1])"
+#     # uri: "/health"
+# # plugin: dev-portal-rewrite
+# plugin: request-transformer
 ---
 
 # Ingresses for Kong API Gateway to talk to the portal

@@ -1,0 +1,7 @@
+
+env:
+  KONG_ADMIN_LISTEN: 0.0.0.0:8444 ssl
+
+ingressController:
+  enabled: true
+  installCRDs: false
