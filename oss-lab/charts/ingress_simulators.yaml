@@ -28,3 +28,38 @@ spec:
             backend:
               serviceName: mojaloop-sim-payeefsp-backend
               servicePort: 3003
+    - host: payerfsp-backend.beta.moja-lab.live
+      http:
+        paths:
+          - path: /(.*)
+            backend:
+              serviceName: mojaloop-sim-payerfsp-backend
+              servicePort: 3003
+    - host: testfsp1-backend.beta.moja-lab.live
+      http:
+        paths:
+          - path: /(.*)
+            backend:
+              serviceName: mojaloop-sim-testfsp1-backend
+              servicePort: 3003
+    - host: testfsp2-backend.beta.moja-lab.live
+      http:
+        paths:
+          - path: /(.*)
+            backend:
+              serviceName: mojaloop-sim-testfsp2-backend
+              servicePort: 3003    
+    - host: testfsp3-backend.beta.moja-lab.live
+      http:
+        paths:
+          - path: /(.*)
+            backend:
+              serviceName: mojaloop-sim-testfsp3-backend
+              servicePort: 3003
+    - host: testfsp4-backend.beta.moja-lab.live
+      http:
+        paths:
+          - path: /(.*)
+            backend:
+              serviceName: mojaloop-sim-testfsp4-backend
+              servicePort: 3003

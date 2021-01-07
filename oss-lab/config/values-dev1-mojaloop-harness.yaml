@@ -137,7 +137,7 @@ central:
           api: /
         # Used to create an Ingress record.
         hosts:
-          api: dev2-central-ledger.mojaloop.live
+          api: dev1-central-ledger.mojaloop.live
         annotations:
           nginx.ingress.kubernetes.io/rewrite-target: '/'
           # kubernetes.io/ingress.class: nginx
@@ -1077,7 +1077,7 @@ central:
           datadir=/var/lib/mysql
           default_storage_engine=InnoDB
           binlog_format=ROW
-          innodb_flush_log_at_trx_commit  = 1
+          innodb_flush_log_at_trx_commit  = 0
           innodb_flush_method             = O_DIRECT
           innodb_file_per_table           = 1
           innodb_autoinc_lock_mode=2
@@ -1516,7 +1516,7 @@ central:
       externalPath: /
       # Used to create an Ingress record.
       hosts:
-        api: dev2-central-settlement.mojaloop.live
+        api: dev1-central-settlement.mojaloop.live
       annotations:
         nginx.ingress.kubernetes.io/rewrite-target: '/'
         # kubernetes.io/ingress.class: nginx
@@ -2002,7 +2002,7 @@ ml-api-adapter:
       externalPath: /
       # Used to create an Ingress record.
       hosts:
-        api: dev2-ml-api-adapter.mojaloop.live
+        api: dev1-ml-api-adapter.mojaloop.live
 
       annotations:
         nginx.ingress.kubernetes.io/rewrite-target: '/'
@@ -2385,7 +2385,7 @@ account-lookup-service:
         # kubernetes.io/tls-acme: "true"
       path: /
       hosts:
-        - dev2-account-lookup.mojaloop.live
+        - dev1-account-lookup.mojaloop.live
       tls: []
         #  - secretName: chart-example-tls
         #    hosts:
@@ -2507,7 +2507,7 @@ account-lookup-service:
         # kubernetes.io/tls-acme: "true"
       path: /
       hosts:
-        - dev2-account-lookup-admin.mojaloop.live
+        - dev1-account-lookup-admin.mojaloop.live
       tls: []
         #  - secretName: chart-example-tls
         #    hosts:
@@ -2832,7 +2832,7 @@ account-lookup-service:
         datadir=/var/lib/mysql
         default_storage_engine=InnoDB
         binlog_format=ROW
-        innodb_flush_log_at_trx_commit  = 1
+        innodb_flush_log_at_trx_commit  = 0
         innodb_flush_method             = O_DIRECT
         innodb_file_per_table           = 1
         innodb_autoinc_lock_mode=2
@@ -2977,7 +2977,7 @@ quoting-service:
     externalPath: /
     # Used to create an Ingress record.
     hosts:
-      api: dev2-quoting-service.mojaloop.live
+      api: dev1-quoting-service.mojaloop.live
     annotations:
       nginx.ingress.kubernetes.io/rewrite-target: '/'
       # kubernetes.io/ingress.class: nginx
@@ -3067,7 +3067,7 @@ transaction-requests-service:
     externalPath: /
     # Used to create an Ingress record.
     hosts:
-      api: dev2-transaction-requests-service.mojaloop.live
+      api: dev1-transaction-requests-service.mojaloop.live
     annotations:
       nginx.ingress.kubernetes.io/rewrite-target: '/'
       # kubernetes.io/ingress.class: nginx
@@ -3158,7 +3158,7 @@ simulator:
       # kubernetes.io/tls-acme: "true"
     path: /
     hosts:
-      - dev2-simulator.mojaloop.live
+      - dev1-simulator.mojaloop.live
     tls: []
       #  - secretName: chart-example-tls
       #    hosts:
@@ -3191,15 +3191,9 @@ mojaloop-simulator:
   replicaCount: 1
 
   simulators:
-    payerfsp:
+    payerfsp: 
       config:
         schemeAdapter:
-          env:
-            ALS_ENDPOINT: mojaloop-account-lookup-service
-            QUOTES_ENDPOINT: mojaloop-quoting-service
-            TRANSFERS_ENDPOINT: mojaloop-ml-api-adapter-service
-            BULK_TRANSFERS_ENDPOINT: mojaloop-bulk-api-adapter-service
-            TRANSACTION_REQUESTS_ENDPOINT: mojaloop-transaction-requests-service
           secrets:
             jws:
               privateKey: |-
@@ -3243,19 +3237,13 @@ mojaloop-simulator:
                 -----END PUBLIC KEY-----
       ingress:
         hosts: 
-          - dev2-sim-payerfsp.mojaloop.live
+          - dev1-sim-payerfsp.mojaloop.live
     payeefsp:
       ingress:
         hosts: 
-          - dev2-sim-payeefsp.mojaloop.live
+          - dev1-sim-payeefsp.mojaloop.live
       config:
         schemeAdapter:
-          env:
-            ALS_ENDPOINT: mojaloop-account-lookup-service
-            QUOTES_ENDPOINT: mojaloop-quoting-service
-            TRANSFERS_ENDPOINT: mojaloop-ml-api-adapter-service
-            BULK_TRANSFERS_ENDPOINT: mojaloop-bulk-api-adapter-service
-            TRANSACTION_REQUESTS_ENDPOINT: mojaloop-transaction-requests-service
           secrets:
             jws:
               privateKey: |-
@@ -3300,7 +3288,7 @@ mojaloop-simulator:
     testfsp1:
       ingress:
         hosts: 
-          - dev2-sim-testfsp1.mojaloop.live
+          - dev1-sim-testfsp1.mojaloop.live
       config:
         schemeAdapter:
           secrets:
@@ -3347,7 +3335,7 @@ mojaloop-simulator:
     testfsp2:
       ingress:
         hosts: 
-          - dev2-sim-testfsp2.mojaloop.live
+          - dev1-sim-testfsp2.mojaloop.live
       config:
         schemeAdapter:
           secrets:
@@ -3394,7 +3382,7 @@ mojaloop-simulator:
     testfsp3:
       ingress:
         hosts: 
-          - dev2-sim-testfsp3.mojaloop.live
+          - dev1-sim-testfsp3.mojaloop.live
       config:
         schemeAdapter:
           secrets:
@@ -3441,7 +3429,7 @@ mojaloop-simulator:
     testfsp4:
       ingress:
         hosts: 
-          - dev2-sim-testfsp4.mojaloop.live
+          - dev1-sim-testfsp4.mojaloop.live
       config:
         schemeAdapter:
           secrets:
@@ -3564,7 +3552,7 @@ mojaloop-simulator:
           JWS_SIGN_PUT_PARTIES: true
 
           # Path to JWS signing key (private key of THIS DFSP)
-          JWS_SIGNING_KEY_PATH: /jwsSigningKey.key
+          JWS_SIGNING_KEY_PATH: /jwsSigningKey/private.key
           JWS_VERIFICATION_KEYS_DIRECTORY: /jwsVerificationKeys
 
           # Location of certs and key required for TLS
@@ -3589,12 +3577,12 @@ mojaloop-simulator:
           PEER_ENDPOINT: "IGNORE"
 
           # Common Account Lookup System (ALS)
-          ALS_ENDPOINT: dev2-account-lookup.mojaloop.live
-          QUOTES_ENDPOINT: dev2-quoting-service.mojaloop.live
-          TRANSFERS_ENDPOINT: dev2-ml-api-adapter.mojaloop.live
-          BULK_TRANSFERS_ENDPOINT: dev2-bulk-api-adapter.mojaloop.live
-          BULK_QUOTES_ENDPOINT: dev2-quoting-service.mojaloop.live
-          TRANSACTION_REQUESTS_ENDPOINT: dev2-transaction-requests-service.mojaloop.live
+          ALS_ENDPOINT: dev1-account-lookup.mojaloop.live
+          QUOTES_ENDPOINT: dev1-quoting-service.mojaloop.live
+          TRANSFERS_ENDPOINT: dev1-ml-api-adapter.mojaloop.live
+          BULK_TRANSFERS_ENDPOINT: dev1-bulk-api-adapter.mojaloop.live
+          BULK_QUOTES_ENDPOINT: dev1-quoting-service.mojaloop.live
+          TRANSACTION_REQUESTS_ENDPOINT: dev1-transaction-requests-service.mojaloop.live
 
           # Simulator backend container endpoint
           # BACKEND_ENDPOINT: "localhost:3000" # within pod
@@ -3663,11 +3651,6 @@ mojaloop-simulator:
           # Timeout for GET/POST/DELETE - PUT flow processing
           REQUEST_PROCESSING_TIMEOUT_SECONDS: 30
 
-          # To allow transfer without a previous quote request, set this value to true.
-          # The incoming transfer request should consist of an ILP packet and a matching condition in this case.
-          # The fulfilment will be generated from the provided ILP packet, and must hash to the provided condition.
-          ALLOW_TRANSFER_WITHOUT_QUOTE: true
-
 
       simBackend:
         image:
@@ -3721,7 +3704,7 @@ mojaloop-simulator:
 
           RULES_FILE: ./rules.json
 
-          # Ports for simulator, report, and test APIs	
+          # Ports for simulator, report, and test APIs
           SIMULATOR_API_LISTEN_PORT: 3000
           REPORT_API_LISTEN_PORT: 3002
           TEST_API_LISTEN_PORT: 3003
@@ -3855,7 +3838,7 @@ mojaloop-bulk:
         externalPath: /
         # Used to create an Ingress record.
         hosts:
-          api: dev2-bulk-api-adapter.mojaloop.live
+          api: dev1-bulk-api-adapter.mojaloop.live
 
         annotations:
           nginx.ingress.kubernetes.io/rewrite-target: '/'
@@ -4858,7 +4841,7 @@ finance-portal:
       enabled: true
       externalPath: /
       hosts: 
-        api: dev2-finance-portal.mojaloop.live
+        api: dev1-finance-portal.mojaloop.live
       annotations:
         kubernetes.io/ingress.class: nginx
         ## NGINX Ingres Control < v0.22-
@@ -4989,23 +4972,17 @@ finance-portal-settlement-management:
       #   hosts:
       #     - chart-example.local
 
-ml-testing-toolkit-backend:
-  enabled: true
-
-ml-testing-toolkit-frontend:
-  enabled: true
 
 ml-testing-toolkit:
   enabled: true
   ml-testing-toolkit-backend:
-    enabled: true
     ingress:
       enabled: true
       hosts:
-        dev2-testing-toolkit-specapi.mojaloop.live:
+        dev1-testing-toolkit-specapi.mojaloop.live:
           port: 5000
           paths: ['/']
-        dev2-testing-toolkit.mojaloop.live:
+        dev1-testing-toolkit.mojaloop.live:
           port: 5050
           paths: ['/api/', '/socket.io/']
     config:
@@ -5016,17 +4993,17 @@ ml-testing-toolkit:
             {
               "method": "put",
               "path": "/parties/{Type}/{ID}",
-              "endpoint": "http://dev2-account-lookup.mojaloop.live"
+              "endpoint": "http://dev1-account-lookup.mojaloop.live"
             },
             {
               "method": "put",
               "path": "/quotes/{ID}",
-              "endpoint": "http://dev2-quoting-service.mojaloop.live"
+              "endpoint": "http://dev1-quoting-service.mojaloop.live"
             },
             {
               "method": "put",
               "path": "/transfers/{ID}",
-              "endpoint": "http://dev2-ml-api-adapter.mojaloop.live"
+              "endpoint": "http://dev1-ml-api-adapter.mojaloop.live"
             }
           ]
         },
@@ -5037,126 +5014,38 @@ ml-testing-toolkit:
         "ILP_SECRET": "secret"
       }
   ml-testing-toolkit-frontend:
-    enabled: true
     ingress:
       enabled: true
       hosts:
-        dev2-testing-toolkit.mojaloop.live:
+        dev1-testing-toolkit.mojaloop.live:
           port: 6060
           paths: ['/']
     config:
-      API_BASE_URL: http://dev2-testing-toolkit.mojaloop.live
-
+      API_BASE_URL: http://dev1-testing-toolkit.mojaloop.live
 ml-ttk-posthook-setup:
   postInstallHook:
-    enabled: true
+    enabled: false
     weight: -5
   config:
     testCasesZipUrl: https://github.com/mojaloop/testing-toolkit-test-cases/archive/master.zip
     testCasesPathInZip: testing-toolkit-test-cases-master/collections/hub/provisioning
-    # ttkBackendURL: http://dev-testing-toolkit-adminapi.mojaloop.live
-    # ttkBackendURL: http://ml-testing-toolkit
-
-  # testCaseEnvironmentFile:  {
-  #   "inputValues": {
-  #     "fromIdType": "MSISDN",
-  #     "fromIdValue": "44123456789",
-  #     "fromFirstName": "Firstname-Test",
-  #     "fromLastName": "Lastname-Test",
-  #     "fromDOB": "1984-01-01",
-  #     "note": "test",
-  #     "currency": "USD",
-  #     "amount": "100",
-  #     "homeTransactionId": "123ABC",
-  #     "fromFspId": "testingtoolkitdfsp",
-  #     "accept": "application/vnd.interoperability.parties+json;version=1.0",
-  #     "contentType": "application/vnd.interoperability.parties+json;version=1.0",
-  #     "toIdValue": "27713803912",
-  #     "toIdType": "MSISDN",
-  #     "toFspId": "payeefsp",
-  #     "acceptQuotes": "application/vnd.interoperability.quotes+json;version=1.0",
-  #     "contentTypeQuotes": "application/vnd.interoperability.quotes+json;version=1.0",
-  #     "acceptTransfers": "application/vnd.interoperability.transfers+json;version=1.0",
-  #     "contentTransfers": "application/vnd.interoperability.transfers+json;version=1.0",
-  #     "hub_operator": "NOT_APPLICABLE",
-  #     "payerfsp": "testingtoolkitdfsp",
-  #     "payeefsp": "payeefsp",
-  #     "ilpPacket": "AQAAAAAAAADIEHByaXZhdGUucGF5ZWVmc3CCAiB7InRyYW5zYWN0aW9uSWQiOiIyZGY3NzRlMi1mMWRiLTRmZjctYTQ5NS0yZGRkMzdhZjdjMmMiLCJxdW90ZUlkIjoiMDNhNjA1NTAtNmYyZi00NTU2LThlMDQtMDcwM2UzOWI4N2ZmIiwicGF5ZWUiOnsicGFydHlJZEluZm8iOnsicGFydHlJZFR5cGUiOiJNU0lTRE4iLCJwYXJ0eUlkZW50aWZpZXIiOiIyNzcxMzgwMzkxMyIsImZzcElkIjoicGF5ZWVmc3AifSwicGVyc29uYWxJbmZvIjp7ImNvbXBsZXhOYW1lIjp7fX19LCJwYXllciI6eyJwYXJ0eUlkSW5mbyI6eyJwYXJ0eUlkVHlwZSI6Ik1TSVNETiIsInBhcnR5SWRlbnRpZmllciI6IjI3NzEzODAzOTExIiwiZnNwSWQiOiJwYXllcmZzcCJ9LCJwZXJzb25hbEluZm8iOnsiY29tcGxleE5hbWUiOnt9fX0sImFtb3VudCI6eyJjdXJyZW5jeSI6IlVTRCIsImFtb3VudCI6IjIwMCJ9LCJ0cmFuc2FjdGlvblR5cGUiOnsic2NlbmFyaW8iOiJERVBPU0lUIiwic3ViU2NlbmFyaW8iOiJERVBPU0lUIiwiaW5pdGlhdG9yIjoiUEFZRVIiLCJpbml0aWF0b3JUeXBlIjoiQ09OU1VNRVIiLCJyZWZ1bmRJbmZvIjp7fX19",
-  #     "condition": "HOr22-H3AfTDHrSkPjJtVPRdKouuMkDXTR4ejlQa8Ks",
-  #     "validFulfillment": "UNlJ98hZTY_dsw0cAqw4i_UN3v4utt7CZFB4yfLbVFA",
-  #     "validCondition": "GRzLaTP7DJ9t4P-a_BA0WA9wzzlsugf00-Tn6kESAfM",
-  #     "invalidFulfillment": "_3cco-YN5OGpRKVWV3n6x6uNpBTH9tYUdOYmHA-----",
-  #     "fspiopSignature": "{\"signature\":\"iU4GBXSfY8twZMj1zXX1CTe3LDO8Zvgui53icrriBxCUF_wltQmnjgWLWI4ZUEueVeOeTbDPBZazpBWYvBYpl5WJSUoXi14nVlangcsmu2vYkQUPmHtjOW-yb2ng6_aPfwd7oHLWrWzcsjTF-S4dW7GZRPHEbY_qCOhEwmmMOnE1FWF1OLvP0dM0r4y7FlnrZNhmuVIFhk_pMbEC44rtQmMFv4pm4EVGqmIm3eyXz0GkX8q_O1kGBoyIeV_P6RRcZ0nL6YUVMhPFSLJo6CIhL2zPm54Qdl2nVzDFWn_shVyV0Cl5vpcMJxJ--O_Zcbmpv6lxqDdygTC782Ob3CNMvg\\\",\\\"protectedHeader\\\":\\\"eyJhbGciOiJSUzI1NiIsIkZTUElPUC1VUkkiOiIvdHJhbnNmZXJzIiwiRlNQSU9QLUhUVFAtTWV0aG9kIjoiUE9TVCIsIkZTUElPUC1Tb3VyY2UiOiJPTUwiLCJGU1BJT1AtRGVzdGluYXRpb24iOiJNVE5Nb2JpbGVNb25leSIsIkRhdGUiOiIifQ\"}",
-  #     "HUB_OPERATOR_BEARER_TOKEN": "NOT_APPLICABLE",
-  #     "BASE_CENTRAL_LEDGER_ADMIN": "",
-  #     "HOST_ML_API_ADAPTER": "http://dev2-ml-api-adapter.mojaloop.live",
-  #     "HOST_CENTRAL_LEDGER": "http://dev2-central-ledger.mojaloop.live",
-  #     "HOST_QUOTING_SERVICE": "http://dev2-quoting-service.mojaloop.live",
-  #     "HOST_ACCOUNT_LOOKUP_SERVICE": "http://dev2-account-lookup.mojaloop.live",
-  #     "HOST_ACCOUNT_LOOKUP_SERVICE_ADMIN": "http://dev2-account-lookup-admin.mojaloop.live",
-  #     "HOST_ACCOUNT_LOOKUP_ADMIN": "http://dev2-account-lookup-admin.mojaloop.live",
-  #     "HOST_SIMULATOR": "http://dev2-simulator.mojaloop.live",
-  #     "HOST_CENTRAL_SETTLEMENT": "http://dev2-central-settlement.mojaloop.live/v1",
-  #     "HOST_TRANSACTION_REQUESTS_SERVICE": "http://dev2-transaction-requests-service.mojaloop.live",
-  #     "CALLBACK_ENDPOINT_BASE_URL": "http://dev-testing-toolkit-specapi.mojaloop.live",
-  #     "payerIdType": "MSISDN",
-  #     "payerIdentifier": "17039811907",
-  #     "payerfspEmail": "some.email@gmail.com",
-  #     "payeeIdType": "MSISDN",
-  #     "payeeIdentifier": "17039811907",
-  #     "payeefspEmail": "some.email@gmail.com",
-  #     "testfsp1IdType": "MSISDN",
-  #     "testfsp1Identifier": "17039811907",
-  #     "testfsp1Email": "some.email@gmail.com",
-  #     "testfsp2IdType": "MSISDN",
-  #     "testfsp2Identifier": "17039811907",
-  #     "testfsp2Email": "some.email@gmail.com",
-  #     "hubEmail": "some.email@gmail.com",
-  #     "HOST_BULK_ADAPTER": "http://dev2-bulk-api-adapter.mojaloop.live",
-  #     "HOST_LEGACY_SIMULATOR": "http://dev2-simulator.mojaloop.live",
-  #     "validCondition2": "kPLCKM62VY2jbekuw3apCTBg5zk_mVs9DD8-XpljQms",
-  #     "validIlpPacket2": "AYIC9AAAAAAAABdwHWcucGF5ZWVmc3AubXNpc2RuLjIyNTU2OTk5MTI1ggLKZXlKMGNtRnVjMkZqZEdsdmJrbGtJam9pWmpRMFltUmtOV010WXpreE1DMDBZVGt3TFRoa05qa3RaR0ppWVRaaVl6aGxZVFpqSWl3aWNYVnZkR1ZKWkNJNklqVTBaRFZtTURsaUxXRTBOMlF0TkRCa05pMWhZVEEzTFdFNVkyWXpZbUl5TkRsaFpDSXNJbkJoZVdWbElqcDdJbkJoY25SNVNXUkpibVp2SWpwN0luQmhjblI1U1dSVWVYQmxJam9pVFZOSlUwUk9JaXdpY0dGeWRIbEpaR1Z1ZEdsbWFXVnlJam9pTWpJMU5UWTVPVGt4TWpVaUxDSm1jM0JKWkNJNkluQmhlV1ZsWm5Od0luMTlMQ0p3WVhsbGNpSTZleUp3WVhKMGVVbGtTVzVtYnlJNmV5SndZWEowZVVsa1ZIbHdaU0k2SWsxVFNWTkVUaUlzSW5CaGNuUjVTV1JsYm5ScFptbGxjaUk2SWpJeU5UQTNNREE0TVRneElpd2labk53U1dRaU9pSndZWGxsY21aemNDSjlMQ0p3WlhKemIyNWhiRWx1Wm04aU9uc2lZMjl0Y0d4bGVFNWhiV1VpT25zaVptbHljM1JPWVcxbElqb2lUV0YwY3lJc0lteGhjM1JPWVcxbElqb2lTR0ZuYldGdUluMHNJbVJoZEdWUFprSnBjblJvSWpvaU1UazRNeTB4TUMweU5TSjlmU3dpWVcxdmRXNTBJanA3SW1GdGIzVnVkQ0k2SWpZd0lpd2lZM1Z5Y21WdVkza2lPaUpWVTBRaWZTd2lkSEpoYm5OaFkzUnBiMjVVZVhCbElqcDdJbk5qWlc1aGNtbHZJam9pVkZKQlRsTkdSVklpTENKcGJtbDBhV0YwYjNJaU9pSlFRVmxGVWlJc0ltbHVhWFJwWVhSdmNsUjVjR1VpT2lKRFQwNVRWVTFGVWlKOWZRAA",
-  #     "currency2": "USD",
-  #     "PAYERFSP_SDK_TESTAPI_URL": "http://dev2-sim-payerfsp.mojaloop.live/sim/payerfsp/sdktest",
-  #     "PAYEEFSP_SDK_TESTAPI_URL": "http://dev2-sim-payeefsp.mojaloop.live/sim/payeefsp/sdktest",
-  #     "TESTFSP1_SDK_TESTAPI_URL": "http://dev2-sim-testfsp1.mojaloop.live/sim/testfsp1/sdktest",
-  #     "TESTFSP2_SDK_TESTAPI_URL": "http://dev2-sim-testfsp2.mojaloop.live/sim/testfsp2/sdktest",
-  #     "PAYERFSP_BACKEND_TESTAPI_URL": "http://dev2-sim-payerfsp.mojaloop.live/sim/payerfsp/test",
-  #     "PAYEEFSP_BACKEND_TESTAPI_URL": "http://dev2-sim-payeefsp.mojaloop.live/sim/payeefsp/test",
-  #     "TESTFSP1_BACKEND_TESTAPI_URL": "http://dev2-sim-testfsp1.mojaloop.live/sim/testfsp1/test",
-  #     "TESTFSP2_BACKEND_TESTAPI_URL": "http://dev2-sim-testfsp2.mojaloop.live/sim/testfsp2/test",
-  #     "PAYERFSP_CALLBACK_URL": "http://dev2-sim-payerfsp.mojaloop.live/sim/payerfsp/inbound",
-  #     "PAYEEFSP_CALLBACK_URL": "http://dev2-sim-payeefsp.mojaloop.live/sim/payeefsp/inbound",
-  #     "TESTFSP1_CALLBACK_URL": "http://dev2-sim-testfsp1.mojaloop.live/sim/testfsp1/inbound",
-  #     "TESTFSP2_CALLBACK_URL": "http://dev2-sim-testfsp2.mojaloop.live/sim/testfsp2/inbound",
-  #     "acceptParticipants": "application/vnd.interoperability.participants+json;version=1.0",
-  #     "contentTypeParticipants": "application/vnd.interoperability.participants+json;version=1.0",
-  #     "toIdValueDelete": "27713803913",
-  #     "batchToIdValue1": "27713803066",
-  #     "batchToIdValue2": "27713803067",
-  #     "invalidToIdType": "ACCOUNT_ID",
-  #     "invalidToIdValue": "27713803099"
-  #   }
-  # }
-
 ml-ttk-posthook-tests:
   postInstallHook:
-    enabled: true
+    enabled: false
     weight: -4
   config:
     testCasesZipUrl: https://github.com/mojaloop/testing-toolkit-test-cases/archive/master.zip
     testCasesPathInZip: testing-toolkit-test-cases-master/collections/hub/sequence
-    # awsS3BucketName: mojaloop-oss-qa-results
-    # awsS3FilePath: ttk-tests/reports
-    # ttkBackendURL: http://dev-testing-toolkit-adminapi.mojaloop.live
+    awsS3BucketName: mojaloop-oss-qa-results
+    awsS3FilePath: ttk-tests/reports
     testSuiteName: Test run after deployment
-    environmentName: DEV2
+    environmentName: DEV1
 
   configCreds:
-    # AWS_ACCESS_KEY_ID: 'AKIA44YOGEHOT52GSATO'
-    # AWS_SECRET_ACCESS_KEY: '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'
-    # AWS_REGION: 'us-west-2'
-    # SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
+    AWS_ACCESS_KEY_ID: 'AKIA44YOGEHOT52GSATO'
+    AWS_SECRET_ACCESS_KEY: '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'
+    AWS_REGION: 'us-west-2'
+    SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
 
   ## Optionally specify the config file defaults for TTK CLI
   ## You should specify at least mode here
@@ -5174,85 +5063,3 @@ ml-ttk-posthook-tests:
     "slackPassedImage": "https://mojaloop-oss-qa-results.s3-us-west-2.amazonaws.com/ttk-tests/assets/accept-47587_640.png",
     "slackFailedImage": "https://mojaloop-oss-qa-results.s3-us-west-2.amazonaws.com/ttk-tests/assets/cancel-47588_640.png"
   }
-
-  # testCaseEnvironmentFile:  {
-  #   "inputValues": {
-  #     "fromIdType": "MSISDN",
-  #     "fromIdValue": "44123456789",
-  #     "fromFirstName": "Firstname-Test",
-  #     "fromLastName": "Lastname-Test",
-  #     "fromDOB": "1984-01-01",
-  #     "note": "test",
-  #     "currency": "USD",
-  #     "amount": "100",
-  #     "homeTransactionId": "123ABC",
-  #     "fromFspId": "testingtoolkitdfsp",
-  #     "accept": "application/vnd.interoperability.parties+json;version=1.0",
-  #     "contentType": "application/vnd.interoperability.parties+json;version=1.0",
-  #     "toIdValue": "27713803912",
-  #     "toIdType": "MSISDN",
-  #     "toFspId": "payeefsp",
-  #     "acceptQuotes": "application/vnd.interoperability.quotes+json;version=1.0",
-  #     "contentTypeQuotes": "application/vnd.interoperability.quotes+json;version=1.0",
-  #     "acceptTransfers": "application/vnd.interoperability.transfers+json;version=1.0",
-  #     "contentTransfers": "application/vnd.interoperability.transfers+json;version=1.0",
-  #     "hub_operator": "NOT_APPLICABLE",
-  #     "payerfsp": "testingtoolkitdfsp",
-  #     "payeefsp": "payeefsp",
-  #     "ilpPacket": "AQAAAAAAAADIEHByaXZhdGUucGF5ZWVmc3CCAiB7InRyYW5zYWN0aW9uSWQiOiIyZGY3NzRlMi1mMWRiLTRmZjctYTQ5NS0yZGRkMzdhZjdjMmMiLCJxdW90ZUlkIjoiMDNhNjA1NTAtNmYyZi00NTU2LThlMDQtMDcwM2UzOWI4N2ZmIiwicGF5ZWUiOnsicGFydHlJZEluZm8iOnsicGFydHlJZFR5cGUiOiJNU0lTRE4iLCJwYXJ0eUlkZW50aWZpZXIiOiIyNzcxMzgwMzkxMyIsImZzcElkIjoicGF5ZWVmc3AifSwicGVyc29uYWxJbmZvIjp7ImNvbXBsZXhOYW1lIjp7fX19LCJwYXllciI6eyJwYXJ0eUlkSW5mbyI6eyJwYXJ0eUlkVHlwZSI6Ik1TSVNETiIsInBhcnR5SWRlbnRpZmllciI6IjI3NzEzODAzOTExIiwiZnNwSWQiOiJwYXllcmZzcCJ9LCJwZXJzb25hbEluZm8iOnsiY29tcGxleE5hbWUiOnt9fX0sImFtb3VudCI6eyJjdXJyZW5jeSI6IlVTRCIsImFtb3VudCI6IjIwMCJ9LCJ0cmFuc2FjdGlvblR5cGUiOnsic2NlbmFyaW8iOiJERVBPU0lUIiwic3ViU2NlbmFyaW8iOiJERVBPU0lUIiwiaW5pdGlhdG9yIjoiUEFZRVIiLCJpbml0aWF0b3JUeXBlIjoiQ09OU1VNRVIiLCJyZWZ1bmRJbmZvIjp7fX19",
-  #     "condition": "HOr22-H3AfTDHrSkPjJtVPRdKouuMkDXTR4ejlQa8Ks",
-  #     "validFulfillment": "UNlJ98hZTY_dsw0cAqw4i_UN3v4utt7CZFB4yfLbVFA",
-  #     "validCondition": "GRzLaTP7DJ9t4P-a_BA0WA9wzzlsugf00-Tn6kESAfM",
-  #     "invalidFulfillment": "_3cco-YN5OGpRKVWV3n6x6uNpBTH9tYUdOYmHA-----",
-  #     "fspiopSignature": "{\"signature\":\"iU4GBXSfY8twZMj1zXX1CTe3LDO8Zvgui53icrriBxCUF_wltQmnjgWLWI4ZUEueVeOeTbDPBZazpBWYvBYpl5WJSUoXi14nVlangcsmu2vYkQUPmHtjOW-yb2ng6_aPfwd7oHLWrWzcsjTF-S4dW7GZRPHEbY_qCOhEwmmMOnE1FWF1OLvP0dM0r4y7FlnrZNhmuVIFhk_pMbEC44rtQmMFv4pm4EVGqmIm3eyXz0GkX8q_O1kGBoyIeV_P6RRcZ0nL6YUVMhPFSLJo6CIhL2zPm54Qdl2nVzDFWn_shVyV0Cl5vpcMJxJ--O_Zcbmpv6lxqDdygTC782Ob3CNMvg\\\",\\\"protectedHeader\\\":\\\"eyJhbGciOiJSUzI1NiIsIkZTUElPUC1VUkkiOiIvdHJhbnNmZXJzIiwiRlNQSU9QLUhUVFAtTWV0aG9kIjoiUE9TVCIsIkZTUElPUC1Tb3VyY2UiOiJPTUwiLCJGU1BJT1AtRGVzdGluYXRpb24iOiJNVE5Nb2JpbGVNb25leSIsIkRhdGUiOiIifQ\"}",
-  #     "HUB_OPERATOR_BEARER_TOKEN": "NOT_APPLICABLE",
-  #     "BASE_CENTRAL_LEDGER_ADMIN": "",
-  #     "HOST_ML_API_ADAPTER": "http://dev2-ml-api-adapter.mojaloop.live",
-  #     "HOST_CENTRAL_LEDGER": "http://dev2-central-ledger.mojaloop.live",
-  #     "HOST_QUOTING_SERVICE": "http://dev2-quoting-service.mojaloop.live",
-  #     "HOST_ACCOUNT_LOOKUP_SERVICE": "http://dev2-account-lookup.mojaloop.live",
-  #     "HOST_ACCOUNT_LOOKUP_SERVICE_ADMIN": "http://dev2-account-lookup-admin.mojaloop.live",
-  #     "HOST_ACCOUNT_LOOKUP_ADMIN": "http://dev2-account-lookup-admin.mojaloop.live",
-  #     "HOST_SIMULATOR": "http://dev2-simulator.mojaloop.live",
-  #     "HOST_CENTRAL_SETTLEMENT": "http://dev2-central-settlement.mojaloop.live/v1",
-  #     "HOST_TRANSACTION_REQUESTS_SERVICE": "http://dev2-transaction-requests-service.mojaloop.live",
-  #     "CALLBACK_ENDPOINT_BASE_URL": "http://d2-116-2-ml-testing-toolkit",
-  #     "payerIdType": "MSISDN",
-  #     "payerIdentifier": "17039811907",
-  #     "payerfspEmail": "some.email@gmail.com",
-  #     "payeeIdType": "MSISDN",
-  #     "payeeIdentifier": "17039811907",
-  #     "payeefspEmail": "some.email@gmail.com",
-  #     "testfsp1IdType": "MSISDN",
-  #     "testfsp1Identifier": "17039811907",
-  #     "testfsp1Email": "some.email@gmail.com",
-  #     "testfsp2IdType": "MSISDN",
-  #     "testfsp2Identifier": "17039811907",
-  #     "testfsp2Email": "some.email@gmail.com",
-  #     "hubEmail": "some.email@gmail.com",
-  #     "HOST_BULK_ADAPTER": "http://dev2-bulk-api-adapter.mojaloop.live",
-  #     "HOST_LEGACY_SIMULATOR": "http://dev2-simulator.mojaloop.live",
-  #     "validCondition2": "kPLCKM62VY2jbekuw3apCTBg5zk_mVs9DD8-XpljQms",
-  #     "validIlpPacket2": "AYIC9AAAAAAAABdwHWcucGF5ZWVmc3AubXNpc2RuLjIyNTU2OTk5MTI1ggLKZXlKMGNtRnVjMkZqZEdsdmJrbGtJam9pWmpRMFltUmtOV010WXpreE1DMDBZVGt3TFRoa05qa3RaR0ppWVRaaVl6aGxZVFpqSWl3aWNYVnZkR1ZKWkNJNklqVTBaRFZtTURsaUxXRTBOMlF0TkRCa05pMWhZVEEzTFdFNVkyWXpZbUl5TkRsaFpDSXNJbkJoZVdWbElqcDdJbkJoY25SNVNXUkpibVp2SWpwN0luQmhjblI1U1dSVWVYQmxJam9pVFZOSlUwUk9JaXdpY0dGeWRIbEpaR1Z1ZEdsbWFXVnlJam9pTWpJMU5UWTVPVGt4TWpVaUxDSm1jM0JKWkNJNkluQmhlV1ZsWm5Od0luMTlMQ0p3WVhsbGNpSTZleUp3WVhKMGVVbGtTVzVtYnlJNmV5SndZWEowZVVsa1ZIbHdaU0k2SWsxVFNWTkVUaUlzSW5CaGNuUjVTV1JsYm5ScFptbGxjaUk2SWpJeU5UQTNNREE0TVRneElpd2labk53U1dRaU9pSndZWGxsY21aemNDSjlMQ0p3WlhKemIyNWhiRWx1Wm04aU9uc2lZMjl0Y0d4bGVFNWhiV1VpT25zaVptbHljM1JPWVcxbElqb2lUV0YwY3lJc0lteGhjM1JPWVcxbElqb2lTR0ZuYldGdUluMHNJbVJoZEdWUFprSnBjblJvSWpvaU1UazRNeTB4TUMweU5TSjlmU3dpWVcxdmRXNTBJanA3SW1GdGIzVnVkQ0k2SWpZd0lpd2lZM1Z5Y21WdVkza2lPaUpWVTBRaWZTd2lkSEpoYm5OaFkzUnBiMjVVZVhCbElqcDdJbk5qWlc1aGNtbHZJam9pVkZKQlRsTkdSVklpTENKcGJtbDBhV0YwYjNJaU9pSlFRVmxGVWlJc0ltbHVhWFJwWVhSdmNsUjVjR1VpT2lKRFQwNVRWVTFGVWlKOWZRAA",
-  #     "currency2": "USD",
-  #     "PAYERFSP_SDK_TESTAPI_URL": "http://dev2-sim-payerfsp.mojaloop.live/sim/payerfsp/sdktest",
-  #     "PAYEEFSP_SDK_TESTAPI_URL": "http://dev2-sim-payeefsp.mojaloop.live/sim/payeefsp/sdktest",
-  #     "TESTFSP1_SDK_TESTAPI_URL": "http://dev2-sim-testfsp1.mojaloop.live/sim/testfsp1/sdktest",
-  #     "TESTFSP2_SDK_TESTAPI_URL": "http://dev2-sim-testfsp2.mojaloop.live/sim/testfsp2/sdktest",
-  #     "PAYERFSP_BACKEND_TESTAPI_URL": "http://dev2-sim-payerfsp.mojaloop.live/sim/payerfsp/test",
-  #     "PAYEEFSP_BACKEND_TESTAPI_URL": "http://dev2-sim-payeefsp.mojaloop.live/sim/payeefsp/test",
-  #     "TESTFSP1_BACKEND_TESTAPI_URL": "http://dev2-sim-testfsp1.mojaloop.live/sim/testfsp1/test",
-  #     "TESTFSP2_BACKEND_TESTAPI_URL": "http://dev2-sim-testfsp2.mojaloop.live/sim/testfsp2/test",
-  #     "PAYERFSP_CALLBACK_URL": "http://dev2-sim-payerfsp.mojaloop.live/sim/payerfsp/inbound",
-  #     "PAYEEFSP_CALLBACK_URL": "http://dev2-sim-payeefsp.mojaloop.live/sim/payeefsp/inbound",
-  #     "TESTFSP1_CALLBACK_URL": "http://dev2-sim-testfsp1.mojaloop.live/sim/testfsp1/inbound",
-  #     "TESTFSP2_CALLBACK_URL": "http://dev2-sim-testfsp2.mojaloop.live/sim/testfsp2/inbound",
-  #     "acceptParticipants": "application/vnd.interoperability.participants+json;version=1.0",
-  #     "contentTypeParticipants": "application/vnd.interoperability.participants+json;version=1.0",
-  #     "toIdValueDelete": "27713803913",
-  #     "batchToIdValue1": "27713803066",
-  #     "batchToIdValue2": "27713803067",
-  #     "invalidToIdType": "ACCOUNT_ID",
-  #     "invalidToIdValue": "27713803099"
-  #   }
-  # }
