@@ -33,9 +33,9 @@ And the current users are registered and available for lookup in the Account Loo
 
 | dfspId | Id Type | Id Value |
 | --- | --- | --- |
-| `payeefsp` | `MSISDN | 27713803912` |
+| `payeefsp` | `MSISDN` | `27713803912` |
 
-> note: Lewis is in the process of adding to this list 
+> **Note**: Lewis is in the process of adding to this list 
 
 <!-- ### Users
 
@@ -58,8 +58,8 @@ Mojaloop has a variety of APIs you can interact with:
 | [FSPIOP (Mojaloop API)](/2-apis/fspiop)     | `v1.1` | DFSPs             | `beta.moja-lab.live/api/fspiop` |
 | [Admin](2-apis/admin)                       | `v1`   | Hub Admins, DFSPs | `beta.moja-lab.live/api/admin/central-ledger` |
 | [Settlement](2-apis/settlement.html)        | `v1`   | DFSPs             | (not currently available with this lab) |
-| [Thirdparty-DFSP](/2-apis/thirdparty-dfsp)  | `v0.1` | DFSPs             | todo |
-| [Thirdparty-PISP](/2-apis/thirdparty-pisp)  | `v0.1` | PISPs             | todo | 
+| [Thirdparty-DFSP](/2-apis/thirdparty-dfsp)  | `v0.1` | DFSPs             | (not currently available with this lab) |
+| [Thirdparty-PISP](/2-apis/thirdparty-pisp)  | `v0.1` | PISPs             | (not currently available with this lab) | 
 
 ## Tools:
 
