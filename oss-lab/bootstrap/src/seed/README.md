@@ -7,6 +7,7 @@
 
 2. Set the necessary env vars:
 ```bash
+export FSPIOP_URL=beta.moja-lab.live/api/fspiop
 export ELB_URL=beta.moja-lab.live/api/admin
 ```
 

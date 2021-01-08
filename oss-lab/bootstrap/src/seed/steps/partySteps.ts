@@ -17,7 +17,7 @@ function makeStepsForParticipantAndParties(config: GlobalConfig, participant: DF
     steps.push({
       name: `register with ALS: ${party.idType}/${party.idValue}`,
       ignoreFailure: false,
-      command: wrapWithRunResult(() => Requests.postALSParticipant(config.urls.als, {
+      command: wrapWithRunResult(() => Requests.postALSParticipant(config.urls.fspiop, {
         headers: {
           'FSPIOP-Source': participant.id
         },

@@ -63,3 +63,94 @@ spec:
             backend:
               serviceName: mojaloop-sim-testfsp4-backend
               servicePort: 3003
+
+    #scheme adapter ingress - todo: others
+    - host: payeefsp-sdk-scheme-adapter-inbound.beta.moja-lab.live
+      http:
+        paths:
+          - path: /(.*)
+            backend:
+              serviceName: mojaloop-sim-payeefsp-scheme-adapter
+              servicePort: 4000
+    - host: payeefsp-sdk-scheme-adapter-outbound.beta.moja-lab.live
+      http:
+        paths:
+          - path: /(.*)
+            backend:
+              serviceName: mojaloop-sim-payeefsp-scheme-adapter
+              servicePort: 4001
+
+    - host: payerfsp-sdk-scheme-adapter-inbound.beta.moja-lab.live
+      http:
+        paths:
+          - path: /(.*)
+            backend:
+              serviceName: mojaloop-sim-payerfsp-scheme-adapter
+              servicePort: 4000
+    - host: payerfsp-sdk-scheme-adapter-outbound.beta.moja-lab.live
+      http:
+        paths:
+          - path: /(.*)
+            backend:
+              serviceName: mojaloop-sim-payerfsp-scheme-adapter
+              servicePort: 4001
+    
+    - host: testfsp1-sdk-scheme-adapter-inbound.beta.moja-lab.live
+      http:
+        paths:
+          - path: /(.*)
+            backend:
+              serviceName: mojaloop-sim-testfsp1-scheme-adapter
+              servicePort: 4000
+    - host: testfsp1-sdk-scheme-adapter-outbound.beta.moja-lab.live
+      http:
+        paths:
+          - path: /(.*)
+            backend:
+              serviceName: mojaloop-sim-testfsp1-scheme-adapter
+              servicePort: 4001
+    - host: testfsp2-sdk-scheme-adapter-inbound.beta.moja-lab.live
+      http:
+        paths:
+          - path: /(.*)
+            backend:
+              serviceName: mojaloop-sim-testfsp2-scheme-adapter
+              servicePort: 4000
+    - host: testfsp2-sdk-scheme-adapter-outbound.beta.moja-lab.live
+      http:
+        paths:
+          - path: /(.*)
+            backend:
+              serviceName: mojaloop-sim-testfsp2-scheme-adapter
+              servicePort: 4001
+    - host: testfsp3-sdk-scheme-adapter-inbound.beta.moja-lab.live
+      http:
+        paths:
+          - path: /(.*)
+            backend:
+              serviceName: mojaloop-sim-testfsp3-scheme-adapter
+              servicePort: 4000
+    - host: testfsp3-sdk-scheme-adapter-outbound.beta.moja-lab.live
+      http:
+        paths:
+          - path: /(.*)
+            backend:
+              serviceName: mojaloop-sim-testfsp3-scheme-adapter
+              servicePort: 4001
+
+    - host: testfsp4-sdk-scheme-adapter-inbound.beta.moja-lab.live
+      http:
+        paths:
+          - path: /(.*)
+            backend:
+              serviceName: mojaloop-sim-testfsp4-scheme-adapter
+              servicePort: 4000
+    - host: testfsp4-sdk-scheme-adapter-outbound.beta.moja-lab.live
+      http:
+        paths:
+          - path: /(.*)
+            backend:
+              serviceName: mojaloop-sim-testfsp4-scheme-adapter
+              servicePort: 4001
+    
+    

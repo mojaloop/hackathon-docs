@@ -8,19 +8,20 @@ import { SeedCollection } from './types'
 
 
 const collections: Array<SeedCollection> = [
-  hubSteps(config),
+
+  // hubSteps(config),
 
   // ignoring this for now - this will be set up in ttk post steps.
   // oracleSteps(config),
 
   // // Generate a set of participant steps for each participant
-  ...config.participants.map(p => makeParticipantSteps(p)(config)),
+  // ...config.participants.map(p => makeParticipantSteps(p)(config)),
 
   // // Generate a set of party steps for DFSP participants
-  // ...config.participants
-  //   .filter(p => p.type === ParticipantType.DFSP)
-  //   // we cast here because TS isn't smart enough to figure out the types after a filter
-  //   .map(p => makePartySteps(p as unknown as DFSPParticipant)(config)),
+  ...config.participants
+    .filter(p => p.type === ParticipantType.DFSP)
+    // we cast here because TS isn't smart enough to figure out the types after a filter
+    .map(p => makePartySteps(p as unknown as DFSPParticipant)(config)),
 ]
 
 export default collections
