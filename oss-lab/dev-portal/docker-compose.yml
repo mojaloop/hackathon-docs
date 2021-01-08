@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   dev-portal:
-    image: lewisdaly/dev-portal:latest
+    image: ldaly/dev-portal:latest
     build:
       context: .
     container_name: dev-portal

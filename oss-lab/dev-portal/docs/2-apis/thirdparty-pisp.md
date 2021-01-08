@@ -1,3 +1,11 @@
-# Thirdparty-PISP
+---
+title: Thirdparty-PISP
+lang: en-US
+pageClass: full-width
+editLink: false
+showToc: false
+---
 
-[ todo - embed swagger ]
+
+<ClientOnly><ApiDocWrapper src="https://raw.githubusercontent.com/mojaloop/pisp/master/src/interface/thirdparty-pisp-api.yaml"></ApiDocWrapper></ClientOnly>
+

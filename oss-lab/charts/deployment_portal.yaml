@@ -25,7 +25,7 @@ spec:
       containers:
         - name: dev-portal
         # TODO: deploy
-          image: lewisdaly/dev-portal:latest
+          image: ldaly/dev-portal:latest
           livenessProbe:
             initialDelaySeconds: 30
             httpGet:

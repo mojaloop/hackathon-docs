@@ -5,118 +5,65 @@ title: Overview
 
 # Overview
 
-Our API is exposed as an HTTP/1 and HTTP/2 service over SSL. All endpoints live under the URL `https://api.example.com` and then generally follow the REST architecture.
+This Mojaloop Sandbox is an open environment for playing around with Mojaloop.
+
+All services use the base url `http://beta.moja-lab.live`
+
+
+
+## What's included in Environment?
+
+Out of the box, this environment includes the following simulated DFSPs
+
+[todo - nice pretty picture]
+
+### DFSPs
+
+- `applebank`
+- `bananabank`
+- `carrotmoney`
+- `durianfintech`
+
+### Users
+
+[todo - MSISDNs etc.]
+
+
+e.g. 
+
+You can play around with the existing DFSPs
+
 
 ## APIs
 
 Mojaloop has a variety of APIs you can interact with:
 
-[ todo - nice table]
+| Name | Version | Who | Base URL |
+| --- | --- | --- | --- |
+| [FSPIOP (Mojaloop API)](/2-apis/fspiop)     | `v1.1` | DFSPs             | `beta.moja-lab.live/api/fspiop` |
+| [Admin](2-apis/admin)                       | `v1`   | Hub Admins, DFSPs | `beta.moja-lab.live/api/admin/central-ledger` |
+| [Settlement](2-apis/settlement.html)        | `v1`   | DFSPs             | (not currently available with this lab) |
+| [Thirdparty-DFSP](/2-apis/thirdparty-dfsp)  | `v0.1` | DFSPs             | todo |
+| [Thirdparty-PISP](/2-apis/thirdparty-pisp)  | `v0.1` | PISPs             | todo | 
+
+Q.D_v0FnvRS7dku&Zv'{qE4}c
+
+## Tools:
+
+This sandbox includes the following tools 
 
 
-## Understanding Async APIs
+- [Sandbox Dev Hub](http://beta.moja-lab.live/home/0-getting-started)
+- [Mojaloop Testing Toolkit](todo)
+- [Simulator UI](http://simulator-ui.beta.moja-lab.live) - for more information on using the simulator-ui, refer to [this external guide]()
 
-The Mojaloop APIs follow an asychronous pattern.
+<!-- ## Understanding Async APIs -->
+<!--  -->
+<!-- The Mojaloop APIs follow an asychronous pattern. -->
 
-<!-- TODO: nice table -->
-<!-- 
-## Current Version
+## Helpful Links
 
-By default, all requests to `https://api.example.com` receive the v1 version of the REST API.
+- [Mojaloop Documentation](https://docs.mojaloop.io/documentation/)
+- [Mojaloop API Specification v1.0](https://docs.mojaloop.io/mojaloop-specification/documents/API%20Definition%20v1.0.html)
+- [Mojaloop API OpenAPI (Swagger)](https://github.com/mojaloop/mojaloop-specification/blob/master/fspiop-api/documents/v1.1-document-set/)
 
-We try to avoid breaking backwards-compatibility as much as possible.
-
-</Block>
-
-<Block>
-
-## Content Type
-
-All requests must be encoded as JSON with the `Content-Type: application/json` header. Most responses, including errors, are encoded exclusively as JSON as well.
-
-<Example>
-
-```
-Content-Type: application/json
-```
-
-</Example>
-
-</Block>
-
-<Block>
-
-## Authentication
-
-Provide your API token as part of the Authorization header.
-
-If the authentication is unsuccessful, the status code **401** is returned.
-
-<Example>
-
-```
-Authorization: Bearer $TOKEN
-```
-
-> After detecting several requests with invalid credentials within a short period, the API will temporarily reject all authentication attempts for that user (including ones with valid credentials) with `403 Forbidden`.
-
-</Example>
-
-</Block>
-
-<Block>
-
-## HTTP Verbs
-
-Where possible, API strives to use appropriate HTTP verbs for each action.
-
-|  Verb  |                                                                                                                                              Description                                                                                                                                               |
-| :----: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|  HEAD  |                                                                                                                  Can be issued against any resource to get just the HTTP header info.                                                                                                                  |
-|  GET   |                                                                                                                                     Used for retrieving resources.                                                                                                                                     |
-|  POST  |                                                                                                                                      Used for creating resources.                                                                                                                                      |
-| PATCH  | Used for updating resources with partial JSON data. For instance, an Issue resource has title and body attributes. A PATCH request may accept one or more of the attributes to update the resource. PATCH is a relatively new and uncommon HTTP verb, so resource endpoints also accept POST requests. |
-|  PUT   |                                                                                Used for replacing resources or collections. For PUT requests with no body attribute, be sure to set the Content-Length header to zero.                                                                                 |
-| DELETE |                                                                                                                                      Used for deleting resources.                                                                                                                                      |
-
-</Block>
-
-<Block>
-
-## Pagination
-
-Requests that return multiple items will be paginated to 10 items by default. You can specify further pages with the ?page parameter. For some resources, you can also set a custom page size up to 100 with the ?per_page parameter. Note that for technical reasons not all endpoints respect the ?per_page parameter.
-
-<Example>
-
-```bash
-curl 'https://api.example.com/users?page=2&per_page=100'
-```
-
-</Example>
-
-</Block>
-
-<Block>
-
-## Rate Limiting
-
-We limit the number of calls you can make over a certain period of time. Rate limits vary and are specified by the following header in all responses:
-
-|      Header Name      |                                 Description                                  |
-| :-------------------: | :--------------------------------------------------------------------------: |
-|   X-RateLimit-Limit   |     The maximum number of requests you're permitted to make per minute.      |
-| X-RateLimit-Remaining |      The number of requests remaining in the current rate limit window.      |
-|   X-RateLimit-Reset   | The time at which the current rate limit window resets in UTC epoch seconds. |
-
-If you exceed the rate limit, an error response returns with the status `429 Too Many Requests`.
-
-<Example>
-
-```bash
-Status: 429 Too Many Requests
-```
-
-</Example>
-
-</Block> -->

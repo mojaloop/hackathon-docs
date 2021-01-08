@@ -30,7 +30,7 @@ module.exports = {
         title: 'APIs',
         collapsable: false,
         children: [
-          ['/2-apis/fspiop', 'FSPIOP'], 
+          ['/2-apis/fspiop', 'FSPIOP (Mojaloop API)'], 
           '/2-apis/admin',
           // '/2-apis/authentication',
           '/2-apis/settlement',
@@ -44,7 +44,8 @@ module.exports = {
         title: 'Guides',
         collapsable: false,
         children: [ 
-          ['/3-guides/0_access_token', '0. Access Token'],
+          // No access token at the moment - maybe that's just easy for now
+          // ['/3-guides/0_access_token', '0. Access Token'],
           ['/3-guides/1_dfsp_setup', '1. DFSP Setup'],
           ['/3-guides/2_dfsp_p2p', '2. P2P Transfer'],
         ],
