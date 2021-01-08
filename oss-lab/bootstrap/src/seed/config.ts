@@ -138,13 +138,6 @@ const config: GlobalConfig = {
         }
       ]
     },
-    {
-      id: 'pispa',
-      type: ParticipantType.PISP,
-      // For PISP, 3p-scheme-adapter gets callbacks from switch
-      fspiopCallbackUrl: `${scheme}://${baseUrl}/pispa/thirdparty-scheme-adapter/inbound`,
-      thirdpartyCallbackUrl: `${scheme}://${baseUrl}/pispa/thirdparty-scheme-adapter/inbound`
-    },
   ]
 }
 

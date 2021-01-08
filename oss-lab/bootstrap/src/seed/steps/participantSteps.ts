@@ -66,127 +66,128 @@ const makeCommonSteps = (_constConfig: ConstConfig, globalConfig: GlobalConfig, 
         }
       }))
     },
-    {
-      name: 'register endpoint `TP_CB_URL_TRANSACTION_REQUEST_POST`',
-      ignoreFailure: false,
-      command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
-        participantId: participant.id,
-        body: {
-          type: 'TP_CB_URL_TRANSACTION_REQUEST_POST',
-          value: `${participant.thirdpartyCallbackUrl}`
-        }
-      }))
-    },
-    {
-      name: 'register endpoint `TP_CB_URL_TRANSACTION_REQUEST_PUT`',
-      ignoreFailure: false,
-      command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
-        participantId: participant.id,
-        body: {
-          type: 'TP_CB_URL_TRANSACTION_REQUEST_PUT',
-          value: `${participant.thirdpartyCallbackUrl}`
-        }
-      }))
-    },
-    {
-      name: 'register endpoint `TP_CB_URL_TRANSACTION_REQUEST_PUT_ERROR`',
-      ignoreFailure: false,
-      command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
-        participantId: participant.id,
-        body: {
-          type: 'TP_CB_URL_TRANSACTION_REQUEST_PUT_ERROR',
-          value: `${participant.thirdpartyCallbackUrl}`
-        }
-      }))
-    },
-    {
-      name: 'register endpoint `TP_CB_URL_CONSENT_REQUEST_POST`',
-      ignoreFailure: false,
-      command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
-        participantId: participant.id,
-        body: {
-          type: 'TP_CB_URL_CONSENT_REQUEST_POST',
-          value: `${participant.thirdpartyCallbackUrl}`
-        }
-      }))
-    },
-    {
-      name: 'register endpoint `TP_CB_URL_CONSENT_REQUEST_PUT`',
-      ignoreFailure: false,
-      command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
-        participantId: participant.id,
-        body: {
-          type: 'TP_CB_URL_CONSENT_REQUEST_PUT',
-          value: `${participant.thirdpartyCallbackUrl}`
-        }
-      }))
-    },
-    {
-      name: 'register endpoint `TP_CB_URL_CONSENT_REQUEST_PUT_ERROR`',
-      ignoreFailure: false,
-      command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
-        participantId: participant.id,
-        body: {
-          type: 'TP_CB_URL_CONSENT_REQUEST_PUT_ERROR',
-          value: `${participant.thirdpartyCallbackUrl}`
-        }
-      }))
-    },
-    {
-      name: 'register endpoint `TP_CB_URL_CREATE_CREDENTIAL_POST`',
-      ignoreFailure: false,
-      command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
-        participantId: participant.id,
-        body: {
-          type: 'TP_CB_URL_CREATE_CREDENTIAL_POST',
-          value: `${participant.thirdpartyCallbackUrl}`
-        }
-      }))
-    },
-    {
-      name: 'register endpoint `TP_CB_URL_CONSENT_POST`',
-      ignoreFailure: false,
-      command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
-        participantId: participant.id,
-        body: {
-          type: 'TP_CB_URL_CONSENT_POST',
-          value: `${participant.thirdpartyCallbackUrl}`
-        }
-      }))
-    },
-    {
-      name: 'register endpoint `TP_CB_URL_CONSENT_GET`',
-      ignoreFailure: false,
-      command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
-        participantId: participant.id,
-        body: {
-          type: 'TP_CB_URL_CONSENT_GET',
-          value: `${participant.thirdpartyCallbackUrl}`
-        }
-      }))
-    },
-    {
-      name: 'register endpoint `TP_CB_URL_CONSENT_PUT`',
-      ignoreFailure: false,
-      command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
-        participantId: participant.id,
-        body: {
-          type: 'TP_CB_URL_CONSENT_PUT',
-          value: `${participant.thirdpartyCallbackUrl}`
-        }
-      }))
-    },
-    {
-      name: 'register endpoint `TP_CB_URL_CONSENT_PUT_ERROR`',
-      ignoreFailure: false,
-      command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
-        participantId: participant.id,
-        body: {
-          type: 'TP_CB_URL_CONSENT_PUT_ERROR',
-          value: `${participant.thirdpartyCallbackUrl}`
-        }
-      }))
-    }
+    // {
+    //   name: 'register endpoint `TP_CB_URL_TRANSACTION_REQUEST_POST`',
+    //   ignoreFailure: false,
+    //   command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
+    //     participantId: participant.id,
+    //     body: {
+    //       type: 'TP_CB_URL_TRANSACTION_REQUEST_POST',
+    //       value: `${participant.thirdpartyCallbackUrl}`
+    //     }
+    //   }))
+    // },
+    // {
+    //   name: 'register endpoint `TP_CB_URL_TRANSACTION_REQUEST_PUT`',
+    //   ignoreFailure: false,
+    //   command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
+    //     participantId: participant.id,
+    //     body: {
+    //       type: 'TP_CB_URL_TRANSACTION_REQUEST_PUT',
+    //       value: `${participant.thirdpartyCallbackUrl}`
+    //     }
+    //   }))
+    // },
+    // {
+    //   name: 'register endpoint `TP_CB_URL_TRANSACTION_REQUEST_PUT_ERROR`',
+    //   ignoreFailure: false,
+    //   command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
+    //     participantId: participant.id,
+    //     body: {
+    //       type: 'TP_CB_URL_TRANSACTION_REQUEST_PUT_ERROR',
+    //       value: `${participant.thirdpartyCallbackUrl}`
+    //     }
+    //   }))
+    // },
+    // PISP Specific steps, not relevant here
+    // {
+    //   name: 'register endpoint `TP_CB_URL_CONSENT_REQUEST_POST`',
+    //   ignoreFailure: false,
+    //   command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
+    //     participantId: participant.id,
+    //     body: {
+    //       type: 'TP_CB_URL_CONSENT_REQUEST_POST',
+    //       value: `${participant.thirdpartyCallbackUrl}`
+    //     }
+    //   }))
+    // },
+    // {
+    //   name: 'register endpoint `TP_CB_URL_CONSENT_REQUEST_PUT`',
+    //   ignoreFailure: false,
+    //   command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
+    //     participantId: participant.id,
+    //     body: {
+    //       type: 'TP_CB_URL_CONSENT_REQUEST_PUT',
+    //       value: `${participant.thirdpartyCallbackUrl}`
+    //     }
+    //   }))
+    // },
+    // {
+    //   name: 'register endpoint `TP_CB_URL_CONSENT_REQUEST_PUT_ERROR`',
+    //   ignoreFailure: false,
+    //   command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
+    //     participantId: participant.id,
+    //     body: {
+    //       type: 'TP_CB_URL_CONSENT_REQUEST_PUT_ERROR',
+    //       value: `${participant.thirdpartyCallbackUrl}`
+    //     }
+    //   }))
+    // },
+    // {
+    //   name: 'register endpoint `TP_CB_URL_CREATE_CREDENTIAL_POST`',
+    //   ignoreFailure: false,
+    //   command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
+    //     participantId: participant.id,
+    //     body: {
+    //       type: 'TP_CB_URL_CREATE_CREDENTIAL_POST',
+    //       value: `${participant.thirdpartyCallbackUrl}`
+    //     }
+    //   }))
+    // },
+    // {
+    //   name: 'register endpoint `TP_CB_URL_CONSENT_POST`',
+    //   ignoreFailure: false,
+    //   command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
+    //     participantId: participant.id,
+    //     body: {
+    //       type: 'TP_CB_URL_CONSENT_POST',
+    //       value: `${participant.thirdpartyCallbackUrl}`
+    //     }
+    //   }))
+    // },
+    // {
+    //   name: 'register endpoint `TP_CB_URL_CONSENT_GET`',
+    //   ignoreFailure: false,
+    //   command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
+    //     participantId: participant.id,
+    //     body: {
+    //       type: 'TP_CB_URL_CONSENT_GET',
+    //       value: `${participant.thirdpartyCallbackUrl}`
+    //     }
+    //   }))
+    // },
+    // {
+    //   name: 'register endpoint `TP_CB_URL_CONSENT_PUT`',
+    //   ignoreFailure: false,
+    //   command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
+    //     participantId: participant.id,
+    //     body: {
+    //       type: 'TP_CB_URL_CONSENT_PUT',
+    //       value: `${participant.thirdpartyCallbackUrl}`
+    //     }
+    //   }))
+    // },
+    // {
+    //   name: 'register endpoint `TP_CB_URL_CONSENT_PUT_ERROR`',
+    //   ignoreFailure: false,
+    //   command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
+    //     participantId: participant.id,
+    //     body: {
+    //       type: 'TP_CB_URL_CONSENT_PUT_ERROR',
+    //       value: `${participant.thirdpartyCallbackUrl}`
+    //     }
+    //   }))
+    // }
   ]
 }
 
@@ -371,28 +372,28 @@ const makeDfspSteps = (_constConfig: ConstConfig, globalConfig: GlobalConfig, pa
         }
       }))
     },
-    {
-      name: 'register endpoint `TP_CB_URL_TRANSACTION_REQUEST_AUTH_PUT`',
-      ignoreFailure: false,
-      command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
-        participantId: participant.id,
-        body: {
-          type: 'TP_CB_URL_TRANSACTION_REQUEST_AUTH_PUT',
-          value: `${participant.thirdpartyCallbackUrl}`
-        }
-      }))
-    },
-    {
-      name: 'register endpoint `TP_CB_URL_TRANSACTION_REQUEST_AUTH_PUT_ERROR`',
-      ignoreFailure: false,
-      command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
-        participantId: participant.id,
-        body: {
-          type: 'TP_CB_URL_TRANSACTION_REQUEST_AUTH_PUT_ERROR',
-          value: `${participant.thirdpartyCallbackUrl}`
-        }
-      }))
-    },
+    // {
+    //   name: 'register endpoint `TP_CB_URL_TRANSACTION_REQUEST_AUTH_PUT`',
+    //   ignoreFailure: false,
+    //   command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
+    //     participantId: participant.id,
+    //     body: {
+    //       type: 'TP_CB_URL_TRANSACTION_REQUEST_AUTH_PUT',
+    //       value: `${participant.thirdpartyCallbackUrl}`
+    //     }
+    //   }))
+    // },
+    // {
+    //   name: 'register endpoint `TP_CB_URL_TRANSACTION_REQUEST_AUTH_PUT_ERROR`',
+    //   ignoreFailure: false,
+    //   command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
+    //     participantId: participant.id,
+    //     body: {
+    //       type: 'TP_CB_URL_TRANSACTION_REQUEST_AUTH_PUT_ERROR',
+    //       value: `${participant.thirdpartyCallbackUrl}`
+    //     }
+    //   }))
+    // },
     {
       name: 'register endpoint `FSPIOP_CALLBACK_URL_AUTHORIZATIONS`',
       ignoreFailure: false,
