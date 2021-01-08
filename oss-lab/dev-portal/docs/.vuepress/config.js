@@ -28,7 +28,7 @@ module.exports = {
       // },
       {
         title: 'APIs',
-        // path: '/2-apis/',
+        collapsable: false,
         children: [
           ['/2-apis/fspiop', 'FSPIOP'], 
           '/2-apis/admin',
@@ -42,17 +42,16 @@ module.exports = {
       },
       {
         title: 'Guides',
+        collapsable: false,
         children: [ 
           ['/3-guides/0_access_token', '0. Access Token'],
           ['/3-guides/1_dfsp_setup', '1. DFSP Setup'],
-          ['/3-guides/0_access_token', '2. P2P Transfer'],
+          ['/3-guides/2_dfsp_p2p', '2. P2P Transfer'],
         ],
       },
       {
         title: 'Demos',
         path: '/99-demos/'
-        // children: [ /* ... */],
-        // initialOpenGroupIndex: -1 // optional, defaults to 0, defines the index of initially opened subgroup
       },
     ]
   }
