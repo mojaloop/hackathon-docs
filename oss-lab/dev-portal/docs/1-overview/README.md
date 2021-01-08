@@ -13,25 +13,27 @@ All services use the base url `http://beta.moja-lab.live`
 
 ## What's included in Environment?
 
-Out of the box, this environment includes the following simulated DFSPs
 
-[todo - nice pretty picture]
+![Lab Overview](./lab_onboarding.png)
 
+Out of the box, this environment includes the following simulated DFSPs:
 ### DFSPs
 
-- `applebank`
+- `applebank` 
 - `bananabank`
-- `carrotmoney`
-- `durianfintech`
+- `carrotmm`
+- `duriantech`
 
-### Users
+<!-- ### Users
 
 [todo - MSISDNs etc.]
 
 
 e.g. 
 
-You can play around with the existing DFSPs
+--> 
+
+You can play around with the existing DFSPs by using the [Simulator UI](http://simulator-ui.beta.moja-lab.live)
 
 
 ## APIs
@@ -46,16 +48,14 @@ Mojaloop has a variety of APIs you can interact with:
 | [Thirdparty-DFSP](/2-apis/thirdparty-dfsp)  | `v0.1` | DFSPs             | todo |
 | [Thirdparty-PISP](/2-apis/thirdparty-pisp)  | `v0.1` | PISPs             | todo | 
 
-Q.D_v0FnvRS7dku&Zv'{qE4}c
-
 ## Tools:
 
-This sandbox includes the following tools 
+This sandbox includes the following tools:
 
 
 - [Sandbox Dev Hub](http://beta.moja-lab.live/home/0-getting-started)
 - [Mojaloop Testing Toolkit](todo)
-- [Simulator UI](http://simulator-ui.beta.moja-lab.live) - for more information on using the simulator-ui, refer to [this external guide]()
+- [Simulator UI](http://simulator-ui.beta.moja-lab.live) - for more information on using the simulator-ui, refer to [todo this external guide]()
 
 <!-- ## Understanding Async APIs -->
 <!--  -->
