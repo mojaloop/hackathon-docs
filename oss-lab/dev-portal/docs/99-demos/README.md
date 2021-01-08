@@ -1,7 +1,7 @@
 # Demos
 
 
-## P2P Transfer
+<!-- ## P2P Transfer
 
 This demo shows how Mojaloop can be used to send funds from one account to another
 
@@ -10,7 +10,7 @@ This demo shows how Mojaloop can be used to send funds from one account to anoth
 ## Mechant Request To Pay
 
 [ todo - not sure about this]
-
+ -->
 
 ## PISP Account Linking
 
