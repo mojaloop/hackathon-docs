@@ -3,7 +3,7 @@ home: true
 title: Mojaloop Sandbox
 description: Get started with Mojaloop
 actionText: Getting Started
-actionLink: /0-getting-started
+actionLink: /0-getting-started/
 footer: Open Source on [GitHub](https://github.com/sqrthree/vuepress-theme-api), Made by [@sqrthree](https://github.com/sqrthree), Power by [vuepress](https://github.com/vuejs/vuepress).
 ---
 
