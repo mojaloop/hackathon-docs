@@ -17,12 +17,25 @@ All services use the base url `http://beta.moja-lab.live`
 ![Lab Overview](./lab_onboarding.png)
 
 Out of the box, this environment includes the following simulated DFSPs:
-### DFSPs
 
+**DFSPs**
 - `applebank` 
 - `bananabank`
 - `carrotmm`
 - `duriantech`
+
+
+> **Note**:
+> Double check the available DFSPs with this api call:
+> `http://beta.moja-lab.live/api/admin/central-ledger/participants`
+
+And the current users are registered and available for lookup in the Account Lookup Service
+
+| dfspId | Id Type | Id Value |
+| --- | --- | --- |
+| `payeefsp` | `MSISDN | 27713803912` |
+
+> note: Lewis is in the process of adding to this list 
 
 <!-- ### Users
 

@@ -1,57 +1,25 @@
 ---
-home: true
-title: Mojaloop Sandbox
+home: false
 description: Get started with Mojaloop
 actionText: Getting Started
 actionLink: /0-getting-started/
 footer: Open Source on [GitHub](https://github.com/sqrthree/vuepress-theme-api), Made by [@sqrthree](https://github.com/sqrthree), Power by [vuepress](https://github.com/vuejs/vuepress).
 ---
+# Getting Started
 
-<Section>
-## Here's what you can do with this Mojaloop Sandbox
+Now that your Mojaloop Sandbox is up and running, here's what you can do next:
 
-<Button type="big" to="/0-getting-started/">Access the Mojaloop APIs</Button>
+1. [Play with the Mojaloop Demos](/99-demos/)
+1. [Take the DFSP Onboarding Tutorial](/3-guides/1_dfsp_setup) 
+1. [Explore the Different APIs](/1-overview/#apis) Mojaloop Offers
+1. [Read the Mojaloop Documentation](https://docs.mojaloop.io/documentation/)
 
-<Button type="big" to="/0-getting-started/">Play with Demos and Learn</Button>
+<!-- This is where it all begins...
 
-<Button type="big" to="/getting-started/">Test your idea live</Button>
+You can write anything in here.
 
-</Section>
+- Maybe a quick introduction of the minimal setup you need to get a hello world up & running.
+- Maybe what is needed to set up the dev environment.
+- Maybe a contributing guide.
 
-
-<!-- ### As Easy as 1, 2, 3
-
-```bash
-# install vuepress
-yarn global add vuepress # OR npm install -g vuepress
-
-# install theme
-yarn global add vuepress-theme-api # OR npm install -g vuepress-theme-api
-
-# create a markdown file and write something
-echo '# Hello, World.' > Hello.md
-
-# start writing
-vuepress dev
-
-# build to static files
-vuepress build
-```
-
-::: tip
-VuePress requires [Node.js](http://nodejs.org/) >= 8.
-::: -->
-
-<Section>
-
-## Build for RESTful API
-
-A easy-to-use, minimalist theme for vuepress.
-
-With out-of-the-box feature, all you need to do is install it and write something.
-
-<br>
-
-<Button type="light" to="/getting-started/">Getting Started</Button>
-
-</Section>
+ -->

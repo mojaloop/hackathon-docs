@@ -340,6 +340,13 @@ helm upgrade --install  --namespace ml-app mojaloop mojaloop/mojaloop  -f ./conf
 # trying again... 
 helm upgrade --install  --namespace ml-app mojaloop mojaloop/mojaloop  -f ./config/values-dev2-mojaloop-harness.yaml --wait --timeout 15m
 
+
+# and again with helm
+
+cd /home/lew/developer/mojaloop/helm
+./package.sh
+helm install mojaloop ./mojaloop -f /home/lew/developer/mojaloop/hackathon-docs/oss-lab/config/values-dev2-mojaloop-harness.yaml --wait --timeout 15m
+
 ```
 
 
