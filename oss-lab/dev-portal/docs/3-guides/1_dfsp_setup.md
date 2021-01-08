@@ -151,6 +151,46 @@ ENDPOINTS_URL=http://beta.moja-lab.live/api/admin/central-ledger/participants/${
 curl -X POST \
   -H 'Content-Type: application/json' \
   ${ENDPOINTS_URL} \
+  -d '{"type": "FSPIOP_CALLBACK_URL_PARTICIPANT_PUT", "value": "'$MOCK_SERVER_URL'/participants/{{partyIdType}}/{{partyIdentifier}}"}'
+
+curl -X POST \
+  -H 'Content-Type: application/json' \
+  ${ENDPOINTS_URL} \
+  -d '{"type": "FSPIOP_CALLBACK_URL_PARTICIPANT_PUT_ERROR", "value": "'$MOCK_SERVER_URL'/participants/{{partyIdType}}/{{partyIdentifier}}/error"}'
+
+curl -X POST \
+  -H 'Content-Type: application/json' \
+  ${ENDPOINTS_URL} \
+  -d '{"type": "FSPIOP_CALLBACK_URL_QUOTES", "value": "'$MOCK_SERVER_URL'/quotes"}'
+
+curl -X POST \
+  -H 'Content-Type: application/json' \
+  ${ENDPOINTS_URL} \
+  -d '{"type": "FSPIOP_CALLBACK_URL_TRANSFER_POST", "value": "'$MOCK_SERVER_URL'/transfers"}'
+
+curl -X POST \
+  -H 'Content-Type: application/json' \
+  ${ENDPOINTS_URL} \
+  -d '{"type": "FSPIOP_CALLBACK_URL_TRANSFER_PUT", "value": "'$MOCK_SERVER_URL'/transfers/{{transferId}}"}'
+
+curl -X POST \
+  -H 'Content-Type: application/json' \
+  ${ENDPOINTS_URL} \
+  -d '{"type": "FSPIOP_CALLBACK_URL_TRANSFER_ERROR", "value": "'$MOCK_SERVER_URL'/transfers/{{transferId}}/error"}'
+
+curl -X POST \
+  -H 'Content-Type: application/json' \
+  ${ENDPOINTS_URL} \
+  -d '{"type": "FSPIOP_CALLBACK_URL_AUTHORIZATIONS", "value": "'$MOCK_SERVER_URL'"}'
+
+curl -X POST \
+  -H 'Content-Type: application/json' \
+  ${ENDPOINTS_URL} \
+  -d '{"type": "FSPIOP_CALLBACK_URL_TRX_REQ_SERVICE", "value": "'$MOCK_SERVER_URL'"}'
+
+curl -X POST \
+  -H 'Content-Type: application/json' \
+  ${ENDPOINTS_URL} \
   -d '{"type":"FSPIOP_CALLBACK_URL_AUTHORIZATIONS", "value":"'$MOCK_SERVER_URL'"}'
 
 curl -X POST \
@@ -168,7 +208,6 @@ curl -X POST \
   ${ENDPOINTS_URL} \
   -d '{"type":"FSPIOP_CALLBACK_URL_PARTIES_PUT_ERROR", "value":"'$MOCK_SERVER_URL'/parties/{{partyIdType}}/{{partyIdentifier}}/error"}'
 
-# TODO: flesh out this list from postman etc.
 ```
 Once you have registered all of the above endpoints, you can confirm that all of your endpoints were registered sucessfully: 
 
@@ -181,65 +220,60 @@ curl -H 'Content-Type: application/json' http://beta.moja-lab.live/api/admin/cen
 Now that you have registered your mock server with the Mojaloop switch, you can perform a party lookup using the Mojaloop [FSPIOP API](todo)
 
 ```bash
-curl -v beta.moja-lab.live/api/fspiop/parties/MSISDN/123456789 \
+curl -v beta.moja-lab.live/api/fspiop/parties/MSISDN/27713803912 \
   -H 'Accept: application/vnd.interoperability.parties+json;version=1' \
   -H 'Content-Type: application/vnd.interoperability.parties+json;version=1.0' \
   -H 'FSPIOP-Source: applebank' \
   -H 'Date: 2021-01-01'
 ```
 
-Prints:
-```
-TODO
-```
 
 And when we check the logs in the mock server docker container, we should see something like the following:
 
  
 ```
-TODO: update with success scenario logs.
 {
-    "path": "/parties/MSISDN/213/error",
+    "path": "/parties/MSISDN/27713803912",
     "headers": {
-        "fspiop-signature": "{\"signature\":\"ZuHtpoP3wrSR3NU2dxW2XGfC8xDEnIM0uqDoAllrDQuCrRmo3RgXbdowegdvQDeZUWURjtyY38OhKOVPPgO5Ghzcuj6xJzf96aTaqFe3Oq21Ry1bIx9HNGIZfaerRbOMqEGrwICKwC-mHYdl23DkiTnOsQBjU9iu9xcWkB0AHmt7bZhs2efKfD6utwjyt391pvjWshSF1Ma-rkbxVD2JiZ0hj_ewuY1dXEy-HD3zlcgjP0RbRXmlZWVUG06DdUGeMCzGiw1TAKwkU33oRnjaF9A8xuVGkfBJAkPBvjuRsvrNkNvIuU6rHd2_4jBFC3F3OtXsTSwJpUcYrQkHn6WCIg\",\"protectedHeader\":\"eyJhbGciOiJSUzI1NiIsIkZTUElPUC1VUkkiOiIvcGFydGllcy9NU0lTRE4vMjEzL2Vycm9yIiwiRlNQSU9QLUhUVFAtTWV0aG9kIjoiUFVUIiwiRlNQSU9QLVNvdXJjZSI6InN3aXRjaCIsIkZTUElPUC1EZXN0aW5hdGlvbiI6ImFwcGxlYmFuayIsIkRhdGUiOiJGcmksIDAxIEphbiAyMDIxIDAwOjAwOjAwIEdNVCJ9\"}",
-        "fspiop-uri": "/parties/MSISDN/213/error",
+        "x-forwarded-host": "thin-mole-36.loca.lt",
+        "x-forwarded-port": "80",
+        "user-agent": "axios/0.20.0",
+        "fspiop-signature": "{\"signature\":\"cPTiUhf_WGxK-GUBJ5YLvkXoKAGknWy8_91-F0m4pM09Afqzobd7tTzYFqRubLWja-Ug0D1exf1CBqq6dtl-px1507yRBC-nPw653XYdXVJd_JfWTQQE2g422EPLzdzeBJPKJ_PwnUZzJYF-8u0AkKRy1U16RRY2nAo5DXrZlqUF8pQu4UJzTsDyZOBHEacVKTwN1sP5fRmUZEF7KhwX2Axavvds5G0bq8sl-bNhvb_RrGpKHMSgO55GbTqDKkhjQr_YYKmYxaoayM4myjs77JF5LTttMPftRZeHUJkKwq9zWgK1cCbsOgk_oBDWhugXrk8b0mdohwp5WhjkTNOjog\",\"protectedHeader\":\"eyJhbGciOiJSUzI1NiIsIkZTUElPUC1VUkkiOiIvcGFydGllcy9NU0lTRE4vMjc3MTM4MDM5MTIiLCJGU1BJT1AtSFRUUC1NZXRob2QiOiJQVVQiLCJGU1BJT1AtU291cmNlIjoicGF5ZWVmc3AiLCJGU1BJT1AtRGVzdGluYXRpb24iOiJhcHBsZWJhbmsiLCJEYXRlIjoiRnJpLCAwOCBKYW4gMjAyMSAwNjoxMDoyNyBHTVQifQ\"}",
+        "fspiop-uri": "/parties/MSISDN/27713803912",
         "fspiop-http-method": "PUT",
         "fspiop-destination": "applebank",
-        "date": "Fri, 01 Jan 2021 00:00:00 GMT",
-        "fspiop-source": "switch",
-        "user-agent": "curl/7.74.0",
-        "x-forwarded-path": "/api/fspiop/parties/MSISDN/213",
-        "x-forwarded-port": "80,80",
-        "x-forwarded-host": "beta.moja-lab.live",
+        "fspiop-source": "payeefsp",
+        "date": "Fri, 08 Jan 2021 06:10:27 GMT",
         "content-type": "application/vnd.interoperability.parties+json;version=1.0",
-        "content-length": "78",
+        "content-length": "232",
         "connection": "close",
         "x-nginx-proxy": "true",
         "x-forwarded-proto": "https,http",
-        "host": "curvy-panda-37.loca.lt",
-        "x-forwarded-for": "10.42.12.0, 35.177.147.156,::ffff:10.42.154.6",
-        "x-real-ip": "35.177.147.156"
+        "host": "thin-mole-36.loca.lt",
+        "x-forwarded-for": "3.8.238.206,::ffff:10.42.154.6",
+        "x-real-ip": "3.8.238.206"
     },
     "method": "PUT",
-    "body": "{\"errorInformation\":{\"errorCode\":\"3204\",\"errorDescription\":\"Party not found\"}}",
+    "body": "{\"party\":{\"partyIdInfo\":{\"partyIdType\":\"MSISDN\",\"partyIdentifier\":\"27713803912\",\"fspId\":\"payeefsp\"},\"personalInfo\":{\"complexName\":{\"firstName\":\"Test\",\"middleName\":\"Test\",\"lastName\":\"Test\"},\"dateOfBirth\":\"1984-01-01\"},\"name\":\"Test\"}}",
     "fresh": false,
-    "hostname": "beta.moja-lab.live",
-    "ip": "35.177.147.156",
+    "hostname": "thin-mole-36.loca.lt",
+    "ip": "3.8.238.206",
     "ips": [
-        "35.177.147.156",
+        "3.8.238.206",
         "::ffff:10.42.154.6"
     ],
     "protocol": "https",
     "query": {},
     "subdomains": [
-        "beta"
+        "thin-mole-36"
     ],
     "xhr": false,
     "os": {
-        "hostname": "7365346f94d0"
+        "hostname": "4b1664b116cf"
     },
     "connection": {}
 }
+
 ```
 
 So we can see that we are getting callbacks from the Mojaloop switch!
@@ -251,6 +285,6 @@ So we can see that we are getting callbacks from the Mojaloop switch!
 Congratulations on getting here! You have successfully registered your DFSP and recieved callbacks from the Mojaloop Sandbox. 
 
 From here, you can:
-1. [Perform a Peer to Peer Transaction](todo)
-2. [Learn more about the Mojaloop APIs](todo)
-3. [Access and use the DFSP simulator](todo)
+1. [Perform a Peer to Peer Transaction](/3-guides/2_dfsp_p2p/)
+2. [Browse the FSPIOP API](/2-apis/fspiop/)
+3. [Access and use the DFSP simulator](/3-guides/3_simulators/)

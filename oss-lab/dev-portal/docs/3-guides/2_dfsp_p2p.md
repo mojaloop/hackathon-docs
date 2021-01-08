@@ -2,8 +2,8 @@
 
 This guide takes you through the process of issuing a Peer to Peer (P2P) transaction from your DFSP to another DFSP.
 
+<!-- TODO: nice pretty picture -->
 A Mojaloop Transaction takes 3 distict phases: 
-[ todo - insert a nice picture ]
 1. Party Lookup
 2. Quoting
 3. Transfer
@@ -11,14 +11,12 @@ A Mojaloop Transaction takes 3 distict phases:
 
 ## Prerequisites
 
-- An access token. See [Obtaining an Access Token](/0_access_token/) for how to do this.
-- Completed the [DFSP setup guide](/1_dfsp_setup) and are succesfully recieving callbacks from the Mojaloop Sandbox
+- Completed the [DFSP setup guide](/3-guides/1_dfsp_setup) and are succesfully recieving callbacks from the Mojaloop Sandbox
 
 </br>
 ---
 
 
-<Block>
 
 ## Party Lookup
 
@@ -29,31 +27,41 @@ GET /parties/{Type}/{ID}
 The party lookup phase is where we lookup an identifier provided by _your end user_, and find out more information about the person that your user wants to send funds to. In the real world after recieiving the `PUT /parties/{Type}/{ID}` callback response from the Mojaloop switch, you will confirm the data with your end user. 
 
 
-<Example>
 
-<CURL>
 ```bash
-curl -X GET http://beta.moja-lab.live/api/fspiop/parties \
-  --data '{
-    "username": "my-username",
-    "password": "my-password"
-  }'
+curl -v beta.moja-lab.live/api/fspiop/parties/MSISDN/27713803912 \
+  -H 'Accept: application/vnd.interoperability.parties+json;version=1' \
+  -H 'Content-Type: application/vnd.interoperability.parties+json;version=1.0' \
+  -H 'FSPIOP-Source: applebank' \
+  -H 'Date: 2021-01-01'
 ```
-</CURL>
 
-<CURL>
 **Callback:**
+`PUT /parties/MSISDN/27713803912`
 ```json
-  this is a sample response
+{
+  "party": {
+    "partyIdInfo": {
+      "partyIdType": "MSISDN",
+      "partyIdentifier": "27713803912",
+      "fspId": "payeefsp"
+    },
+    "personalInfo": {
+      "complexName": {
+        "firstName": "Test",
+        "middleName": "Test",
+        "lastName": "Test"
+      },
+      "dateOfBirth": "1984-01-01"
+    },
+    "name": "Test"
+  }
+}
 ```
-</CURL>
 
-</Example>
-
-</Block>
-
-<Block>
 ## Quote
+
+[todo ]
 
 ```
 POST /quotes
@@ -66,9 +74,7 @@ You can ask your user either _"How much money do you want to send?"_ or _"How mu
 After receiving the quote response callback at `PUT /quotes/{ID}`, you can then inform your user of the fees associated with the transaction, and ask them whether or not they would liike to 
 
 
-<Example>
 
-<CURL>
 ```bash
 curl -X POST http://beta.moja-lab.live/api/fspiop/quotes \
   --data '{
@@ -77,9 +83,7 @@ curl -X POST http://beta.moja-lab.live/api/fspiop/quotes \
     "password": "my-password"
   }'
 ```
-</CURL>
 
-<CURL>
 **Callback:**
 `PUT /quotes/{ID}`
 ```json
@@ -87,13 +91,6 @@ curl -X POST http://beta.moja-lab.live/api/fspiop/quotes \
   "response": "this is a sample response"
 }
 ```
-</CURL>
-
-</Example>
-
-</Block>
-
-<Block>
 
 ## Transfer
 
@@ -104,9 +101,8 @@ Once you have confirmed the transaction details with your end user, and they hav
 
 This request moves the funds from your users account to the Payee user.
 
-<Example>
 
-<CURL>
+
 ```bash
 curl -X POST http://beta.moja-lab.live/api/fspiop/transfers \
   --data '{
@@ -115,9 +111,7 @@ curl -X POST http://beta.moja-lab.live/api/fspiop/transfers \
     "password": "my-password"
   }'
 ```
-</CURL>
 
-<CURL>
 **Callback:**
 `PUT /transfers/{ID}`
 ```json
@@ -125,12 +119,4 @@ curl -X POST http://beta.moja-lab.live/api/fspiop/transfers \
   "response": "this is a sample response"
 }
 ```
-</CURL>
-
-</Example>
-
-</Block>
-
-
-</Block>
 
