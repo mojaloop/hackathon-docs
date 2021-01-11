@@ -84,7 +84,7 @@ Once again you should see some logging in the docker container.
 
 Now that we have a server ready to listen to callbacks from the Mojaloop Switch, we can go ahead and register our new DFSP.
 
-For this purpose we use the [Admin API](TODO link), which is for Mojaloop Hub Operators and DFSPs. 
+For this purpose we use the [Admin API](/2-apis/admin/), which is for Mojaloop Hub Operators and DFSPs. 
 
 In this example I will use a `DFSP_ID` of `applebank`, but you should replace this with a `DFSP_ID` of your choosing.
 
@@ -116,7 +116,34 @@ We can then get the `settlementAccountId`
 ```bash
 curl -H 'Content-Type: application/json' http://beta.moja-lab.live/api/admin/central-ledger/participants/applebank | jq
 
-# TODO: get output nicely printed
+# output:
+# {
+#   "name": "applebank",
+#   "id": "dev2-central-ledger.mojaloop.live/participants/applebank",
+#   "created": "\"2021-01-08T05:59:57.000Z\"",
+#   "isActive": 1,
+#   "links": {
+#     "self": "dev2-central-ledger.mojaloop.live/participants/applebank"
+#   },
+#   "accounts": [
+#     {
+#       "id": 17,
+#       "ledgerAccountType": "POSITION",
+#       "currency": "USD",
+#       "isActive": 1,
+#       "createdDate": null,
+#       "createdBy": "unknown"
+#     },
+#     {
+#       "id": 18,
+#       "ledgerAccountType": "SETTLEMENT",
+#       "currency": "USD",
+#       "isActive": 1,
+#       "createdDate": null,
+#       "createdBy": "unknown"
+#     }
+#   ]
+# }
 ```
 
 Check the output for the ledgerAccountType, and get the associated id. In my case, this is `18`.
