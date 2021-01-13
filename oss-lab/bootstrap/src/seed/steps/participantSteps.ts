@@ -323,7 +323,7 @@ const makeDfspSteps = (_constConfig: ConstConfig, globalConfig: GlobalConfig, pa
       command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
         participantId: participant.id,
         body: {
-          type: 'FSPIOP_CALLBACK_URL_TRANSFER_PUT',
+          type: 'SETTLEMENT_TRANSFER_POSITION_CHANGE_EMAIL',
           value: `email@example.com`
         }
       }))
@@ -334,7 +334,7 @@ const makeDfspSteps = (_constConfig: ConstConfig, globalConfig: GlobalConfig, pa
       command: wrapWithRunResult(() => Requests.postEndpoint(globalConfig.urls.centralLedger, {
         participantId: participant.id,
         body: {
-          type: 'FSPIOP_CALLBACK_URL_TRANSFER_PUT',
+          type: 'NET_DEBIT_CAP_THRESHOLD_BREACH_EMAIL',
           value: `email@example.com`
         }
       }))

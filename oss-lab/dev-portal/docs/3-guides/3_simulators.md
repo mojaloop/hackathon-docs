@@ -13,8 +13,11 @@ This sandbox deploys simulators which allow you to:
 
 ## 2. Register a DFSP Backend and check the users list
 
-The Simulators
+The Simulator UI page talks to a DFSP Simulator Backend behind the scenes. 
 
+Before we go any further, we need to tell the simulator UI to connect to a specific Simulator Backend
+
+![](./register_config.png)
 
 For example, you can register the Applebank Simulator Backend
 
@@ -27,11 +30,11 @@ And hit "Save"
 
 Once you've created that config, make sure to select it in the "Current Setting" in the dropdown
 
-![](todo)
+![](./select_config.png)
 
 Now you can navigate back to the list of users, and reload your browser. You should see a user list similar to the following:
 
-![](todo)
+![](./user_list.png)
 
 ## 3. Send a Transfer
 
@@ -40,7 +43,20 @@ Now you can navigate back to the list of users, and reload your browser. You sho
 2. Leave the editor in "Simple Mode"
 
 
-3. Leave all the fields the same except for the last, and change this to be a MSISDN you can find in 
+3. Leave all the fields the same except for the last, and change this to be a MSISDN you can find in [the users list here](/1-overview/#what-s-included-in-environment). For this example, let's enter `32929423`.
+
+4. Select "Send Transfer"
+
+## 4. Transfer Response
+
+Behind the scenes, the DFSP Simulator uses the sdk-scheme-adapter to talk the Async Mojaloop API, and combines the separate Mojaloop Transfer steps (Discovery, Agreement, Transfer) into 1 step. This is a convenience for the Simulator environment, but can be configured depending on your DFSP's requirements (e.g. confirming Payee information with your user).
+
+Here's a screenshot of an example response from the Simulator Backend:
+
+
+![the transfer response](./transfer_response.png)
+
+
 ## Handy Snippets:
 ### Listing all of the users for a given simulator:
 

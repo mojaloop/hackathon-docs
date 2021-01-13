@@ -74,28 +74,28 @@ const config: GlobalConfig = {
     oracle: `${scheme}://${baseUrlAdmin}/oracle-simulator`,
   },
   participants: [
-    {
-      id: 'payeefsp',
-      type: ParticipantType.DFSP,
-      // TODO: this is a hack for now, but we actually need to query the admin-api
-      // to get this value before setting it :(
-      settlementAccountId: '4',
-      // For our demo, Participants are on the same deployment as switch
-      simulatorAdminUrl: `http://payeefsp-backend.beta.moja-lab.live`,
-      fspiopCallbackUrl: `http://payeefsp-sdk-scheme-adapter-backend.beta.moja-lab.live`,
-      thirdpartyCallbackUrl: `n/a`,
-      parties: [
-        {
-          displayName: "Alice Alpaca",
-          firstName: "Alice",
-          middleName: "K",
-          lastName: "Alpaca",
-          dateOfBirth: "1970-01-01",
-          idType: "MSISDN",
-          idValue: "123456789"
-        }
-      ]
-    },
+    // {
+    //   id: 'payeefsp',
+    //   type: ParticipantType.DFSP,
+    //   // TODO: this is a hack for now, but we actually need to query the admin-api
+    //   // to get this value before setting it :(
+    //   settlementAccountId: '4',
+    //   // For our demo, Participants are on the same deployment as switch
+    //   simulatorAdminUrl: `http://payeefsp-backend.beta.moja-lab.live`,
+    //   fspiopCallbackUrl: `http://payeefsp-sdk-scheme-adapter-inbound.beta.moja-lab.live`,
+    //   thirdpartyCallbackUrl: `n/a`,
+    //   parties: [
+    //     {
+    //       displayName: "Alice Alpaca",
+    //       firstName: "Alice",
+    //       middleName: "K",
+    //       lastName: "Alpaca",
+    //       dateOfBirth: "1970-01-01",
+    //       idType: "MSISDN",
+    //       idValue: "123456789"
+    //     }
+    //   ]
+    // },
     {
       id: 'applebank',
       type: ParticipantType.DFSP,
@@ -104,7 +104,7 @@ const config: GlobalConfig = {
       settlementAccountId: '20',
       // For our demo, Participants are on the same deployment as switch
       simulatorAdminUrl: `http://applebank-backend.beta.moja-lab.live`,
-      fspiopCallbackUrl: `http://applebank-sdk-scheme-adapter-backend.beta.moja-lab.live`,
+      fspiopCallbackUrl: `http://mojaloop-sim-applebank-scheme-adapter:4000`,
       thirdpartyCallbackUrl: `n/a`,
       parties: [
         {
@@ -135,7 +135,7 @@ const config: GlobalConfig = {
       settlementAccountId: '22',
       // For our demo, Participants are on the same deployment as switch
       simulatorAdminUrl: `http://bananabank-backend.beta.moja-lab.live`,
-      fspiopCallbackUrl: `http://bananabank-sdk-scheme-adapter-backend.beta.moja-lab.live`,
+      fspiopCallbackUrl: `http://mojaloop-sim-bananabank-scheme-adapter:4000`,
       thirdpartyCallbackUrl: `n/a`,
       parties: [
         {
@@ -166,7 +166,7 @@ const config: GlobalConfig = {
       settlementAccountId: '24',
       // For our demo, Participants are on the same deployment as switch
       simulatorAdminUrl: `http://carrotmm-backend.beta.moja-lab.live`,
-      fspiopCallbackUrl: `http://carrotmm-sdk-scheme-adapter-backend.beta.moja-lab.live`,
+      fspiopCallbackUrl: `http://mojaloop-sim-carrotmm-scheme-adapter:4000`,
       thirdpartyCallbackUrl: `n/a`,
       parties: [
         {
@@ -197,7 +197,7 @@ const config: GlobalConfig = {
       settlementAccountId: '26',
       // For our demo, Participants are on the same deployment as switch
       simulatorAdminUrl: `http://duriantech-backend.beta.moja-lab.live`,
-      fspiopCallbackUrl: `http://duriantech-sdk-scheme-adapter-backend.beta.moja-lab.live`,
+      fspiopCallbackUrl: `http://mojaloop-sim-duriantech-scheme-adapter:4000`,
       thirdpartyCallbackUrl: `n/a`,
       parties: [
         {
@@ -220,42 +220,6 @@ const config: GlobalConfig = {
         }
       ]
     },
-    // TODO: register the participants
-
-    // {
-    //   id: 'dfspb',
-    //   type: ParticipantType.DFSP,
-    //   // TODO: this is a hack for now, but we actually need to query the admin-api
-    //   // to get this value before setting it :(
-    //   settlementAccountId: '6',
-    //   // For our demo, Participants are on the same deployment as switch
-    //   simulatorAdminUrl: `${scheme}://${baseUrl}/dfspa/mojaloop-simulator/test`,
-    //   fspiopCallbackUrl: `${scheme}://${baseUrl}/dfspb/sdk-scheme-adapter/inbound`,
-    //   thirdpartyCallbackUrl: `${scheme}://${baseUrl}/dfspb/thirdparty-scheme-adapter/inbound`,
-    //   parties: [
-    //     {
-    //       displayName: "Bob Babirusa",
-    //       firstName: "Bob",
-    //       middleName: "O",
-    //       lastName: "Babirusa",
-    //       dateOfBirth: "1970-01-01",
-    //       idType: "MSISDN",
-    //       idValue: "987654321",
-    //       accounts: [
-    //         {
-    //           currency,
-    //           description: "savings",
-    //           address: "moja.burgundy.76542756-f49gk439f-6a5f-543d-987654321"
-    //         },
-    //         {
-    //           currency,
-    //           description: "checkings",
-    //           address: "moja.burgundy.43638980-f49gk439f-6a5f-543d-987654321"
-    //         }
-    //       ]
-    //     }
-    //   ]
-    // },
   ]
 }
 
