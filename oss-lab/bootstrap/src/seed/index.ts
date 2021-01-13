@@ -15,7 +15,7 @@ const collections: Array<SeedCollection> = [
   // oracleSteps(config),
 
   // // Generate a set of participant steps for each participant
-  // ...config.participants.map(p => makeParticipantSteps(p)(config)),
+  ...config.participants.map(p => makeParticipantSteps(p)(config)),
 
   // // Generate a set of party steps for DFSP participants
   ...config.participants

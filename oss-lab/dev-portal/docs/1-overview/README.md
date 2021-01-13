@@ -31,9 +31,18 @@ Out of the box, this environment includes the following simulated DFSPs:
 
 And the current users are registered and available for lookup in the Account Lookup Service
 
-| dfspId | Id Type | Id Value |
-| --- | --- | --- |
-| `payeefsp` | `MSISDN` | `27713803912` |
+| dfspId | Id Type | Id Value | Display Name |
+| --- | --- | --- | --- |
+| `payeefsp`   | `MSISDN` | `27713803912` | Test |
+| `applebank`  | `MSISDN` | `123456789`   | Alice Alpaca |
+| `applebank`  | `MSISDN` | `11194979`    | Alex Alligator |
+| `bananabank` | `MSISDN` | `218493479`   | Bob Bobbish |
+| `bananabank` | `MSISDN` | `292455793`   | Belinda Bells |
+| `carrotmm`   | `MSISDN` | `32929423`    | Cathy C |
+| `carrotmm`   | `MSISDN` | `32929124`    | Colin Creevey |
+| `duriantech` | `MSISDN` | `410283497`   | Dobby Elf    |
+| `duriantech` | `MSISDN` | `4448483173`  | Draco Dragon |
+
 
 > **Note**: Lewis is in the process of adding to this list 
 
@@ -58,8 +67,8 @@ Mojaloop has a variety of APIs you can interact with:
 | [FSPIOP (Mojaloop API)](/2-apis/fspiop)     | `v1.1` | DFSPs             | `beta.moja-lab.live/api/fspiop` |
 | [Admin](2-apis/admin)                       | `v1`   | Hub Admins, DFSPs | `beta.moja-lab.live/api/admin/central-ledger` |
 | [Settlement](2-apis/settlement.html)        | `v1`   | DFSPs             | (not currently available with this lab) |
-| [Thirdparty-DFSP](/2-apis/thirdparty-dfsp)  | `v0.1` | DFSPs             | (not currently available with this lab) |
-| [Thirdparty-PISP](/2-apis/thirdparty-pisp)  | `v0.1` | PISPs             | (not currently available with this lab) | 
+| [Thirdparty-DFSP](/2-apis/thirdparty-dfsp)  | `v0.1` | DFSPs             | (Coming Soon) |
+| [Thirdparty-PISP](/2-apis/thirdparty-pisp)  | `v0.1` | PISPs             | (Coming Soon) | 
 
 ## Tools:
 

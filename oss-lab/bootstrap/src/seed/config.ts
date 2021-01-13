@@ -96,6 +96,130 @@ const config: GlobalConfig = {
         }
       ]
     },
+    {
+      id: 'applebank',
+      type: ParticipantType.DFSP,
+      // TODO: this is a hack for now, but we actually need to query the admin-api
+      // to get this value before setting it :(
+      settlementAccountId: '20',
+      // For our demo, Participants are on the same deployment as switch
+      simulatorAdminUrl: `http://applebank-backend.beta.moja-lab.live`,
+      fspiopCallbackUrl: `http://applebank-sdk-scheme-adapter-backend.beta.moja-lab.live`,
+      thirdpartyCallbackUrl: `n/a`,
+      parties: [
+        {
+          displayName: "Alice Alpaca",
+          firstName: "Alice",
+          middleName: "K",
+          lastName: "Alpaca",
+          dateOfBirth: "1970-01-01",
+          idType: "MSISDN",
+          idValue: "123456789"
+        },
+        {
+          displayName: "Alex Alligator",
+          firstName: "Alex",
+          middleName: "A",
+          lastName: "Alligator",
+          dateOfBirth: "1970-01-01",
+          idType: "MSISDN",
+          idValue: "11194979"
+        },
+      ]
+    },
+    {
+      id: 'bananabank',
+      type: ParticipantType.DFSP,
+      // TODO: this is a hack for now, but we actually need to query the admin-api
+      // to get this value before setting it :(
+      settlementAccountId: '22',
+      // For our demo, Participants are on the same deployment as switch
+      simulatorAdminUrl: `http://bananabank-backend.beta.moja-lab.live`,
+      fspiopCallbackUrl: `http://bananabank-sdk-scheme-adapter-backend.beta.moja-lab.live`,
+      thirdpartyCallbackUrl: `n/a`,
+      parties: [
+        {
+          displayName: "Bob Bobbish",
+          firstName: "Bob",
+          middleName: "B",
+          lastName: "Bobbish",
+          dateOfBirth: "1970-01-01",
+          idType: "MSISDN",
+          idValue: "218493479"
+        },
+        {
+          displayName: "Belinda Bells",
+          firstName: "Belinda",
+          middleName: "B",
+          lastName: "Bells",
+          dateOfBirth: "1970-01-01",
+          idType: "MSISDN",
+          idValue: "292455793"
+        }
+      ]
+    },
+    {
+      id: 'carrotmm',
+      type: ParticipantType.DFSP,
+      // TODO: this is a hack for now, but we actually need to query the admin-api
+      // to get this value before setting it :(
+      settlementAccountId: '24',
+      // For our demo, Participants are on the same deployment as switch
+      simulatorAdminUrl: `http://carrotmm-backend.beta.moja-lab.live`,
+      fspiopCallbackUrl: `http://carrotmm-sdk-scheme-adapter-backend.beta.moja-lab.live`,
+      thirdpartyCallbackUrl: `n/a`,
+      parties: [
+        {
+          displayName: "Cathy C",
+          firstName: "Cathy",
+          middleName: "C",
+          lastName: "Camera",
+          dateOfBirth: "1970-01-01",
+          idType: "MSISDN",
+          idValue: "32929423"
+        },
+        {
+          displayName: "Colin Creevey",
+          firstName: "Colin",
+          middleName: "C",
+          lastName: "Camera",
+          dateOfBirth: "1970-01-01",
+          idType: "MSISDN",
+          idValue: "32929124"
+        }
+      ]
+    },
+    {
+      id: 'duriantech',
+      type: ParticipantType.DFSP,
+      // TODO: this is a hack for now, but we actually need to query the admin-api
+      // to get this value before setting it :(
+      settlementAccountId: '26',
+      // For our demo, Participants are on the same deployment as switch
+      simulatorAdminUrl: `http://duriantech-backend.beta.moja-lab.live`,
+      fspiopCallbackUrl: `http://duriantech-sdk-scheme-adapter-backend.beta.moja-lab.live`,
+      thirdpartyCallbackUrl: `n/a`,
+      parties: [
+        {
+          displayName: "Dobby Elf",
+          firstName: "Dobby",
+          middleName: "E",
+          lastName: "Elf",
+          dateOfBirth: "1970-01-01",
+          idType: "MSISDN",
+          idValue: "410283497"
+        },
+        {
+          displayName: "Draco Dragon",
+          firstName: "Draco",
+          middleName: "D",
+          lastName: "Dragon",
+          dateOfBirth: "1970-01-01",
+          idType: "MSISDN",
+          idValue: "4448483173"
+        }
+      ]
+    },
     // TODO: register the participants
 
     // {
