@@ -54,8 +54,7 @@ Behind the scenes, the DFSP Simulator uses the sdk-scheme-adapter to talk the As
 Here's a screenshot of an example response from the Simulator Backend:
 
 
-![the transfer response](./transfer_response.png)
-
+![the transfer response](./transfer_result.png)
 
 ## Handy Snippets:
 ### Listing all of the users for a given simulator:
