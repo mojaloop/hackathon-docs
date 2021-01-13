@@ -101,7 +101,7 @@ const config: GlobalConfig = {
       type: ParticipantType.DFSP,
       // TODO: this is a hack for now, but we actually need to query the admin-api
       // to get this value before setting it :(
-      settlementAccountId: '20',
+      settlementAccountId: '18',
       // For our demo, Participants are on the same deployment as switch
       simulatorAdminUrl: `http://applebank-backend.beta.moja-lab.live`,
       fspiopCallbackUrl: `http://mojaloop-sim-applebank-scheme-adapter:4000`,
@@ -132,7 +132,7 @@ const config: GlobalConfig = {
       type: ParticipantType.DFSP,
       // TODO: this is a hack for now, but we actually need to query the admin-api
       // to get this value before setting it :(
-      settlementAccountId: '22',
+      settlementAccountId: '20',
       // For our demo, Participants are on the same deployment as switch
       simulatorAdminUrl: `http://bananabank-backend.beta.moja-lab.live`,
       fspiopCallbackUrl: `http://mojaloop-sim-bananabank-scheme-adapter:4000`,
@@ -163,7 +163,7 @@ const config: GlobalConfig = {
       type: ParticipantType.DFSP,
       // TODO: this is a hack for now, but we actually need to query the admin-api
       // to get this value before setting it :(
-      settlementAccountId: '24',
+      settlementAccountId: '22',
       // For our demo, Participants are on the same deployment as switch
       simulatorAdminUrl: `http://carrotmm-backend.beta.moja-lab.live`,
       fspiopCallbackUrl: `http://mojaloop-sim-carrotmm-scheme-adapter:4000`,
@@ -194,7 +194,7 @@ const config: GlobalConfig = {
       type: ParticipantType.DFSP,
       // TODO: this is a hack for now, but we actually need to query the admin-api
       // to get this value before setting it :(
-      settlementAccountId: '26',
+      settlementAccountId: '24',
       // For our demo, Participants are on the same deployment as switch
       simulatorAdminUrl: `http://duriantech-backend.beta.moja-lab.live`,
       fspiopCallbackUrl: `http://mojaloop-sim-duriantech-scheme-adapter:4000`,
