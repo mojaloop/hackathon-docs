@@ -3488,7 +3488,7 @@ mojaloop-simulator:
     applebank:
       ingress:
         hosts: 
-          - applebank.mojaloop.live
+          - dev2-sim-applebank.mojaloop.live
       config:
         schemeAdapter:
           secrets:
@@ -3535,7 +3535,7 @@ mojaloop-simulator:
     bananabank:
       ingress:
         hosts: 
-          - bananabank.mojaloop.live
+          - dev2-sim-bananabank.mojaloop.live
       config:
         schemeAdapter:
           secrets:
@@ -3582,7 +3582,7 @@ mojaloop-simulator:
     carrotmm:
       ingress:
         hosts: 
-          - carrotmm.mojaloop.live
+          - dev2-sim-carrotmm.mojaloop.live
       config:
         schemeAdapter:
           secrets:
@@ -3629,7 +3629,7 @@ mojaloop-simulator:
     duriantech:
       ingress:
         hosts: 
-          - duriantech.mojaloop.live
+          - dev2-sim-duriantech.mojaloop.live
       config:
         schemeAdapter:
           secrets:

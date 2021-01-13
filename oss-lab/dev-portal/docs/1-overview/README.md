@@ -26,9 +26,11 @@ Out of the box, this environment includes the following simulated DFSPs:
 
 
 > **Note**:
-> Double check the available DFSPs with this api call:
+> You can browse the list available DFSPs with this api call:
 > `http://beta.moja-lab.live/api/admin/central-ledger/participants`
 
+
+**Users**  
 And the current users are registered and available for lookup in the Account Lookup Service
 
 | dfspId | Id Type | Id Value | Display Name |
@@ -43,19 +45,7 @@ And the current users are registered and available for lookup in the Account Loo
 | `duriantech` | `MSISDN` | `410283497`   | Dobby Elf    |
 | `duriantech` | `MSISDN` | `4448483173`  | Draco Dragon |
 
-
-> **Note**: Lewis is in the process of adding to this list 
-
-<!-- ### Users
-
-[todo - MSISDNs etc.]
-
-
-e.g. 
-
---> 
-
-You can play around with the existing DFSPs by using the [Simulator UI](http://simulator-ui.beta.moja-lab.live)
+You can play around with the existing DFSPs by using the [Simulator UI](http://simulator-ui.beta.moja-lab.live). Check out the [Simulator Guide](/3-guides/3_simulators/) for details on how to use the simulator UI.
 
 
 ## APIs
@@ -79,9 +69,13 @@ This sandbox includes the following tools:
 - [Mojaloop Testing Toolkit](todo)
 - [Simulator UI](http://simulator-ui.beta.moja-lab.live) - for more information on using the simulator-ui, refer to [todo this external guide]()
 
-<!-- ## Understanding Async APIs -->
-<!--  -->
-<!-- The Mojaloop APIs follow an asychronous pattern. -->
+### Payment Manager
+
+*Coming Soon!*
+
+### Finance Portal
+
+*Coming Soon!*
 
 ## Helpful Links
 
