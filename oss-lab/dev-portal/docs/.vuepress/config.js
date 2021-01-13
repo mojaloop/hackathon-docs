@@ -3,6 +3,7 @@ module.exports = {
   // base: '/home/',
   base: '/',
   themeConfig: {
+    logo: '/mojaloop_logo_med.png',
     sidebar: [
       // '/',
       // '/page-a',

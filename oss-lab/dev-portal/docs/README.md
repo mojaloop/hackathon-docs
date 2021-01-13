@@ -5,6 +5,8 @@ actionText: Getting Started
 actionLink: /0-getting-started/
 footer: Open Source on [GitHub](https://github.com/sqrthree/vuepress-theme-api), Made by [@sqrthree](https://github.com/sqrthree), Power by [vuepress](https://github.com/vuejs/vuepress).
 ---
+
+![](/mojaloop_logo_med.png)
 # Getting Started
 
 Now that your Mojaloop Sandbox is up and running, here's what you can do next:
