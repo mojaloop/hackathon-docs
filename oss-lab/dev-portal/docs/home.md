@@ -1,0 +1,3 @@
+# Home
+
+Moved to [here](/)

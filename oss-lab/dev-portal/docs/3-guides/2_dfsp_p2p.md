@@ -13,10 +13,6 @@ A Mojaloop Transaction takes 3 distict phases:
 
 - Completed the [DFSP setup guide](/3-guides/1_dfsp_setup) and are succesfully recieving callbacks from the Mojaloop Sandbox
 
-</br>
----
-
-
 
 ## 2. Party Lookup
 

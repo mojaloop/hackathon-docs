@@ -9,7 +9,7 @@ metadata:
   labels:
     app: dev-portal
 spec:
-  replicas: 3
+  replicas: 1
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -24,7 +24,6 @@ spec:
     spec:
       containers:
         - name: dev-portal
-        # TODO: deploy
           image: ldaly/dev-portal:latest
           livenessProbe:
             initialDelaySeconds: 30
@@ -87,7 +86,7 @@ spec:
   rules:
     - http:
         paths:
-          - path: /home
+          - path: /
             backend:
               serviceName: dev-portal
               servicePort: 5000

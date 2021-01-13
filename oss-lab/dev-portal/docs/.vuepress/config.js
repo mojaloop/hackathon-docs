@@ -1,6 +1,7 @@
 module.exports = {
   // theme: 'api',
-  base: '/home/',
+  // base: '/home/',
+  base: '/',
   themeConfig: {
     sidebar: [
       // '/',
