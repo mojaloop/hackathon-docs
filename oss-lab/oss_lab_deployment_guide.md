@@ -349,7 +349,15 @@ helm upgrade --install mojaloop ./mojaloop -f /home/lew/developer/mojaloop/hacka
 
 ```
 
+## 8. Try and get a better test platform with the TTK
 
+Let's try running the ttk for ourselves... maybe we can even pre-populate the test scenarios?
+
+```bash
+
+helm upgrade --install --namespace ml-app ttk mojaloop/ml-testing-toolkit --values ./config/values-ttk-applebank.yaml
+
+```
 
 
 
