@@ -23,6 +23,7 @@ Out of the box, this environment includes the following simulated DFSPs:
 - `bananabank`
 - `carrotmm`
 - `duriantech`
+- `figmm` *(- Testing Toolkit only)*
 
 
 > **Note**:
@@ -69,13 +70,27 @@ This sandbox includes the following tools:
 - [Mojaloop Testing Toolkit](todo)
 - [Simulator UI](http://simulator-ui.beta.moja-lab.live) - for more information on using the simulator-ui, refer to [todo this external guide]()
 
+### Testing Toolkit
+
+The [Mojaloop Testing Toolkit](https://github.com/mojaloop/ml-testing-toolkit) is a tool for testing your DFSP's implementation. It also helps you get up and running and 
+
+We currently have 1 DFSP hooked up to the testing toolkit: `figmm`. 
+
+See:
+- [figmm-ttk.beta.moja-lab.live/admin/monitoring](http://figmm-ttk.beta.moja-lab.live/admin/monitoring) to monitor live requests and callbacks
+- [figmm-ttk.beta.moja-lab.live/admin/outbound_request](http://figmm-ttk.beta.moja-lab.live/admin/outbound_request) to make live requests _from_ `figmm` to other DFSPs on the network
+  > Hint: Click "Load Sample" to look through the sample test cases available and load one
+
+
 ### Payment Manager
 
-*Coming Soon!*
+> Note: Payment Manager support in the sandbox is still in _beta_, and the dfsps here are not yet connected to the other DFSPs in the sandbox. We're working on it!
 
-### Finance Portal
+- [Payment Manager- senderfsp](http://senderfsp-pm4ml.pm4ml.demo.modusbox.io/transfers)
 
-*Coming Soon!*
+<!-- ### Finance Portal
+
+*Coming Soon!* -->
 
 ## Helpful Links
 

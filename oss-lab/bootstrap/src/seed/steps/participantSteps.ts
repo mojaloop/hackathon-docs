@@ -269,7 +269,7 @@ const makeDfspSteps = (_constConfig: ConstConfig, globalConfig: GlobalConfig, pa
         body: {
           type: 'FSPIOP_CALLBACK_URL_QUOTES',
           // TODO: this looks wrong to me...
-          value: `${participant.fspiopCallbackUrl}/quotes`
+          value: `${participant.fspiopCallbackUrl}`
         }
       }))
     },

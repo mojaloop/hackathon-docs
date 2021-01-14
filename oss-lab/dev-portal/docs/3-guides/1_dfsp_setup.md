@@ -188,7 +188,7 @@ curl -X POST \
 curl -X POST \
   -H 'Content-Type: application/json' \
   ${ENDPOINTS_URL} \
-  -d '{"type": "FSPIOP_CALLBACK_URL_QUOTES", "value": "'$MOCK_SERVER_URL'/quotes"}'
+  -d '{"type": "FSPIOP_CALLBACK_URL_QUOTES", "value": "'$MOCK_SERVER_URL'"}'
 
 curl -X POST \
   -H 'Content-Type: application/json' \
