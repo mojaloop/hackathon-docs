@@ -14,7 +14,7 @@ All services use the base url `http://beta.moja-lab.live`
 ## What's included in Environment?
 
 
-![Lab Overview](./lab_onboarding.png)
+![Lab Overview](./sandbox-overview.png)
 
 Out of the box, this environment includes the following simulated DFSPs:
 
@@ -23,13 +23,13 @@ Out of the box, this environment includes the following simulated DFSPs:
 - `bananabank`
 - `carrotmm`
 - `duriantech`
-- `eggmm` *(- Testing Toolkit only)*
-- `figmm` *(- Testing Toolkit only)*
+- `eggmm` *(Testing Toolkit only)*
+- `figmm` *(Testing Toolkit only)*
 
 
 > **Note**:
 > You can browse the list available DFSPs with this api call:
-> `http://beta.moja-lab.live/api/admin/central-ledger/participants`
+> [`http://beta.moja-lab.live/api/admin/central-ledger/participants`](http://beta.moja-lab.live/api/admin/central-ledger/participants)
 
 
 **Users**  
