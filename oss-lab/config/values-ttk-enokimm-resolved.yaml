@@ -1,4 +1,5 @@
 COMPUTED VALUES:
+COMPUTED VALUES: null
 connection-manager-backend:
   config:
     APP_OAUTH_CLIENT_KEY: ttk
@@ -357,7 +358,6 @@ ml-testing-toolkit-backend:
         PTA_ROLE: Application/PTA
     user_config.json:
       ADVANCED_FEATURES_ENABLED: true
-      # Endpoint of FSPIOP API... I think
       CALLBACK_ENDPOINT: http://beta.moja-lab.live/api/fspiop
       CALLBACK_RESOURCE_ENDPOINTS:
         enabled: true
