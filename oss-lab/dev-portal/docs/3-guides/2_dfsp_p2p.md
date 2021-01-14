@@ -9,6 +9,8 @@ A Mojaloop Transaction takes 3 distict phases:
 3. Transfer
 
 
+> Does this guide look too command line heavy for you? Try using the [Testing Toolkit](/3-guides/5_ttk_p2p/) instead. 
+
 ## 1. Prerequisites
 
 - Completed the [DFSP setup guide](/3-guides/1_dfsp_setup) and are succesfully recieving callbacks from the Mojaloop Sandbox

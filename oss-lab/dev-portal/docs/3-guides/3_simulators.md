@@ -23,7 +23,7 @@ For example, you can register the Applebank Simulator Backend
 
 - name: `applebank1`
 - protocol: `http`
-- host: `applebank-backend.moja-lab.live`
+- host: `applebank-backend.beta.moja-lab.live`
 - port: `80`
 
 And hit "Save"

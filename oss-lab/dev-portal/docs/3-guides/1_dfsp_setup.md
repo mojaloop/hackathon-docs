@@ -9,6 +9,8 @@ This guide will help you set up your own bare-bones DFSP server to send and rece
 - `jq`
 - `docker`
 
+> Does this guide look too command line heavy for you? Try using the [Testing Toolkit](/3-guides/5_ttk_p2p/) instead. 
+
 ## 2. Run a Mock server to listen to async callbacks
 
 Since Mojaloop is an Async API, we need to run a server to listen to callbacks from the Mojaloop Switch.

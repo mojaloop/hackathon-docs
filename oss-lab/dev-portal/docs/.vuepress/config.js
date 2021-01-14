@@ -51,6 +51,7 @@ module.exports = {
           ['/3-guides/1_dfsp_setup', '1. DFSP Setup'],
           ['/3-guides/2_dfsp_p2p', '2. P2P Transfer'],
           ['/3-guides/3_simulators', '3. DFSP Simulators'],
+          ['/3-guides/5_ttk_p2p', '4. TTK P2P Transfer (Easy)'],
         ],
       },
       {

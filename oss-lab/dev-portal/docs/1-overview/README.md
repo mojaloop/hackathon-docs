@@ -82,6 +82,8 @@ See:
   > Hint: Click "Load Sample" to look through the sample test cases available and load one
 
 
+Check out the [Testing Toolkit P2P Guide](/3-guides/5_ttk_p2p/) to use the testing to send a peer to peer transfer.
+
 ### Payment Manager
 
 > Note: Payment Manager support in the sandbox is still in _beta_, and the dfsps here are not yet connected to the other DFSPs in the sandbox. We're working on it!
