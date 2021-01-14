@@ -23,6 +23,7 @@ Out of the box, this environment includes the following simulated DFSPs:
 - `bananabank`
 - `carrotmm`
 - `duriantech`
+- `eggmm` *(- Testing Toolkit only)*
 - `figmm` *(- Testing Toolkit only)*
 
 
@@ -74,11 +75,13 @@ This sandbox includes the following tools:
 
 The [Mojaloop Testing Toolkit](https://github.com/mojaloop/ml-testing-toolkit) is a tool for testing your DFSP's implementation. It also helps you get up and running and 
 
-We currently have 1 DFSP hooked up to the testing toolkit: `figmm`. 
+We currently have 2 DFSPs hooked up to the testing toolkit: `figmm` and `eggmm`
 
 See:
-- [figmm-ttk.beta.moja-lab.live/admin/monitoring](http://figmm-ttk.beta.moja-lab.live/admin/monitoring) to monitor live requests and callbacks
-- [figmm-ttk.beta.moja-lab.live/admin/outbound_request](http://figmm-ttk.beta.moja-lab.live/admin/outbound_request) to make live requests _from_ `figmm` to other DFSPs on the network
+- [figmm - monitoring](http://figmm-ttk.beta.moja-lab.live/admin/monitoring) to monitor live requests and callbacks
+- [figmm - send requests](http://figmm-ttk.beta.moja-lab.live/admin/outbound_request) to make live requests _from_ `figmm` to other DFSPs on the network
+- [eggmm - monitoring](http://eggmm-ttk.beta.moja-lab.live/admin/monitoring) to monitor live requests and callbacks
+- [eggmm - send requests](http://eggmm-ttk.beta.moja-lab.live/admin/outbound_request) to make live requests _from_ `eggmm` to other DFSPs on the network
   > Hint: Click "Load Sample" to look through the sample test cases available and load one
 
 

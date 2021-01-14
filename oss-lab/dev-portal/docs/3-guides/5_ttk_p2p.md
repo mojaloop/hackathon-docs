@@ -6,6 +6,9 @@ You can use the Testing Toolkit to send a Peer to Peer transfer with Mojaloop.
 
 For this demo, we will pretend to be the `figmm` DFSP.
 
+> Note, we also have a testing tookit deployed for the `eggmm` DFSP: [here](http://eggmm-ttk.beta.moja-lab.live)
+
+
 Go to the [figmm testing toolkit page](http://figmm-ttk.beta.moja-lab.live)
 
 ![](./ttk_welcome.png)

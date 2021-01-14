@@ -1,5 +1,4 @@
 COMPUTED VALUES:
-COMPUTED VALUES: null
 connection-manager-backend:
   config:
     APP_OAUTH_CLIENT_KEY: ttk
@@ -358,6 +357,7 @@ ml-testing-toolkit-backend:
         PTA_ROLE: Application/PTA
     user_config.json:
       ADVANCED_FEATURES_ENABLED: true
+      # Endpoint of FSPIOP API... I think
       CALLBACK_ENDPOINT: http://beta.moja-lab.live/api/fspiop
       CALLBACK_RESOURCE_ENDPOINTS:
         enabled: true
@@ -376,12 +376,12 @@ ml-testing-toolkit-backend:
       ENDPOINTS_DFSP_WISE:
         dfsps:
           userdfsp:
-            defaultEndpoint: http://mojaloop-sim-enokimm-scheme-adapter:4000
+            defaultEndpoint: http://mojaloop-sim-eggmm-scheme-adapter:4000
             endpoints: []
           userdfsp2:
             defaultEndpoint: http://scheme-adapter2:4000
             endpoints: []
-      FSPID: enokimm
+      FSPID: eggmm
       HUB_ONLY_MODE: false
       ILP_SECRET: secret
       INBOUND_MUTUAL_TLS_ENABLED: false
@@ -487,7 +487,7 @@ ml-testing-toolkit-backend:
 ml-testing-toolkit-frontend:
   affinity: {}
   config:
-    API_BASE_URL: http://enokimm-ttk.beta.moja-lab.live
+    API_BASE_URL: http://eggmm-ttk.beta.moja-lab.live
     AUTH_ENABLED: "FALSE"
   enabled: true
   global: {}

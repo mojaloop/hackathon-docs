@@ -359,9 +359,8 @@ helm upgrade --install --namespace ml-app ttk mojaloop/ml-testing-toolkit --valu
 
 #2 ttk instances?
 helm upgrade --install --namespace ml-app figmm-ttk mojaloop/ml-testing-toolkit --values ./config/values-ttk-figmm.yaml
-
-helm upgrade --install --namespace ml-app ttk mojaloop/ml-testing-toolkit --values ./config/values-ttk-applebank.yaml
-
+helm upgrade --install --namespace ml-app eggmm-ttk mojaloop/ml-testing-toolkit --values ./config/values-ttk-eggmm.yaml
+                  
 ```
 
 

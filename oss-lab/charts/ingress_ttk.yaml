@@ -46,28 +46,28 @@ spec:
               serviceName: ttk-ml-testing-toolkit-backend
               servicePort: 5000
 
-    - host: enokimm-ttk.beta.moja-lab.live
+    - host: eggmm-ttk.beta.moja-lab.live
       http:
         paths:
           - path: /api
             backend:
-              serviceName: enokimm-ttk-ml-testing-toolkit-backend
+              serviceName: eggmm-ttk-ml-testing-toolkit-backend
               servicePort: 5050 
           - path: /
             backend:
-              serviceName: enokimm-ttk-ml-testing-toolkit-frontend
+              serviceName: eggmm-ttk-ml-testing-toolkit-frontend
               servicePort: 6060
           - path: /socket.io/
             backend:
-              serviceName: enokimm-ttk-ml-testing-toolkit-backend
+              serviceName: eggmm-ttk-ml-testing-toolkit-backend
               servicePort: 5050
 
-    - host: enokimm-ttk-backend-fspiop.beta.moja-lab.live
+    - host: eggmm-ttk-backend-fspiop.beta.moja-lab.live
       http:
         paths:
           - path: /(.*)
             backend:
-              serviceName: enokimm-ttk-ml-testing-toolkit-backend
+              serviceName: eggmm-ttk-ml-testing-toolkit-backend
               servicePort: 5000
 
     - host: figmm-ttk.beta.moja-lab.live
