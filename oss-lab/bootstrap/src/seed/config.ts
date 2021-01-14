@@ -74,6 +74,7 @@ const config: GlobalConfig = {
     oracle: `${scheme}://${baseUrlAdmin}/oracle-simulator`,
   },
   participants: [
+    //disabled for now, enokimm name is too long
     // {
     //   id: 'enokimm',
     //   type: ParticipantType.DFSP,
@@ -105,31 +106,19 @@ const config: GlobalConfig = {
     //     },
     //   ]
     // }, 
-    // {
-    //   id: 'figmm',
-    //   type: ParticipantType.DFSP,
-    //   // TODO: this is a hack for now, but we actually need to query the admin-api
-    //   // to get this value before setting it :(
-    //   settlementAccountId: '28',
-    //   // Not sure if this will work...
-    //   simulatorAdminUrl: `http://figmm-backend.beta.moja-lab.live`,
-    //   fspiopCallbackUrl: `http://figmm-ttk-backend-fspiop.beta.moja-lab.live`,
-    //   thirdpartyCallbackUrl: `n/a`,
-    //   parties: [
-    //   ]
-    // },
-    //try registering testfsp1 endpoints back to ttk... see if that fixes the quotes issue 
     {
-      id: 'testfsp1',
+      id: 'figmm',
       type: ParticipantType.DFSP,
-      settlementAccountId: '10',
+      // TODO: this is a hack for now, but we actually need to query the admin-api
+      // to get this value before setting it :(
+      settlementAccountId: '28',
       // Not sure if this will work...
       simulatorAdminUrl: `http://figmm-backend.beta.moja-lab.live`,
       fspiopCallbackUrl: `http://figmm-ttk-backend-fspiop.beta.moja-lab.live`,
       thirdpartyCallbackUrl: `n/a`,
       parties: [
       ]
-    }, 
+    },
     // {
     //   id: 'applebank',
     //   type: ParticipantType.DFSP,
