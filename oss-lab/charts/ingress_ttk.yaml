@@ -18,16 +18,26 @@ metadata:
     # konghq.com/strip-path: "true"
     # This is required to rewrite paths to services that contain multiple endpoints, 
     # e.g. /participants and /parties are both on the account-lookup-service
-    konghq.com/plugins: ttk-rewrite
+    # konghq.com/plugins: ttk-rewrite
 spec:
   rules:
+  # default install... no longer valid but a good ref
     - host: ttk.beta.moja-lab.live
       http:
         paths:
-          - path: /(.*)
+          - path: /api
+            backend:
+              serviceName: ttk-ml-testing-toolkit-backend
+              servicePort: 5050 
+          - path: /
             backend:
               serviceName: ttk-ml-testing-toolkit-frontend
               servicePort: 6060
+          - path: /socket.io/
+            backend:
+              serviceName: ttk-ml-testing-toolkit-backend
+              servicePort: 5050
+
     - host: ttk-backend-1.beta.moja-lab.live
       http:
         paths:
@@ -35,10 +45,27 @@ spec:
             backend:
               serviceName: ttk-ml-testing-toolkit-backend
               servicePort: 5000
-    - host: ttk-backend-2.beta.moja-lab.live
+
+    - host: enokimm-ttk.beta.moja-lab.live
+      http:
+        paths:
+          - path: /api
+            backend:
+              serviceName: enokimm-ttk-ml-testing-toolkit-backend
+              servicePort: 5050 
+          - path: /
+            backend:
+              serviceName: enokimm-ttk-ml-testing-toolkit-frontend
+              servicePort: 6060
+          - path: /socket.io/
+            backend:
+              serviceName: enokimm-ttk-ml-testing-toolkit-backend
+              servicePort: 5050
+
+    - host: enokimm-ttk-backend-fspiop.beta.moja-lab.live
       http:
         paths:
           - path: /(.*)
             backend:
-              serviceName: ttk-ml-testing-toolkit-backend
-              servicePort: 5050
+              serviceName: enokimm-ttk-ml-testing-toolkit-backend
+              servicePort: 5000

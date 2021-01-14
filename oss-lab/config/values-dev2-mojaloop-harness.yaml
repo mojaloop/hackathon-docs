@@ -5233,7 +5233,7 @@ ml-testing-toolkit:
           port: 6060
           paths: ['/']
     config:
-      API_BASE_URL: http://ttk.beta.moja-lab.live
+      API_BASE_URL: http://dev2-testing-toolkit.mojaloop.live
 
 ml-ttk-posthook-setup:
   postInstallHook:
