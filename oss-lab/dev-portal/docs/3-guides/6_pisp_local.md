@@ -10,19 +10,19 @@ This guide walks you through how to run the testing toolkit locally to support t
 - A Browser
 - `docker` and `docker-compose`, any recent version should work
 
-## 1. Clone the PISP Repo
+## 1. Download the TTK Config from the thirdparty-scheme-adapter repo
 
-Go to [github.com/mojaloop/pisp](https://github.com/mojaloop/pisp). This is where a lot of the in progress work for pisp is taking place.
+Go to [https://github.com/mojaloop/thirdparty-scheme-adapter](https://github.com/mojaloop/thirdparty-scheme-adapter). This is where a lot of the in progress work for pisp is taking place.
 
 Clone the repo however you'd like, for example:
 ```bash
-git clone https://github.com/mojaloop/pisp.git
+git clone https://github.com/mojaloop/thirdparty-scheme-adapter.git
 ```
 
-Once that is complete, cd into the `./pisp/docker-contract` directory
+Once that is complete, cd into the `./docker/contract` directory
 
 ```bash
-cd ./pisp/docker-contract
+cd ./docker/contract
 ```
 
 ## 2. Run `docker-compose up`
@@ -56,7 +56,7 @@ We a way to inspect the callbacks from the Testing Toolkit. In your production a
 
 We can use docker to run a simple web server which prints out its inbound requests.
 
-Open `./pisp/docker-contract/docker-compose.yml`, and add a new service on line `8`:
+Open `docker-compose.yml`, and add a new service on line `8`:
 
 ```yaml
 ...
@@ -70,8 +70,7 @@ services:
       - 8081:8080
 
   ml-testing-toolkit:
-    image: mojaloop/ml-testing-toolkit:v11.1.1
-    container_name: dl_ml-testing-toolkit
+    image: mojaloop/ml-testing-toolkit:v11.2.2
   ...
 
 ```
@@ -91,10 +90,11 @@ Now we need to confgure the testing toolkit to use the correct callback url.
 
 Go to [`localhost:6060/admin/settings`](http://localhost:6060/admin/settings) and look for the `Callback URL` field.
 
-Change this to `http://callback-server:8080`
+Change this to `http://callback-server:8080`.
+
+Next, untick the "Enable Callback resource endpoints" box, and hit "Save"
 
 ![](./pisp_callback.png)
-
 
 ## 5. Call the Thirdparty APIs!
 
@@ -108,14 +108,62 @@ To start with, you most likely will want to be using the `Thirdparty-PISP` API.
 
 To understand how a PISP tranfer works, check out the [PISP Transfer documentation here](https://github.com/mojaloop/pisp/blob/master/docs/transfer/README.md) 
 
-
-<!-- ### 5.1 Party Lookup:
+### 5.1 Party Lookup:
 ![](./pisp_lookup.png)
 
-[todo] -->
+
+```bash
+curl -X GET http://localhost:15000/parties/MSISDN/12345 \
+  -H 'Accept: application/vnd.interoperability.parties+json;version=1.0' \
+  -H 'Content-Type: application/vnd.interoperability.parties+json;version=1.0' \
+  -H 'Date: Mon, 11 Jan 2021 00:00:00 GMT' \
+  -H 'FSPIOP-Source: pispa'
+```
 
 
-### 5.1 `POST /thirdpartyRequests/transactions`
+Example Logs in `callback-server`:
+```
+-----------------
+{
+    "path": "/parties/MSISDN/12345",
+    "headers": {
+        "content-type": "application/vnd.interoperability.parties+json;version=1.0",
+        "date": "Wed, 27 May 2020 11:13:34 GMT",
+        "x-forwarded-for": "sed eiusmod sunt",
+        "fspiop-source": "pisp",
+        "fspiop-destination": "dfspa",
+        "fspiop-encryption": "magna Excepteur dolore nisi fugiat",
+        "fspiop-signature": "nisi",
+        "fspiop-uri": "veniam reprehenderit anim ut",
+        "fspiop-http-method": "PUT",
+        "content-length": "276",
+        "traceparent": "00-ccddd97c01d76f8345331389690b33-0123456789abcdef0-00",
+        "user-agent": "axios/0.19.2",
+        "host": "callback-server:8080",
+        "connection": "close"
+    },
+    "method": "PUT",
+    "body": "{\"party\":{\"partyIdInfo\":{\"partyIdType\":\"MSISDN\",\"partyIdentifier\":\"12345\",\"fspId\":\"pispA\"},\"merchantClassificationCode\":\"4321\",\"name\":\"Justin Trudeau\",\"personalInfo\":{\"complexName\":{\"firstName\":\"Justin\",\"middleName\":\"Pierre\",\"lastName\":\"Trudeau\"},\"dateOfBirth\":\"1980-01-01\"}}}",
+    "fresh": false,
+    "hostname": "callback-server",
+    "ip": "sed eiusmod sunt",
+    "ips": [
+        "sed eiusmod sunt"
+    ],
+    "protocol": "http",
+    "query": {},
+    "subdomains": [],
+    "xhr": false,
+    "os": {
+        "hostname": "18409aa1c315"
+    },
+    "connection": {}
+}
+sed eiusmod sunt - - [15/Jan/2021:10:34:20 +0000] "PUT /parties/MSISDN/12345 HTTP/1.1" 200 1280 "-" "axios/0.19.2"
+
+```
+
+### 5.2 `POST /thirdpartyRequests/transactions`
 ![](./pisp_txreq.png)
 
 ```bash
@@ -166,51 +214,98 @@ curl -X POST http://localhost:15000/thirdpartyRequests/transactions \
 
 Example Response (in `docker-compose logs -f callback-server`)
 ```
-callback-server_1          | -----------------
-callback-server_1          | {
-callback-server_1          |     "path": "/thirdpartyRequests/transactions/387ee6b9-520d-4c51-a9e4-6eb2ef15887a",
-callback-server_1          |     "headers": {
-callback-server_1          |         "content-type": "application/vnd.interoperability.thirdparty+json;version=1.0",
-callback-server_1          |         "accept": "application/vnd.interoperability.thirdparty+json;version=1.0",
-callback-server_1          |         "date": "Wed, 27 May 2020 11:13:34 GMT",
-callback-server_1          |         "fspiop-source": "DFSPA",
-callback-server_1          |         "traceparent": "00-ccdd3b81b37b30461aeffbe5a230d0-0123456789abcdef0-00",
-callback-server_1          |         "user-agent": "axios/0.19.2",
-callback-server_1          |         "content-length": "93",
-callback-server_1          |         "host": "callback-server:8080",
-callback-server_1          |         "connection": "close"
-callback-server_1          |     },
-callback-server_1          |     "method": "PUT",
-callback-server_1          |     "body": "{\"transactionId\":\"5a2ad5dc-4ab1-4a22-8c5b-62f75252a8d5\",\"transactionRequestState\":\"RECEIVED\"}",
-callback-server_1          |     "fresh": false,
-callback-server_1          |     "hostname": "callback-server",
-callback-server_1          |     "ip": "::ffff:172.19.0.4",
-callback-server_1          |     "ips": [],
-callback-server_1          |     "protocol": "http",
-callback-server_1          |     "query": {},
-callback-server_1          |     "subdomains": [],
-callback-server_1          |     "xhr": false,
-callback-server_1          |     "os": {
-callback-server_1          |         "hostname": "2801806352fc"
-callback-server_1          |     },
-callback-server_1          |     "connection": {}
-callback-server_1          | }
-callback-server_1          | ::ffff:172.19.0.4 - - [14/Jan/2021:12:16:19 +0000] "PUT /thirdpartyRequests/transactions/387ee6b9-520d-4c51-a9e4-6eb2ef15887a HTTP/1.1" 200 909 "-" "axios/0.19.2"
-```
-
-Example Body:
-```json
 {
-  "transactionId":"5a2ad5dc-4ab1-4a22-8c5b-62f75252a8d5",
-  "transactionRequestState":"RECEIVED"
+    "path": "/authorizations",
+    "headers": {
+        "content-type": "application/vnd.interoperability.authorizations+json;version=1.0",
+        "accept": "application/vnd.interoperability.authorizations+json;version=1.0",
+        "date": "Wed, 27 May 2020 11:13:34 GMT",
+        "fspiop-source": "DFSPA",
+        "traceparent": "00-ccdd87fbd24d7dfc42d7b58e059dcc-0123456789abcdef0-00",
+        "user-agent": "axios/0.19.2",
+        "content-length": "775",
+        "host": "callback-server:8080",
+        "connection": "close"
+    },
+    "method": "POST",
+    "body": "{\"authenticationType\":\"U2F\",\"retriesLeft\":\"1\",\"amount\":{\"currency\":\"USD\",\"amount\":\"124.45\"},\"transactionId\":\"2f169631-ef99-4cb1-96dc-91e8fc08f539\",\"transactionRequestId\":\"387ee6b9-520d-4c51-a9e4-6eb2ef15887a\",\"quote\":{\"transferAmount\":{\"currency\":\"USD\",\"amount\":\"124.45\"},\"payeeReceiveAmount\":{\"currency\":\"USD\",\"amount\":\"123.45\"},\"payeeFspFee\":{\"currency\":\"USD\",\"amount\":\"1\"},\"payeeFspCommission\":{\"currency\":\"USD\",\"amount\":\"0\"},\"expiration\":\"2020-08-24T08:38:08.699-04:00\",\"geoCode\":{\"latitude\":\"+45.4215\",\"longitude\":\"+75.6972\"},\"ilpPacket\":\"AYIBgQAAAAAAAASwNGxldmVsb25lLmRmc3AxLm1lci45T2RTOF81MDdqUUZ\",\"condition\":\"f5sqb7tBTWPd5Y8BDFdMm9BJR_MNI4isf8p8n4D5pHA\",\"extensionList\":{\"extension\":[{\"key\":\"errorDescription\",\"value\":\"This is a more detailed error description\"}]}}}",
+    "fresh": false,
+    "hostname": "callback-server",
+    "ip": "::ffff:172.21.0.2",
+    "ips": [],
+    "protocol": "http",
+    "query": {},
+    "subdomains": [],
+    "xhr": false,
+    "os": {
+        "hostname": "18409aa1c315"
+    },
+    "connection": {}
 }
 ```
 
-You can see that the transaction request was accepted by the DFSP!
+Example Body (parsed from the above response):
+```json
+{
+  "authenticationType":"U2F",
+  "retriesLeft":"1",
+  "amount":{"currency":"USD","amount":"124.45"},"transactionId":"2f169631-ef99-4cb1-96dc-91e8fc08f539","transactionRequestId":"387ee6b9-520d-4c51-a9e4-6eb2ef15887a",
+  "quote":{
+    "transferAmount":{
+      "currency":"USD",
+      "amount":"124.45"
+    },
+    "payeeReceiveAmount":{
+      "currency":"USD",
+      "amount":"123.45"
+    },
+    "payeeFspFee":{
+      "currency":"USD",
+      "amount":"1"
+    },
+    "payeeFspCommission": {
+      "currency":"USD",
+      "amount":"0"
+    },
+    "expiration":"2020-08-24T08:38:08.699-04:00",
+    "geoCode":{
+      "latitude":"+45.4215",
+      "longitude":"+75.6972"
+    },
+    "ilpPacket":"AYIBgQAAAAAAAASwNGxldmVsb25lLmRmc3AxLm1lci45T2RTOF81MDdqUUZ","condition":"f5sqb7tBTWPd5Y8BDFdMm9BJR_MNI4isf8p8n4D5pHA",
+    "extensionList":{
+      "extension":[null]
+    }
+  }
+}
+```
+
+You can see that the DFSP has issues the `POST /authorizations` to the PISP containing a Quote they can display to their end user.
 
 
-> Note: There should then be a `POST /authorizations` from the DFSP -> PISP as a part of this flow, but that is currently broken in this config.
 
-
-<!-- ### 5.3 `PUT/authorizations/123`
+### 5.3 `PUT/authorizations/{ID}`
 ![](./pisp_put_auth.png) -->
+
+
+```bash
+curl -X PUT http://localhost:15000/authorizations/999 \
+  -H 'Accept: application/vnd.interoperability.thirdparty+json;version=1.0' \
+  -H 'Content-Type: application/vnd.interoperability.thirdparty+json;version=1.0' \
+  -H 'Date: Mon, 11 Jan 2021 00:00:00 GMT' \
+  -H 'FSPIOP-Source: pispa' \
+  -H 'FSPIOP-Destination: dfspa' \
+  -d '{
+    "responseType": "ENTERED",
+  }'
+
+  -d '{
+        "authenticationInfo": {
+          "authentication": "U2F",
+          "authenticationValue":{
+            "pinValue": "aaabbbcccddd",
+            "counter": 1,
+          }
+        },
+        "responseType": "ENTERED"
+      }'

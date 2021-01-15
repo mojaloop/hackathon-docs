@@ -84,3 +84,55 @@ curl http://payeefsp-backend.beta.moja-lab.live/repository/parties | jq
 <!-- ## Simplified P2P Transfer
 
 todo -->
+
+
+### Register your own Party with Mojaloop + Simulator
+
+First, tell Mojaloop which DFSP they should ask for this Party with `POST /participants`
+```bash
+curl -X POST http://beta.moja-lab.live/api/fspiop/participants/MSISDN/639563943094 \
+  -H "Accept: application/vnd.interoperability.participants+json;version=1" \
+  -H "Content-Type: application/vnd.interoperability.participants+json;version=1.0" \
+  -H 'Date: Fri, 15 Jan 2021 00:00:00 GMT' \
+  -H 'FSPIOP-Source: applebank' \
+  -d '{ 
+    "fspId": "applebank", 
+    "currency": "USD" 
+    }'
+```
+
+Next, we can register the party information with the `applebank` DFSP simulator:
+
+```bash
+curl -X POST http://applebank-backend.beta.moja-lab.live/repository/parties \
+  -H "Content-Type: application/json" \
+  -d '{
+    "displayName": "Jose R.",
+    "firstName": "Jose",
+    "middleName": "R",
+    "lastName": "Rizal",
+    "dateOfBirth": "1970-01-01",
+    "idType": "MSISDN",
+    "idValue": "639563943094"
+  }'
+```
+
+And that's it! You can issue a `GET /parties/MSISDN/639563943094` call to ask Mojaloop to look up this party, and then request more informaton from `applebank`:
+
+Let's issue this request "from" the `figmm` DFSP, and look in the TTK for the callback: [http://figmm-ttk.beta.moja-lab.live/admin/monitoring](here).
+
+> Note:
+> Feel free to change the `FSPIOP-Source` field to get the sandbox talking to your own DFSP!
+> Follow the [DFSP Setup Guide](/3-guides/1_dfsp_setup/) for instructions on how to do that. 
+
+```bash
+curl -v beta.moja-lab.live/api/fspiop/parties/MSISDN/639563943094 \
+  -H 'Accept: application/vnd.interoperability.parties+json;version=1' \
+  -H 'Content-Type: application/vnd.interoperability.parties+json;version=1.0' \
+  -H 'FSPIOP-Source: figmm' \
+  -H 'Date: 2021-01-01'
+```
+
+And the callback in the TTK:
+
+![](./simulators_ttk_callback.png)
