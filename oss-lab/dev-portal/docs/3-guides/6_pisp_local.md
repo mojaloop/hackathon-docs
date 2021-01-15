@@ -301,7 +301,7 @@ You can see that the DFSP has issues the `POST /authorizations` to the PISP cont
 **WARNING - this section is under develompent, and is being fixed as you read this**
 
 ```bash
-curl -X PUT http://localhost:15000/authorizations/999 \
+curl -X POST http://localhost:15000/authorizations/123 \
   -H 'Accept: application/vnd.interoperability.thirdparty+json;version=1.0' \
   -H 'Content-Type: application/vnd.interoperability.thirdparty+json;version=1.0' \
   -H 'Date: Mon, 11 Jan 2021 00:00:00 GMT' \

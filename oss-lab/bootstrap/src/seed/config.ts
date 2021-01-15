@@ -124,12 +124,30 @@ const config: GlobalConfig = {
       type: ParticipantType.DFSP,
       // TODO: this is a hack for now, but we actually need to query the admin-api
       // to get this value before setting it :(
-      settlementAccountId: '36',
+      settlementAccountId: '48',
       // Not sure if this will work...
       simulatorAdminUrl: `http://ppmm-backend.beta.moja-lab.live`,
       fspiopCallbackUrl: `http://ppmm-ttk-backend-fspiop.beta.moja-lab.live`,
       thirdpartyCallbackUrl: `n/a`,
       parties: [
+        {
+          displayName: "Edwin E",
+          firstName: "Edwin",
+          middleName: "E",
+          lastName: "Enoki",
+          dateOfBirth: "1970-01-01",
+          idType: "MSISDN",
+          idValue: "555111222"
+        },
+        {
+          displayName: "Eric Elmo",
+          firstName: "Eric",
+          middleName: "E",
+          lastName: "Elmo",
+          dateOfBirth: "1970-01-01",
+          idType: "MSISDN",
+          idValue: "55512345"
+        },
       ]
     },
     {
