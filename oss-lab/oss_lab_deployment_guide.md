@@ -361,6 +361,9 @@ helm upgrade --install --namespace ml-app ttk mojaloop/ml-testing-toolkit --valu
 helm upgrade --install --namespace ml-app figmm-ttk mojaloop/ml-testing-toolkit --values ./config/values-ttk-figmm.yaml
 helm upgrade --install --namespace ml-app eggmm-ttk mojaloop/ml-testing-toolkit --values ./config/values-ttk-eggmm.yaml
                   
+
+helm upgrade --install --namespace ml-app ppmm-ttk mojaloop/ml-testing-toolkit --values ./config/values-ttk-ppmm.yaml
+
 ```
 
 

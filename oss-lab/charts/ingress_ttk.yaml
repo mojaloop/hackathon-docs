@@ -93,3 +93,27 @@ spec:
             backend:
               serviceName: figmm-ttk-ml-testing-toolkit-backend
               servicePort: 5000
+    
+    - host: ppmm-ttk.beta.moja-lab.live
+      http:
+        paths:
+          - path: /api
+            backend:
+              serviceName: ppmm-ttk-ml-testing-toolkit-backend
+              servicePort: 5050 
+          - path: /
+            backend:
+              serviceName: ppmm-ttk-ml-testing-toolkit-frontend
+              servicePort: 6060
+          - path: /socket.io/
+            backend:
+              serviceName: ppmm-ttk-ml-testing-toolkit-backend
+              servicePort: 5050
+
+    - host: ppmm-ttk-backend-fspiop.beta.moja-lab.live
+      http:
+        paths:
+          - path: /(.*)
+            backend:
+              serviceName: ppmm-ttk-ml-testing-toolkit-backend
+              servicePort: 5000
