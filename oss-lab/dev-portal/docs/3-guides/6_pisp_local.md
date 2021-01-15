@@ -296,12 +296,15 @@ You can see that the DFSP has issues the `POST /authorizations` to the PISP cont
 
 
 ### 5.3 `PUT/authorizations/{ID}`
-![](./pisp_put_auth.png) -->
+![](./pisp_put_auth.png)
 
-**WARNING - this section is under develompent, and is being fixed as you read this**
+In this step, the PISP presents the quote to the user and asks them to sign it using the private key on their device. The PISP then sends this signed quote to the DFSP, who checks it, and if it approves, conducts the transfer.
+- Request: `PUT /authorizations/123`
+- Async Callback: `PATCH /thirdpartyRequests/transactions/123`
+
 
 ```bash
-curl -X POST http://localhost:15000/authorizations/123 \
+curl -X PUT http://localhost:15000/authorizations/123 \
   -H 'Accept: application/vnd.interoperability.thirdparty+json;version=1.0' \
   -H 'Content-Type: application/vnd.interoperability.thirdparty+json;version=1.0' \
   -H 'Date: Mon, 11 Jan 2021 00:00:00 GMT' \
@@ -312,8 +315,50 @@ curl -X POST http://localhost:15000/authorizations/123 \
           "authentication": "U2F",
           "authenticationValue":{
             "pinValue": "aaabbbcccddd",
-            "counter": 1,
+            "counter": "1"
           }
         },
         "responseType": "ENTERED"
       }'
+```      
+
+Callback Response from TTK
+```
+callback-server_1        | {
+callback-server_1        |     "path": "/thirdpartyRequests/transactions/123",
+callback-server_1        |     "headers": {
+callback-server_1        |         "content-type": "application/vnd.interoperability.thirdparty+json;version=1.0",
+callback-server_1        |         "fspiop-source": "switch",
+callback-server_1        |         "accept": "application/vnd.interoperability.thirdparty+json;version=1.0",
+callback-server_1        |         "date": "Fri, 15 Jan 2021 12:54:53 GMT",
+callback-server_1        |         "user-agent": "axios/0.19.2",
+callback-server_1        |         "content-length": "93",
+callback-server_1        |         "host": "callback-server:8080",
+callback-server_1        |         "connection": "close"
+callback-server_1        |     },
+callback-server_1        |     "method": "PATCH",
+callback-server_1        |     "body": "{\"transactionId\":\"b51ec534-ee48-4575-b6a9-ead2955b8069\",\"transactionRequestState\":\"ACCEPTED\"}",
+callback-server_1        |     "fresh": false,
+callback-server_1        |     "hostname": "callback-server",
+callback-server_1        |     "ip": "::ffff:172.21.0.4",
+callback-server_1        |     "ips": [],
+callback-server_1        |     "protocol": "http",
+callback-server_1        |     "query": {},
+callback-server_1        |     "subdomains": [],
+callback-server_1        |     "xhr": false,
+callback-server_1        |     "os": {
+callback-server_1        |         "hostname": "18409aa1c315"
+callback-server_1        |     },
+callback-server_1        |     "connection": {}
+callback-server_1        | }
+```
+
+parsed message
+```json
+{
+  "transactionId":"b51ec534-ee48-4575-b6a9-ead2955b8069",
+  "transactionRequestState":"ACCEPTED"
+}
+```
+
+This means that the Thirdparty transactionRequest `123` was completed sucessfully!

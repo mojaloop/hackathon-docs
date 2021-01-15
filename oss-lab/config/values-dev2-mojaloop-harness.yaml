@@ -224,7 +224,7 @@ central:
         kafka_host: '$release_name-kafka'
         kafka_port: 9092
         
-        enable_on_us_transfers: false
+        enable_on_us_transfers: true
 
       init:
         enabled: true
