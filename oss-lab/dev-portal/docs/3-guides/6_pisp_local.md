@@ -112,6 +112,11 @@ To understand how a PISP tranfer works, check out the [PISP Transfer documentati
 ![](./pisp_lookup.png)
 
 
+In this step, the PISP asks Mojaloop to look up the payee party that their user wants to send to.
+
+- Request: `GET /parties/{Type}/{ID}`
+- Async Callback: `PUT /parties/{Type}/{ID}`
+
 ```bash
 curl -X GET http://localhost:15000/parties/MSISDN/12345 \
   -H 'Accept: application/vnd.interoperability.parties+json;version=1.0' \
@@ -164,7 +169,13 @@ sed eiusmod sunt - - [15/Jan/2021:10:34:20 +0000] "PUT /parties/MSISDN/12345 HTT
 ```
 
 ### 5.2 `POST /thirdpartyRequests/transactions`
-![](./pisp_txreq.png)
+
+In this step, the PISP asks the DFSP to get a quote that it can 
+1. Display to their user
+2. Get the user to sign using a private key residing on their device
+
+- Request: `POST /thirdpartyRequests/transactions`
+- Async Callback: `POST /authorizations`
 
 ```bash
 curl -X POST http://localhost:15000/thirdpartyRequests/transactions \
@@ -287,6 +298,7 @@ You can see that the DFSP has issues the `POST /authorizations` to the PISP cont
 ### 5.3 `PUT/authorizations/{ID}`
 ![](./pisp_put_auth.png) -->
 
+**WARNING - this section is under develompent, and is being fixed as you read this**
 
 ```bash
 curl -X PUT http://localhost:15000/authorizations/999 \
@@ -295,10 +307,6 @@ curl -X PUT http://localhost:15000/authorizations/999 \
   -H 'Date: Mon, 11 Jan 2021 00:00:00 GMT' \
   -H 'FSPIOP-Source: pispa' \
   -H 'FSPIOP-Destination: dfspa' \
-  -d '{
-    "responseType": "ENTERED",
-  }'
-
   -d '{
         "authenticationInfo": {
           "authentication": "U2F",
