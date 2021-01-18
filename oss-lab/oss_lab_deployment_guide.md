@@ -371,18 +371,22 @@ helm upgrade --install --namespace ml-app ppmm-ttk mojaloop/ml-testing-toolkit -
 ```
 
 
-
-## TODO:
-- [ ] API key setup for each DFSP
-- [ ] proper https
-- [ ] talk to Ed and Istvan about hooking up to our environment 
-- [ ] placeholder demo pages
-- [ ] better homepage
-- [ ] start P2P guide (from DFSP perspective)
-  Here's a great example of a good developer guide: https://uat-isac.happay.in/v2/docs
+## 9. Let's get some basic stats to share about the lab's usage
 
 
+- Account Lookups: (`GET /parties`) - 130
+- Parties Registered: (`POST /participants`) - 100
+- Quotes Requested (`POST /quotes`) - 65
+- Transfers Requested (`POST /transfers`) - 48
+- DFSPs registered - 9 
 
+```bash
+
+
+
+
+
+```
 
 ## TODO 
 - [x] change name prefix to something more readable
