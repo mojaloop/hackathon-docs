@@ -1,5 +1,10 @@
 # OSS Lab Deployment Guide
 
+> Note:
+> This file ended up being a scratch pad for the OSS-Lab deployment process
+> While it may be good as a reference, expect a lot here to fail
+> until @lewisdaly gets around to cleaning it up and turning it into 
+> a better user guide
 
 ## 1. Spin up the kubernetes cluster
 
