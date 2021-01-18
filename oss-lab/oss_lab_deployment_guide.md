@@ -347,6 +347,10 @@ cd /home/lew/developer/mojaloop/helm
 ./package.sh
 helm upgrade --install mojaloop ./mojaloop -f /home/lew/developer/mojaloop/hackathon-docs/oss-lab/config/values-dev2-mojaloop-harness.yaml --wait --timeout 15m
 
+
+#patching:
+kubectl set env deployment mojaloop-centralledger-handler-transfer-prepare CSL_ENABLE_ON_US_TRANSFERS="true"
+
 ```
 
 ## 8. Try and get a better test platform with the TTK
