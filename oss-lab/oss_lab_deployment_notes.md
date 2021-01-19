@@ -383,7 +383,7 @@ helm upgrade --install --namespace ml-app ppmm-ttk mojaloop/ml-testing-toolkit -
 - Parties Registered: (`POST /participants`) - 100
 - Quotes Requested (`POST /quotes`) - 65
 - Transfers Requested (`POST /transfers`) - 48
-- DFSPs registered - 9 
+- DFSPs registered by users - 9 
 
 ```bash
 
