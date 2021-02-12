@@ -19,7 +19,6 @@ global:
 # Declare variables to be passed into your templates.
 
 central:
-
   centralledger:
     enabled: true
     nameOverride: centralledger
@@ -131,7 +130,7 @@ central:
               externalPort: 3001
 
       ingress:
-        enabled: true
+        enabled: false
         type: http
         externalPath:
           api: /
@@ -272,7 +271,7 @@ central:
               externalPort: 3001
 
       ingress:
-        enabled: true
+        enabled: false
         type: http
         externalPath:
           api: /
@@ -411,7 +410,7 @@ central:
               externalPort: 3001
 
       ingress:
-        enabled: true
+        enabled: false
         type: http
         externalPath:
           api: /
@@ -689,7 +688,7 @@ central:
               externalPort: 3001
 
       ingress:
-        enabled: true
+        enabled: false
         type: http
         externalPath:
           api: /
@@ -967,7 +966,7 @@ central:
               externalPort: 3001
 
       ingress:
-        enabled: true
+        enabled: false
         type: http
         externalPath:
           api: /
@@ -1514,7 +1513,7 @@ central:
             externalPort: 3007
 
     ingress:
-      enabled: true
+      enabled: false
       externalPath: /
       # Used to create an Ingress record.
       hosts:
@@ -1604,7 +1603,7 @@ central:
       periodSeconds: 15
 
     ingress:
-      enabled: true
+      enabled: false
       # Used to create an Ingress record.
       hosts:
         api: central-event-processor.local
@@ -2000,7 +1999,7 @@ ml-api-adapter:
       internalPort: 3000
 
     ingress:
-      enabled: true
+      enabled: false
       externalPath: /
       # Used to create an Ingress record.
       hosts:
@@ -2124,7 +2123,7 @@ ml-api-adapter:
       internalPort: 3000
 
     ingress:
-      enabled: true
+      enabled: false
       externalPath: /
       # Used to create an Ingress record.
       hosts:
@@ -2225,7 +2224,7 @@ emailnotifier:
     periodSeconds: 15
 
   ingress:
-    enabled: true
+    enabled: false
     # Used to create an Ingress record.
     hosts:
       api: email-notifier.local
@@ -2381,7 +2380,7 @@ account-lookup-service:
       port: 80
 
     ingress:
-      enabled: true
+      enabled: false
       annotations: {}
         # kubernetes.io/ingress.class: nginx
         # kubernetes.io/tls-acme: "true"
@@ -2503,7 +2502,7 @@ account-lookup-service:
       port: 80
 
     ingress:
-      enabled: true
+      enabled: false
       annotations: {}
         # kubernetes.io/ingress.class: nginx
         # kubernetes.io/tls-acme: "true"
@@ -2719,7 +2718,7 @@ account-lookup-service:
             externalPort: 3000
 
     ingress:
-      enabled: true
+      enabled: false
       externalPath: /
       # Used to create an Ingress record.
       hosts:
@@ -2975,7 +2974,7 @@ quoting-service:
           externalPort: 3002
 
   ingress:
-    enabled: true
+    enabled: false
     externalPath: /
     # Used to create an Ingress record.
     hosts:
@@ -3065,7 +3064,7 @@ transaction-requests-service:
           externalPort: 4001
 
   ingress:
-    enabled: true
+    enabled: false
     externalPath: /
     # Used to create an Ingress record.
     hosts:
@@ -3152,7 +3151,7 @@ simulator:
     periodSeconds: 15
 
   ingress:
-    enabled: true
+    enabled: false
     annotations: {
       "nginx.ingress.kubernetes.io/rewrite-target": "/"
     }
@@ -3693,7 +3692,7 @@ mojaloop-simulator:
       failureThreshold: 3
 
   ingress:
-    enabled: true
+    enabled: false
     ingressPathRewriteRegex: "/"
     annotations: {
       "nginx.ingress.kubernetes.io/rewrite-target": "/",
@@ -3782,7 +3781,7 @@ mojaloop-simulator:
           # ALS_ENDPOINT: dev2-account-lookup.mojaloop.live
           # QUOTES_ENDPOINT: dev2-quoting-service.mojaloop.live
           # TRANSFERS_ENDPOINT: dev2-ml-api-adapter.mojaloop.live
-          # BULK_TRANSFERS_ENDPOINT: dev2-bulk-api-adapter.mojaloop.live
+          # BULK_TRANSFERS_ENDPOINT: dev2-api-adapter.mojaloop.live
           # BULK_QUOTES_ENDPOINT: dev2-quoting-service.mojaloop.live
           # TRANSACTION_REQUESTS_ENDPOINT: dev2-transaction-requests-service.mojaloop.live
 
@@ -3954,12 +3953,12 @@ mojaloop-simulator:
     affinity: {}
 
 mojaloop-bulk:
-  enabled: true
+  enabled: false
 
   bulk-api-adapter:
 
     bulk-api-adapter-service:
-      enabled: true
+      enabled: false
       # Default values for bulk-api-adapter.
       # This is a YAML-formatted file.
       # Declare variables to be passed into your templates.
@@ -4041,7 +4040,7 @@ mojaloop-bulk:
         internalPort: 8088
 
       ingress:
-        enabled: true
+        enabled: false
         externalPath: /
         # Used to create an Ingress record.
         hosts:
@@ -4069,7 +4068,7 @@ mojaloop-bulk:
         #  memory: 128Mi
 
     bulk-api-adapter-handler-notification:
-      enabled: true
+      enabled: false
       # Default values for bulk-api-adapter-handler-notification.
       # This is a YAML-formatted file.
       # Declare variables to be passed into your templates.
@@ -4181,7 +4180,7 @@ mojaloop-bulk:
   bulk-centralledger:
 
     cl-handler-bulk-transfer-prepare:
-      enabled: true
+      enabled: false
       # Default values for centralledger-handler-bulk-transfer-prepare.
       # This is a YAML-formatted file.
       # Declare variables to be passed into your templates.
@@ -4313,7 +4312,7 @@ mojaloop-bulk:
               externalPort: 3001
 
       ingress:
-        enabled: true
+        enabled: false
         type: http
         externalPath:
           api: /
@@ -4342,7 +4341,7 @@ mojaloop-bulk:
         #  memory: 128Mi
 
     cl-handler-bulk-transfer-fulfil:
-      enabled: true
+      enabled: false
       # Default values for centralledger-handler-bulk-transfer-fulfil.
       # This is a YAML-formatted file.
       # Declare variables to be passed into your templates.
@@ -4503,7 +4502,7 @@ mojaloop-bulk:
         #  memory: 128Mi
 
     cl-handler-bulk-transfer-processing:
-      enabled: true
+      enabled: false
       # Default values for centralledger-handler-bulk-transfer-processing.
       # This is a YAML-formatted file.
       # Declare variables to be passed into your templates.
@@ -4937,7 +4936,7 @@ mojaloop-bulk:
     additionalLabels: {}
 
 finance-portal:
-  enabled: true
+  enabled: false
   service:
     type: ClusterIP
 
@@ -5045,7 +5044,7 @@ finance-portal:
     #   pullPolicy: Always
     #   port: 80
     ingress:
-      enabled: true
+      enabled: false
       externalPath: /
       hosts: 
         api: dev2-finance-portal.mojaloop.live
@@ -5084,7 +5083,7 @@ finance-portal:
         # nginx.ingress.kubernetes.io/rewrite-target: /$1
 
 finance-portal-settlement-management:
-  enabled: true
+  enabled: false
   # This is a YAML-formatted file.
   # Declare variables to be passed into your templates.
   # Default values shared by all containers
@@ -5190,7 +5189,7 @@ ml-testing-toolkit:
   ml-testing-toolkit-backend:
     enabled: true
     ingress:
-      enabled: true
+      enabled: false
       hosts:
         dev2-testing-toolkit-specapi.mojaloop.live:
           port: 5000
@@ -5229,7 +5228,7 @@ ml-testing-toolkit:
   ml-testing-toolkit-frontend:
     enabled: true
     ingress:
-      enabled: true
+      enabled: false
       hosts:
         dev2-testing-toolkit.mojaloop.live:
           port: 6060
