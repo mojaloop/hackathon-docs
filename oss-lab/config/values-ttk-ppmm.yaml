@@ -46,7 +46,7 @@ connection-manager-backend:
     version: 1.6.5
   ingress:
     annotations: {}
-    enabled: true
+    enabled: false
     hosts:
       connection-manager.local:
         paths:
@@ -73,7 +73,7 @@ connection-manager-frontend:
     version: 1.6.9
   ingress:
     annotations: {}
-    enabled: true
+    enabled: false
     hosts:
       connection-manager.local:
         paths:
@@ -158,7 +158,7 @@ keycloak:
   imagePullSecrets: []
   ingress:
     annotations: {}
-    enabled: true
+    enabled: false
     labels: {}
     rules:
     - host: testing-toolkit-keycloak.local
@@ -441,7 +441,7 @@ ml-testing-toolkit-backend:
     tag: v11.5.0
   ingress:
     annotations: {}
-    enabled: true
+    enabled: false
     hosts:
       testing-toolkit-specapi.local:
         paths:
@@ -498,7 +498,7 @@ ml-testing-toolkit-frontend:
     tag: v11.5.0
   ingress:
     annotations: {}
-    enabled: true
+    enabled: false
     hosts:
       testing-toolkit.local:
         paths:

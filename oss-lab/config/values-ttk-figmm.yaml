@@ -441,7 +441,7 @@ ml-testing-toolkit-backend:
     tag: v11.5.0
   ingress:
     annotations: {}
-    enabled: true
+    enabled: false
     hosts:
       testing-toolkit-specapi.local:
         paths:
@@ -498,7 +498,7 @@ ml-testing-toolkit-frontend:
     tag: v11.5.0
   ingress:
     annotations: {}
-    enabled: true
+    enabled: false
     hosts:
       testing-toolkit.local:
         paths:

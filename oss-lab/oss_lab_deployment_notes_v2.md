@@ -147,19 +147,18 @@ curl payeefsp-backend.beta.moja-lab.live/repository/parties
 ### 3.3 Set up TTKs
 
 ```bash
-#2 ttk instances?
+# 2 ttk instances?
 helm upgrade --install --namespace ml-app figmm-ttk mojaloop/ml-testing-toolkit --values ./config/values-ttk-figmm.yaml
 helm upgrade --install --namespace ml-app eggmm-ttk mojaloop/ml-testing-toolkit --values ./config/values-ttk-eggmm.yaml
-                  
-
-helm upgrade --install --namespace ml-app ppmm-ttk mojaloop/ml-testing-toolkit --values ./config/values-ttk-ppmm.yaml
 ```
 
 ### 4.4 Seed Environment!
 
 
 ```bash
-#TODO: wait for k8s upgrade
+# TODO: wait for k8s upgrade
+# ml-bootstrap time!
+# Maybe just use the legacy for now
 ```
 
 
