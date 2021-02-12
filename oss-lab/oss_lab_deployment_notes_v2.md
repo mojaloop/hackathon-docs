@@ -136,8 +136,10 @@ docker push lewisdaly/dev-portal:latest
 kubectl apply -f ./config/dev-portal.yaml
 ```
 
-### 3.2 expose simulators
+### 3.2 Deploy Simulators
 ```bash
+helm upgrade --install --namespace ml-app simulators mojaloop/mojaloop-simulator --values ./config/values-oss-lab-simulators.yaml
+
 kubectl apply -f ./charts/ingress_simulators.yaml
 
 curl payeefsp-backend.beta.moja-lab.live/repository/parties
@@ -152,13 +154,19 @@ helm upgrade --install --namespace ml-app figmm-ttk mojaloop/ml-testing-toolkit 
 helm upgrade --install --namespace ml-app eggmm-ttk mojaloop/ml-testing-toolkit --values ./config/values-ttk-eggmm.yaml
 ```
 
-### 4.4 Seed Environment!
-
+### 3.4 Seed Environment!
 
 ```bash
 # TODO: wait for k8s upgrade
 # ml-bootstrap time!
 # Maybe just use the legacy for now
+
+export ELB_URL=beta.moja-lab.live/api/admin
+export FSPIOP_URL=beta.moja-lab.live/api/fspiop  
+
+cd ../ml-bootstrap
+npm run reseed:docker-live
+
 ```
 
 
