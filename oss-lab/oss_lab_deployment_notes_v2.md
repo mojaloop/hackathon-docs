@@ -166,15 +166,35 @@ export FSPIOP_URL=beta.moja-lab.live/api/fspiop
 
 cd ../ml-bootstrap
 npm run reseed:docker-live
-
 ```
-
-
-
 
 
 ## Known Issues:
 
+### settlement account ids are hardcoded:
+
+When running ml-boostrap, if you see:
+```
+  - step: create settlement account
+executeRequest failed with status: 500
+{
+  errorInformation: {
+    errorCode: '2001',
+    errorDescription: 'Internal server error - The account does not match participant or currency specified'
+  }
+}
+```
+
+You need to get the settlement account ids, and put them into the config file:
+
+```bash
+curl -s $ELB_URL/central-ledger/participants | jq
+
+# look for the id of `HUB_MULTILATERAL_SETTLEMENT` and edit the config file
+
+# then run again
+npm run reseed:docker-live 
+```
 ### No https support
 
 https://aws.amazon.com/premiumsupport/knowledge-center/terminate-https-traffic-eks-acm/

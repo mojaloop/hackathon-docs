@@ -79,7 +79,7 @@ const config: GlobalConfig = {
       type: ParticipantType.DFSP,
       // TODO: this is a hack for now, but we actually need to query the admin-api
       // to get this value before setting it :(
-      settlementAccountId: '28',
+      settlementAccountId: '4',
       // Not sure if this will work...
       simulatorAdminUrl: `http://figmm-backend.beta.moja-lab.live`,
       fspiopCallbackUrl: `http://figmm-ttk-backend-fspiop.beta.moja-lab.live`,
@@ -92,7 +92,7 @@ const config: GlobalConfig = {
       type: ParticipantType.DFSP,
       // TODO: this is a hack for now, but we actually need to query the admin-api
       // to get this value before setting it :(
-      settlementAccountId: '34',
+      settlementAccountId: '6',
       // Not sure if this will work...
       simulatorAdminUrl: `http://eggmm-backend.beta.moja-lab.live`,
       fspiopCallbackUrl: `http://eggmm-ttk-backend-fspiop.beta.moja-lab.live`,
@@ -105,9 +105,9 @@ const config: GlobalConfig = {
       type: ParticipantType.DFSP,
       // TODO: this is a hack for now, but we actually need to query the admin-api
       // to get this value before setting it :(
-      settlementAccountId: '18',
+      settlementAccountId: '8',
       simulatorAdminUrl: `http://applebank-backend.beta.moja-lab.live`,
-      fspiopCallbackUrl: `http://mojaloop-sim-applebank-scheme-adapter:4000`,
+      fspiopCallbackUrl: `http://simulators-sim-applebank-scheme-adapter:4000`,
       thirdpartyCallbackUrl: `n/a`,
       parties: [
         {
@@ -135,10 +135,10 @@ const config: GlobalConfig = {
       type: ParticipantType.DFSP,
       // TODO: this is a hack for now, but we actually need to query the admin-api
       // to get this value before setting it :(
-      settlementAccountId: '20',
+      settlementAccountId: '10',
       // For our demo, Participants are on the same deployment as switch
       simulatorAdminUrl: `http://bananabank-backend.beta.moja-lab.live`,
-      fspiopCallbackUrl: `http://mojaloop-sim-bananabank-scheme-adapter:4000`,
+      fspiopCallbackUrl: `http://simulators-sim-bananabank-scheme-adapter:4000`,
       thirdpartyCallbackUrl: `n/a`,
       parties: [
         {
@@ -166,10 +166,10 @@ const config: GlobalConfig = {
       type: ParticipantType.DFSP,
       // TODO: this is a hack for now, but we actually need to query the admin-api
       // to get this value before setting it :(
-      settlementAccountId: '22',
+      settlementAccountId: '12',
       // For our demo, Participants are on the same deployment as switch
       simulatorAdminUrl: `http://carrotmm-backend.beta.moja-lab.live`,
-      fspiopCallbackUrl: `http://mojaloop-sim-carrotmm-scheme-adapter:4000`,
+      fspiopCallbackUrl: `http://simulators-sim-carrotmm-scheme-adapter:4000`,
       thirdpartyCallbackUrl: `n/a`,
       parties: [
         {
@@ -197,10 +197,10 @@ const config: GlobalConfig = {
       type: ParticipantType.DFSP,
       // TODO: this is a hack for now, but we actually need to query the admin-api
       // to get this value before setting it :(
-      settlementAccountId: '24',
+      settlementAccountId: '14',
       // For our demo, Participants are on the same deployment as switch
       simulatorAdminUrl: `http://duriantech-backend.beta.moja-lab.live`,
-      fspiopCallbackUrl: `http://mojaloop-sim-duriantech-scheme-adapter:4000`,
+      fspiopCallbackUrl: `http://simulators-sim-duriantech-scheme-adapter:4000`,
       thirdpartyCallbackUrl: `n/a`,
       parties: [
         {

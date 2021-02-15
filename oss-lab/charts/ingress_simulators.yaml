@@ -26,70 +26,70 @@ spec:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-payeefsp-backend
+              serviceName: simulators-sim-payeefsp-backend
               servicePort: 3003
     - host: payerfsp-backend.beta.moja-lab.live
       http:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-payerfsp-backend
+              serviceName: simulators-sim-payerfsp-backend
               servicePort: 3003
     - host: testfsp1-backend.beta.moja-lab.live
       http:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-testfsp1-backend
+              serviceName: simulators-sim-testfsp1-backend
               servicePort: 3003
     - host: testfsp2-backend.beta.moja-lab.live
       http:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-testfsp2-backend
+              serviceName: simulators-sim-testfsp2-backend
               servicePort: 3003    
     - host: testfsp3-backend.beta.moja-lab.live
       http:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-testfsp3-backend
+              serviceName: simulators-sim-testfsp3-backend
               servicePort: 3003
     - host: testfsp4-backend.beta.moja-lab.live
       http:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-testfsp4-backend
+              serviceName: simulators-sim-testfsp4-backend
               servicePort: 3003
     - host: applebank-backend.beta.moja-lab.live
       http:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-applebank-backend
+              serviceName: simulators-sim-applebank-backend
               servicePort: 3003
     - host: bananabank-backend.beta.moja-lab.live
       http:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-bananabank-backend
+              serviceName: simulators-sim-bananabank-backend
               servicePort: 3003
     - host: carrotmm-backend.beta.moja-lab.live
       http:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-carrotmm-backend
+              serviceName: simulators-sim-carrotmm-backend
               servicePort: 3003
     - host: duriantech-backend.beta.moja-lab.live
       http:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-duriantech-backend
+              serviceName: simulators-sim-duriantech-backend
               servicePort: 3003
     
 
@@ -99,14 +99,14 @@ spec:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-payeefsp-scheme-adapter
+              serviceName: simulators-sim-payeefsp-scheme-adapter
               servicePort: 4000
     - host: payeefsp-sdk-scheme-adapter-outbound.beta.moja-lab.live
       http:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-payeefsp-scheme-adapter
+              serviceName: simulators-sim-payeefsp-scheme-adapter
               servicePort: 4001
 
     - host: payerfsp-sdk-scheme-adapter-inbound.beta.moja-lab.live
@@ -114,14 +114,14 @@ spec:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-payerfsp-scheme-adapter
+              serviceName: simulators-sim-payerfsp-scheme-adapter
               servicePort: 4000
     - host: payerfsp-sdk-scheme-adapter-outbound.beta.moja-lab.live
       http:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-payerfsp-scheme-adapter
+              serviceName: simulators-sim-payerfsp-scheme-adapter
               servicePort: 4001
     
     - host: testfsp1-sdk-scheme-adapter-inbound.beta.moja-lab.live
@@ -129,42 +129,42 @@ spec:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-testfsp1-scheme-adapter
+              serviceName: simulators-sim-testfsp1-scheme-adapter
               servicePort: 4000
     - host: testfsp1-sdk-scheme-adapter-outbound.beta.moja-lab.live
       http:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-testfsp1-scheme-adapter
+              serviceName: simulators-sim-testfsp1-scheme-adapter
               servicePort: 4001
     - host: testfsp2-sdk-scheme-adapter-inbound.beta.moja-lab.live
       http:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-testfsp2-scheme-adapter
+              serviceName: simulators-sim-testfsp2-scheme-adapter
               servicePort: 4000
     - host: testfsp2-sdk-scheme-adapter-outbound.beta.moja-lab.live
       http:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-testfsp2-scheme-adapter
+              serviceName: simulators-sim-testfsp2-scheme-adapter
               servicePort: 4001
     - host: testfsp3-sdk-scheme-adapter-inbound.beta.moja-lab.live
       http:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-testfsp3-scheme-adapter
+              serviceName: simulators-sim-testfsp3-scheme-adapter
               servicePort: 4000
     - host: testfsp3-sdk-scheme-adapter-outbound.beta.moja-lab.live
       http:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-testfsp3-scheme-adapter
+              serviceName: simulators-sim-testfsp3-scheme-adapter
               servicePort: 4001
 
     - host: testfsp4-sdk-scheme-adapter-inbound.beta.moja-lab.live
@@ -172,14 +172,14 @@ spec:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-testfsp4-scheme-adapter
+              serviceName: simulators-sim-testfsp4-scheme-adapter
               servicePort: 4000
     - host: testfsp4-sdk-scheme-adapter-outbound.beta.moja-lab.live
       http:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-testfsp4-scheme-adapter
+              serviceName: simulators-sim-testfsp4-scheme-adapter
               servicePort: 4001
     
     - host: applebank-sdk-scheme-adapter-inbound.beta.moja-lab.live
@@ -187,14 +187,14 @@ spec:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-applebank-scheme-adapter
+              serviceName: simulators-sim-applebank-scheme-adapter
               servicePort: 4000
     - host: applebank-sdk-scheme-adapter-outbound.beta.moja-lab.live
       http:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-applebank-scheme-adapter
+              serviceName: simulators-sim-applebank-scheme-adapter
               servicePort: 4001
     
     - host: bananabank-sdk-scheme-adapter-inbound.beta.moja-lab.live
@@ -202,14 +202,14 @@ spec:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-bananabank-scheme-adapter
+              serviceName: simulators-sim-bananabank-scheme-adapter
               servicePort: 4000
     - host: bananabank-sdk-scheme-adapter-outbound.beta.moja-lab.live
       http:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-bananabank-scheme-adapter
+              serviceName: simulators-sim-bananabank-scheme-adapter
               servicePort: 4001
 
     - host: carrotmm-sdk-scheme-adapter-inbound.beta.moja-lab.live
@@ -217,14 +217,14 @@ spec:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-carrotmm-scheme-adapter
+              serviceName: simulators-sim-carrotmm-scheme-adapter
               servicePort: 4000
     - host: carrotmm-sdk-scheme-adapter-outbound.beta.moja-lab.live
       http:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-carrotmm-scheme-adapter
+              serviceName: simulators-sim-carrotmm-scheme-adapter
               servicePort: 4001
 
     - host: duriantech-sdk-scheme-adapter-inbound.beta.moja-lab.live
@@ -232,12 +232,12 @@ spec:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-duriantech-scheme-adapter
+              serviceName: simulators-sim-duriantech-scheme-adapter
               servicePort: 4000
     - host: duriantech-sdk-scheme-adapter-outbound.beta.moja-lab.live
       http:
         paths:
           - path: /(.*)
             backend:
-              serviceName: mojaloop-sim-duriantech-scheme-adapter
+              serviceName: simulators-sim-duriantech-scheme-adapter
               servicePort: 4001
