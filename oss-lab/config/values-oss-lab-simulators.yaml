@@ -198,3 +198,9 @@ simulators:
               wQIDAQAB
               -----END PUBLIC KEY-----
   
+defaults:
+  config:
+    schemeAdapter:
+      env:
+        VALIDATE_INBOUND_JWS: false
+        JWS_SIGN: true
