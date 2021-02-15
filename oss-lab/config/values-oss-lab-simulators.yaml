@@ -204,3 +204,6 @@ defaults:
       env:
         VALIDATE_INBOUND_JWS: false
         JWS_SIGN: true
+        PEER_ENDPOINT: beta.moja-lab.live/api/fspiop
+        ILP_SECRET: Quaixohyaesahju3thivuiChai5cahng
+        # CHECK_ILP: false
