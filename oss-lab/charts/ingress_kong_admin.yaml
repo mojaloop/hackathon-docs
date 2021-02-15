@@ -71,6 +71,10 @@ spec:
             backend:
               serviceName: mojaloop-ml-api-adapter-service
               servicePort: 80
+          - path: /api/admin/oracle-simulator/(.*)
+            backend:
+              serviceName: mojaloop-simulator
+              servicePort: 80
           # todo: this isn't currently working
           # - path: /api/admin/dashboard/(.*)
           - path: /admin/dashboard
