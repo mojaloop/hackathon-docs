@@ -37,7 +37,6 @@ And the current users are registered and available for lookup in the Account Loo
 
 | dfspId | Id Type | Id Value | Display Name |
 | --- | --- | --- | --- |
-| `payeefsp`   | `MSISDN` | `27713803912` | Test |
 | `applebank`  | `MSISDN` | `123456789`   | Alice Alpaca |
 | `applebank`  | `MSISDN` | `11194979`    | Alex Alligator |
 | `bananabank` | `MSISDN` | `218493479`   | Bob Bobbish |

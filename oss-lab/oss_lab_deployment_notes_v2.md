@@ -60,7 +60,7 @@ helm repo add bitnami https://charts.bitnami.com/bitnami
 kubectl create namespace ml-app
 # no postman tests... hope this still works
 # we can use ml-boostrap to set up the environment
-helm upgrade --install --namespace ml-app mojaloop mojaloop/mojaloop
+helm upgrade --install --namespace ml-app mojaloop mojaloop/mojaloop -f ./config/values-oss-lab-v2.yaml
 # TODO: fix values... remove ingress
 # helm upgrade --install --namespace ml-app mojaloop mojaloop/mojaloop -f ./config/values-oss-lab.yaml --wait --timeout 15m
 

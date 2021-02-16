@@ -63,4 +63,8 @@ http://beta.moja-lab.live/api/admin/account-lookup-service-admin
 
 
 ## TODOs
-- write todo list
+- [ ] persistent databases
+- [ ] update guides to remove testfsp
+- [ ] auto configure resetting once a week
+- [ ] rancher auto replace
+- [ ] 
