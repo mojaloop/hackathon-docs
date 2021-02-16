@@ -61,6 +61,34 @@ Mojaloop has a variety of APIs you can interact with:
 | [Thirdparty-DFSP](/2-apis/thirdparty-dfsp)  | `v0.1` | DFSPs             | (Coming Soon) |
 | [Thirdparty-PISP](/2-apis/thirdparty-pisp)  | `v0.1` | PISPs             | (Coming Soon) | 
 
+### Use Cases
+
+#### Available
+- P2P
+- SEPA Transaction (Cross Network, Outside ML -> ML)
+- UK Open Banking - (P2P, PISP PSD2 approach)
+- Refunds (DFSP initiated from Payee)
+
+#### Roadmap
+- PISP P2P
+- Request to Pay 
+- Merchant Payment Scenarios
+  - dynamic QR codes
+  - static QR codes
+- Bulk Transfers (G2P)
+- Cross Currency
+- Cross Network
+- AISP OTT 
+- Bill Payments
+- GSMA MM API
+- ATM
+- Reconciliation - failed transactions
+- Fraud Monitoring + Detection
+
+#### Hub Operator
+- Settlement
+- Liquidity management
+
 ## Tools:
 
 This sandbox includes the following tools:

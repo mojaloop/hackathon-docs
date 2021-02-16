@@ -67,4 +67,5 @@ http://beta.moja-lab.live/api/admin/account-lookup-service-admin
 - [ ] update guides to remove testfsp
 - [ ] auto configure resetting once a week
 - [ ] rancher auto replace
-- [ ] 
+- [ ] switch to proper ml-bootstrap
+- [ ] gitops? Or some other, better way to manage?
