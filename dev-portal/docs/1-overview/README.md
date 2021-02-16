@@ -84,6 +84,7 @@ Mojaloop has a variety of APIs you can interact with:
 - GSMA MM API
 - ATM
 - Reconciliation - failed transactions
+- Fraud Monitoring + Detection
 
 #### Hub Operator
 - Settlement
