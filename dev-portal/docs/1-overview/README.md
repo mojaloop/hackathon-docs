@@ -14,9 +14,10 @@ All services use the base url `http://beta.moja-lab.live`
 
 ![Lab Overview](./sandbox-overview.png)
 
-Out of the box, this environment includes the following simulated DFSPs:
+Out of the box, this environment includes the following simulated DFSPs.
 
-**DFSPs**
+These simulated DFSPs are able to send and recieve funds, and the Testing Toolkits are able to initiate transactions and monitor callbacks.
+### DFSPs
 - `applebank` 
 - `bananabank`
 - `carrotmm`
@@ -30,8 +31,8 @@ Out of the box, this environment includes the following simulated DFSPs:
 > [`http://beta.moja-lab.live/api/admin/central-ledger/participants`](http://beta.moja-lab.live/api/admin/central-ledger/participants)
 
 
-**Users**  
-And the current users are registered and available for lookup in the Account Lookup Service
+### Users
+And the current users (Parties in Mojaloop-speak) are registered and available for lookup in the Account Lookup Service
 
 | dfspId | Id Type | Id Value | Display Name |
 | --- | --- | --- | --- |
@@ -92,7 +93,7 @@ _The following is our roadmap for adding more use cases to the Mojaloop OSS Lab:
 - Settlement (Hub Operator)
 - Liquidity management (Hub Operator)
 
-## Tools:
+## Tools
 
 This sandbox includes the following tools:
 
@@ -122,6 +123,9 @@ This lab is soon to be connected with the MIFOS Payment Hub, which will demonstr
 
 **Check back soon for more information about the Mojaloop OSS Lab + MIFOS Payment Hub**
 
+
+<!-- I commented the below out, since the MB Lab was retired after the hackathon -->
+<!-- we should be able to add these back once the IAC is working... -->
 <!-- ### Payment Manager
 
 > Note: Payment Manager support in the sandbox is still in _beta_, and the dfsps here are not yet connected to the other DFSPs in the sandbox. We're working on it!
