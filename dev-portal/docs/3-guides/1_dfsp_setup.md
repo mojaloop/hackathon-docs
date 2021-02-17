@@ -88,7 +88,7 @@ Now that we have a server ready to listen to callbacks from the Mojaloop Switch,
 
 For this purpose we use the [Admin API](/2-apis/admin/), which is for Mojaloop Hub Operators and DFSPs. 
 
-In this example I will use a `DFSP_ID` of `applebank`, but you should replace this with a `DFSP_ID` of your choosing.
+In this example I will use a `DFSP_ID` of `lewbank`, but you should replace this with a `DFSP_ID` of your choosing.
 
 > **A note about security:**  
 > For the sake of this sandbox environment, we have not installed many of the security measures required for a production-grade deployment.
@@ -99,7 +99,7 @@ In this example I will use a `DFSP_ID` of `applebank`, but you should replace th
 # create a new participant with a currency of USD
 curl -X POST http://beta.moja-lab.live/api/admin/central-ledger/participants \
     -H 'Content-Type: application/json' \
-    -d '{"name":"applebank", "currency":"USD"}'
+    -d '{"name":"lewbank", "currency":"USD"}'
 ```
 
 ## 4. Fund the DFSP's accounts 
@@ -108,7 +108,7 @@ Now that our DFSP has been created, we need to set up its internal accounts.
 
 ```bash
 # Set the initial position, and net debit cap
-curl -X POST http://beta.moja-lab.live/api/admin/central-ledger/participants/applebank/initialPositionAndLimits \
+curl -X POST http://beta.moja-lab.live/api/admin/central-ledger/participants/lewbank/initialPositionAndLimits \
     -H 'Content-Type: application/json' \
     -d '{"currency":"USD", "limit": {"type":"NET_DEBIT_CAP", "value": 10000}, "initialPosition": 0}'
 ```
@@ -116,16 +116,16 @@ curl -X POST http://beta.moja-lab.live/api/admin/central-ledger/participants/app
 We can then get the `settlementAccountId` 
 
 ```bash
-curl -H 'Content-Type: application/json' http://beta.moja-lab.live/api/admin/central-ledger/participants/applebank | jq
+curl -H 'Content-Type: application/json' http://beta.moja-lab.live/api/admin/central-ledger/participants/lewbank | jq
 
 # output:
 # {
-#   "name": "applebank",
-#   "id": "dev2-central-ledger.mojaloop.live/participants/applebank",
+#   "name": "lewbank",
+#   "id": "dev2-central-ledger.mojaloop.live/participants/lewbank",
 #   "created": "\"2021-01-08T05:59:57.000Z\"",
 #   "isActive": 1,
 #   "links": {
-#     "self": "dev2-central-ledger.mojaloop.live/participants/applebank"
+#     "self": "dev2-central-ledger.mojaloop.live/participants/lewbank"
 #   },
 #   "accounts": [
 #     {
@@ -153,7 +153,7 @@ Check the output for the ledgerAccountType, and get the associated id. In my cas
 Using the `settlementAccountId`, add some funds to the account:
 > Note: you can make up your own transferId, just make sure it follows the same format!
 ```bash
-curl -X POST http://beta.moja-lab.live/api/admin/central-ledger/participants/applebank/accounts/18 \
+curl -X POST http://beta.moja-lab.live/api/admin/central-ledger/participants/lewbank/accounts/18 \
     -H 'Content-Type: application/json' \
     -d '{
           "transferId": "387ee6b9-520d-4c51-a9e4-6eb2ef15887d",
@@ -173,7 +173,7 @@ In order to recieve callbacks from the switch, we need to register our endpoints
 
 
 ```bash
-DFSP_ID=applebank # your DFSP_ID you selected earlier
+DFSP_ID=lewbank # your DFSP_ID you selected earlier
 MOCK_SERVER_URL=https://thin-mole-36.loca.lt # or whatever your localtunnel prints out
 ENDPOINTS_URL=http://beta.moja-lab.live/api/admin/central-ledger/participants/${DFSP_ID}/endpoints
 
@@ -241,7 +241,7 @@ curl -X POST \
 Once you have registered all of the above endpoints, you can confirm that all of your endpoints were registered sucessfully: 
 
 ```bash
-curl -H 'Content-Type: application/json' http://beta.moja-lab.live/api/admin/central-ledger/participants/applebank/endpoints | jq
+curl -H 'Content-Type: application/json' http://beta.moja-lab.live/api/admin/central-ledger/participants/lewbank/endpoints | jq
 ```
 
 ## 6. Perform a Party Lookup and Check the Docker Logs:
@@ -254,7 +254,7 @@ You can look up any of the pre-registered parties in [this list of users](/1-ove
 curl -v beta.moja-lab.live/api/fspiop/parties/MSISDN/4448483173 \
   -H 'Accept: application/vnd.interoperability.parties+json;version=1' \
   -H 'Content-Type: application/vnd.interoperability.parties+json;version=1.0' \
-  -H 'FSPIOP-Source: applebank' \
+  -H 'FSPIOP-Source: lewbank' \
   -H 'Date: 2021-01-01'
 ```
 
@@ -263,7 +263,7 @@ The synchonous response to our HTTP request should be `202 Accepted`. This means
 $ curl -v beta.moja-lab.live/api/fspiop/parties/MSISDN/4448483173 \
   -H 'Accept: application/vnd.interoperability.parties+json;version=1' \
   -H 'Content-Type: application/vnd.interoperability.parties+json;version=1.0' \
-  -H 'FSPIOP-Source: applebank' \
+  -H 'FSPIOP-Source: lewbank' \
   -H 'Date: 2021-01-01'
 *   Trying 3.11.229.205:80...
 * Connected to beta.moja-lab.live (3.11.229.205) port 80 (#0)
@@ -272,7 +272,7 @@ $ curl -v beta.moja-lab.live/api/fspiop/parties/MSISDN/4448483173 \
 > User-Agent: curl/7.74.0
 > Accept: application/vnd.interoperability.parties+json;version=1
 > Content-Type: application/vnd.interoperability.parties+json;version=1.0
-> FSPIOP-Source: applebank
+> FSPIOP-Source: lewbank
 > Date: 2021-01-01
 > 
 * Mark bundle as not supporting multiuse
@@ -300,7 +300,7 @@ And when we check the logs in the mock server docker container, we should see so
         "fspiop-signature": "{\"signature\":\"XNjqPHPwVCFbjuUpndN4-udYBF-gY1Rmwau3QfFTZW-rIbHeMV6NIwdoTmR86X2IZOCd14Gu3SRBuo_k80A3heiMiOL5OIx-VKD4gnLYSog4W3xMLbWoN7kdNQb_K7Y2949uBEDYk2kR8q-k4IdlMO28WyIIwHxRRmb0bsyBuH2Tq5scH4nprorHx25_r41CBBr6u7GbSw5qmxFXEonE3wMmGsyxmNgEVDASnm9VISjAD4CyJ-VT-ZUEWp6ytJWpaNNRlAJL3CUvuB4LXyhiw0Zm_ozy8R70CyHNNlOjvw4qKgiB-O0UYBW7k6EXEmf0TTN1WaUJqktfVNuoEF0SFQ\",\"protectedHeader\":\"eyJhbGciOiJSUzI1NiIsIkZTUElPUC1VUkkiOiIvcGFydGllcy9NU0lTRE4vNDQ0ODQ4MzE3MyIsIkZTUElPUC1IVFRQLU1ldGhvZCI6IlBVVCIsIkZTUElPUC1Tb3VyY2UiOiJkdXJpYW50ZWNoIiwiRlNQSU9QLURlc3RpbmF0aW9uIjoibGV3YmFuayIsIkRhdGUiOiJXZWQsIDE3IEZlYiAyMDIxIDAzOjEwOjU2IEdNVCJ9\"}",
         "fspiop-uri": "/parties/MSISDN/4448483173",
         "fspiop-http-method": "PUT",
-        "fspiop-destination": "applebank",
+        "fspiop-destination": "lewbank",
         "fspiop-source": "duriantech",
         "date": "Wed, 17 Feb 2021 03:10:56 GMT",
         "x-forwarded-path": "/api/fspiop/parties/MSISDN/4448483173",
@@ -338,8 +338,11 @@ And when we check the logs in the mock server docker container, we should see so
 
 ```
 
-So we can see that we are getting callbacks from the Mojaloop switch! When we inspect the `body` field of the request, we can indeed see `Draco Dragon`.
+So we can see that we are getting callbacks from the Mojaloop switch! 
 
+When we inspect the `body` field of the request, we can indeed see 
+- `Draco Dragon` is the name of the party
+- The Callback came from a `FSPIOP-Source` of `duriantech`
 
 ## 7. Next Steps
 

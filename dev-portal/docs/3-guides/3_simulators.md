@@ -8,7 +8,7 @@ This sandbox deploys simulators which allow you to:
 2. Send from one Party to another in a simple interface
 ## 1. Set up the Simulator UI(s)
 
-1. Navigate to the Simulator UI page at http://simulator-ui.beta.moja-lab.live
+1. Navigate to the Simulator UI page at [simulator-ui.beta.moja-lab.live](http://simulator-ui.beta.moja-lab.live)
 2. Select "Settings" in the left bar
 
 ## 2. Register a DFSP Backend and check the users list
