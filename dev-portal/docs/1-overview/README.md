@@ -10,9 +10,7 @@ This Mojaloop Sandbox is an open environment for playing around with Mojaloop.
 All services use the base url `http://beta.moja-lab.live`
 
 
-
-## What's included in Environment?
-
+## What's included in The Environment?
 
 ![Lab Overview](./sandbox-overview.png)
 
@@ -61,16 +59,23 @@ Mojaloop has a variety of APIs you can interact with:
 | [Thirdparty-DFSP](/2-apis/thirdparty-dfsp)  | `v0.1` | DFSPs             | (Coming Soon) |
 | [Thirdparty-PISP](/2-apis/thirdparty-pisp)  | `v0.1` | PISPs             | (Coming Soon) | 
 
-### Use Cases
+## Use Cases 
 
-#### Available
-- P2P
-- SEPA Transaction (Cross Network, Outside ML -> ML)
-- UK Open Banking - (P2P, PISP PSD2 approach)
-- Refunds (DFSP initiated from Payee)
+The following Use Cases are supported in this lab:
 
-#### Roadmap
-- PISP P2P
+|    | Name | Description | Status | Links |
+|--- | ---- | ---- | ---- | ---- |
+| 🟢 | P2P  | Peer To Peer transaction, from one party to another | Available | [P2P Transfer (Easy)](/3-guides/5_ttk_p2p.html) |
+| 🟡 | PISP P2P | Peer To Peer transaction, initiated from 3rd party | Available (Locally) | [Thirdparty PISP API Local](/3-guides/6_pisp_local.html) |
+| 🔴 | SEPA  | Cross Network, Outside Mojaloop into Mojaloop - Will be added with MIFOS Payment Hub | Coming Soon | _link coming soon!_|
+| 🔴 | OTT Thirdparty (UK Open Banking Model) | P2P, PISP PSD2 approach - will be added with MIFOS Payment Hub | Coming Soon | _link coming soon!_|
+| 🔴 | Refund | DFSP Initiated Refund Scenario - included with MIFOS Payment Hub | Coming Soon | _link coming soon!_|
+
+
+### Roadmap
+
+_The following is our roadmap for adding more use cases to the Mojaloop OSS Lab:_
+
 - Request to Pay 
 - Merchant Payment Scenarios
   - dynamic QR codes
@@ -84,18 +89,15 @@ Mojaloop has a variety of APIs you can interact with:
 - ATM
 - Reconciliation - failed transactions
 - Fraud Monitoring + Detection
-
-#### Hub Operator
-- Settlement
-- Liquidity management
+- Settlement (Hub Operator)
+- Liquidity management (Hub Operator)
 
 ## Tools:
 
 This sandbox includes the following tools:
 
-
 - [Sandbox Dev Hub](http://beta.moja-lab.live/home/0-getting-started)
-- [Mojaloop Testing Toolkit](todo)
+- [Mojaloop Testing Toolkits](#testing-toolkit)
 - [Simulator UI](http://simulator-ui.beta.moja-lab.live) - for more information on using the simulator-ui, refer to [todo this external guide]()
 
 ### Testing Toolkit
@@ -114,11 +116,17 @@ See:
 
 Check out the [Testing Toolkit P2P Guide](/3-guides/5_ttk_p2p/) to use the testing to send a peer to peer transfer.
 
-### Payment Manager
+### MIFOS Payment Hub
+
+This lab is soon to be connected with the MIFOS Payment Hub, which will demonstrate the MIFOS and Mojaloop ecosystems working together, and let you test out a whole bunch of DFSP-based features.
+
+**Check back soon for more information about the Mojaloop OSS Lab + MIFOS Payment Hub**
+
+<!-- ### Payment Manager
 
 > Note: Payment Manager support in the sandbox is still in _beta_, and the dfsps here are not yet connected to the other DFSPs in the sandbox. We're working on it!
 
-- [Payment Manager- senderfsp](http://senderfsp-pm4ml.pm4ml.demo.modusbox.io/transfers)
+- [Payment Manager- senderfsp](http://senderfsp-pm4ml.pm4ml.demo.modusbox.io/transfers) -->
 
 <!-- ### Finance Portal
 
@@ -127,6 +135,6 @@ Check out the [Testing Toolkit P2P Guide](/3-guides/5_ttk_p2p/) to use the testi
 ## Helpful Links
 
 - [Mojaloop Documentation](https://docs.mojaloop.io/documentation/)
-- [Mojaloop API Specification v1.0](https://docs.mojaloop.io/mojaloop-specification/documents/API%20Definition%20v1.0.html)
-- [Mojaloop API OpenAPI (Swagger)](https://github.com/mojaloop/mojaloop-specification/blob/master/fspiop-api/documents/v1.1-document-set/)
+- [Mojaloop API Definition v1.0](https://docs.mojaloop.io/mojaloop-specification/documents/API%20Definition%20v1.0.html)
+- [Mojaloop API OpenAPI (Swagger) Definitions](https://github.com/mojaloop/mojaloop-specification/blob/master/fspiop-api/documents/v1.1-document-set/)
 
