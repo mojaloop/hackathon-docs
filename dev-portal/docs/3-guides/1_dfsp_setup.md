@@ -169,7 +169,7 @@ curl -X POST http://beta.moja-lab.live/api/admin/central-ledger/participants/app
 
 ## 5. Register your endpoints
 
-In order to recieve callbacks from the switch, we need to register our endpoints. Feel free to copy and paste the following script into 
+In order to recieve callbacks from the switch, we need to register our endpoints. Feel free to copy and paste the following script into a text editor to easily configure the environment variables.
 
 
 ```bash
@@ -246,14 +246,46 @@ curl -H 'Content-Type: application/json' http://beta.moja-lab.live/api/admin/cen
 
 ## 6. Perform a Party Lookup and Check the Docker Logs:
 
-Now that you have registered your mock server with the Mojaloop switch, you can perform a party lookup using the Mojaloop [FSPIOP API](todo)
+Now that you have registered your mock server with the Mojaloop switch, you can perform a party lookup using the Mojaloop [FSPIOP API](/2-apis/fspiop/).
+
+You can look up any of the pre-registered parties in [this list of users](/1-overview/#users). For this example, let's lookup `MSISDN/4448483173`, who we should expect to belong to `duriantech`, and have a name of `Draco Dragon`.
 
 ```bash
-curl -v beta.moja-lab.live/api/fspiop/parties/MSISDN/27713803912 \
+curl -v beta.moja-lab.live/api/fspiop/parties/MSISDN/4448483173 \
   -H 'Accept: application/vnd.interoperability.parties+json;version=1' \
   -H 'Content-Type: application/vnd.interoperability.parties+json;version=1.0' \
   -H 'FSPIOP-Source: applebank' \
   -H 'Date: 2021-01-01'
+```
+
+The synchonous response to our HTTP request should be `202 Accepted`. This means that Mojaloop accepted the request, and will get back to us with an async callback. For example:
+```
+$ curl -v beta.moja-lab.live/api/fspiop/parties/MSISDN/4448483173 \
+  -H 'Accept: application/vnd.interoperability.parties+json;version=1' \
+  -H 'Content-Type: application/vnd.interoperability.parties+json;version=1.0' \
+  -H 'FSPIOP-Source: applebank' \
+  -H 'Date: 2021-01-01'
+*   Trying 3.11.229.205:80...
+* Connected to beta.moja-lab.live (3.11.229.205) port 80 (#0)
+> GET /api/fspiop/parties/MSISDN/4448483173 HTTP/1.1
+> Host: beta.moja-lab.live
+> User-Agent: curl/7.74.0
+> Accept: application/vnd.interoperability.parties+json;version=1
+> Content-Type: application/vnd.interoperability.parties+json;version=1.0
+> FSPIOP-Source: applebank
+> Date: 2021-01-01
+> 
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 202 Accepted
+< Content-Length: 0
+< Connection: keep-alive
+< cache-control: no-cache
+< Date: Wed, 17 Feb 2021 03:08:51 GMT
+< X-Kong-Upstream-Latency: 17
+< X-Kong-Proxy-Latency: 0
+< Via: kong/2.2.1
+< 
+* Connection #0 to host beta.moja-lab.live left intact
 ```
 
 
@@ -262,51 +294,51 @@ And when we check the logs in the mock server docker container, we should see so
  
 ```
 {
-    "path": "/parties/MSISDN/27713803912",
+    "path": "/parties/MSISDN/4448483173",
     "headers": {
-        "x-forwarded-host": "thin-mole-36.loca.lt",
-        "x-forwarded-port": "80",
         "user-agent": "axios/0.20.0",
-        "fspiop-signature": "{\"signature\":\"cPTiUhf_WGxK-GUBJ5YLvkXoKAGknWy8_91-F0m4pM09Afqzobd7tTzYFqRubLWja-Ug0D1exf1CBqq6dtl-px1507yRBC-nPw653XYdXVJd_JfWTQQE2g422EPLzdzeBJPKJ_PwnUZzJYF-8u0AkKRy1U16RRY2nAo5DXrZlqUF8pQu4UJzTsDyZOBHEacVKTwN1sP5fRmUZEF7KhwX2Axavvds5G0bq8sl-bNhvb_RrGpKHMSgO55GbTqDKkhjQr_YYKmYxaoayM4myjs77JF5LTttMPftRZeHUJkKwq9zWgK1cCbsOgk_oBDWhugXrk8b0mdohwp5WhjkTNOjog\",\"protectedHeader\":\"eyJhbGciOiJSUzI1NiIsIkZTUElPUC1VUkkiOiIvcGFydGllcy9NU0lTRE4vMjc3MTM4MDM5MTIiLCJGU1BJT1AtSFRUUC1NZXRob2QiOiJQVVQiLCJGU1BJT1AtU291cmNlIjoicGF5ZWVmc3AiLCJGU1BJT1AtRGVzdGluYXRpb24iOiJhcHBsZWJhbmsiLCJEYXRlIjoiRnJpLCAwOCBKYW4gMjAyMSAwNjoxMDoyNyBHTVQifQ\"}",
-        "fspiop-uri": "/parties/MSISDN/27713803912",
+        "fspiop-signature": "{\"signature\":\"XNjqPHPwVCFbjuUpndN4-udYBF-gY1Rmwau3QfFTZW-rIbHeMV6NIwdoTmR86X2IZOCd14Gu3SRBuo_k80A3heiMiOL5OIx-VKD4gnLYSog4W3xMLbWoN7kdNQb_K7Y2949uBEDYk2kR8q-k4IdlMO28WyIIwHxRRmb0bsyBuH2Tq5scH4nprorHx25_r41CBBr6u7GbSw5qmxFXEonE3wMmGsyxmNgEVDASnm9VISjAD4CyJ-VT-ZUEWp6ytJWpaNNRlAJL3CUvuB4LXyhiw0Zm_ozy8R70CyHNNlOjvw4qKgiB-O0UYBW7k6EXEmf0TTN1WaUJqktfVNuoEF0SFQ\",\"protectedHeader\":\"eyJhbGciOiJSUzI1NiIsIkZTUElPUC1VUkkiOiIvcGFydGllcy9NU0lTRE4vNDQ0ODQ4MzE3MyIsIkZTUElPUC1IVFRQLU1ldGhvZCI6IlBVVCIsIkZTUElPUC1Tb3VyY2UiOiJkdXJpYW50ZWNoIiwiRlNQSU9QLURlc3RpbmF0aW9uIjoibGV3YmFuayIsIkRhdGUiOiJXZWQsIDE3IEZlYiAyMDIxIDAzOjEwOjU2IEdNVCJ9\"}",
+        "fspiop-uri": "/parties/MSISDN/4448483173",
         "fspiop-http-method": "PUT",
         "fspiop-destination": "applebank",
-        "fspiop-source": "payeefsp",
-        "date": "Fri, 08 Jan 2021 06:10:27 GMT",
+        "fspiop-source": "duriantech",
+        "date": "Wed, 17 Feb 2021 03:10:56 GMT",
+        "x-forwarded-path": "/api/fspiop/parties/MSISDN/4448483173",
+        "x-forwarded-port": "80,80",
+        "x-forwarded-host": "beta.moja-lab.live",
         "content-type": "application/vnd.interoperability.parties+json;version=1.0",
-        "content-length": "232",
+        "content-length": "241",
         "connection": "close",
         "x-nginx-proxy": "true",
         "x-forwarded-proto": "https,http",
-        "host": "thin-mole-36.loca.lt",
-        "x-forwarded-for": "3.8.238.206,::ffff:10.42.154.6",
-        "x-real-ip": "3.8.238.206"
+        "host": "swift-fish-87.loca.lt",
+        "x-forwarded-for": "10.42.6.0, 3.10.23.13,::ffff:10.42.154.6",
+        "x-real-ip": "3.10.23.13"
     },
     "method": "PUT",
-    "body": "{\"party\":{\"partyIdInfo\":{\"partyIdType\":\"MSISDN\",\"partyIdentifier\":\"27713803912\",\"fspId\":\"payeefsp\"},\"personalInfo\":{\"complexName\":{\"firstName\":\"Test\",\"middleName\":\"Test\",\"lastName\":\"Test\"},\"dateOfBirth\":\"1984-01-01\"},\"name\":\"Test\"}}",
+    "body": "{\"party\":{\"partyIdInfo\":{\"partyIdType\":\"MSISDN\",\"partyIdentifier\":\"4448483173\",\"fspId\":\"duriantech\"},\"personalInfo\":{\"complexName\":{\"firstName\":\"Draco\",\"middleName\":\"D\",\"lastName\":\"Dragon\"},\"dateOfBirth\":\"1970-01-01\"},\"name\":\"Draco Dragon\"}}",
     "fresh": false,
-    "hostname": "thin-mole-36.loca.lt",
-    "ip": "3.8.238.206",
+    "hostname": "beta.moja-lab.live",
+    "ip": "3.10.23.13",
     "ips": [
-        "3.8.238.206",
+        "3.10.23.13",
         "::ffff:10.42.154.6"
     ],
     "protocol": "https",
     "query": {},
     "subdomains": [
-        "thin-mole-36"
+        "beta"
     ],
     "xhr": false,
     "os": {
-        "hostname": "4b1664b116cf"
+        "hostname": "60c01ee30978"
     },
     "connection": {}
 }
 
 ```
 
-So we can see that we are getting callbacks from the Mojaloop switch!
-
+So we can see that we are getting callbacks from the Mojaloop switch! When we inspect the `body` field of the request, we can indeed see `Draco Dragon`.
 
 
 ## 7. Next Steps
