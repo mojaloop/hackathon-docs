@@ -220,6 +220,15 @@ const config: GlobalConfig = {
           dateOfBirth: "1970-01-01",
           idType: "MSISDN",
           idValue: "4448483173"
+        },
+        {
+          displayName: "Daddy Longlegs",
+          firstName: "Daddy",
+          middleName: "D",
+          lastName: "Longlegs",
+          dateOfBirth: "1970-01-01",
+          idType: "MSISDN",
+          idValue: "27713803912"
         }
       ]
     },

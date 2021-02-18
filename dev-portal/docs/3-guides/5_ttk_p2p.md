@@ -48,8 +48,9 @@ On the same page, select "Input Values", this is where we can configure some of 
 
 Do the same with the following input values:
 
+- **`toIdValue`**: `4448483173`
 - **`fromFspId`**: `figmm`
-- **`toFspId`**: `payeefsp`
+- **`toFspId`**: `duriantech`
 - **`payerfsp`**: `figmm`
 
 ## 4. Tweaking the Request
@@ -80,8 +81,12 @@ In the top right, click "Send", and view the results!
 
 If everything is configured correctly, you should see all of the tests passing correctly.
 
+> ⚠️ For the Transfer step, currently 1/9 of the test suites fail.  
+> This is a known bug, and is being tracked here: [mojaloop/project#2054](https://github.com/mojaloop/project/issues/2054)
 
-> **Handy Tip!**
-> If you open up the [monitoring page](http://figmm-ttk.beta.moja-lab.live/admin/monitoring) in a different browser window, you will be able to see all of the requests coming in and out of your DFSP in real time. Pretty neat, isn't it?
+
+### Handy Tip!
+
+If you open up the [monitoring page](http://figmm-ttk.beta.moja-lab.live/admin/monitoring) in a different browser window, you will be able to see all of the requests coming in and out of your DFSP in real time. Pretty neat, isn't it?
 
 ![](./ttk_requests.png)
