@@ -46,7 +46,9 @@ spec:
               value: "pineapple"
             # The testing Toolkit for thirdparty API demos
             - name: THIRDPARTY_API_URL
-              value: "tp-ttk-backend-1.beta.moja-lab.live"
+              # value: "tp-ttk-backend-1.beta.moja-lab.live"
+              # temp - localtunnel for demo
+              value: "good-starfish-24.loca.lt"
           volumeMounts:
             - name: firebase-secret-volume
               mountPath: "/opt/pisp-demo-server/secret/serviceAccountKey.json"
