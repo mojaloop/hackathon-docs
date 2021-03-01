@@ -438,7 +438,8 @@ ml-testing-toolkit-backend:
       spec_files; fi; fi; npm run start;"]'
     pullPolicy: Always
     repository: mojaloop/ml-testing-toolkit
-    tag: v11.5.0
+    tag: v11.2.2
+    # tag: v11.5.0
   ingress:
     annotations: {}
     enabled: false
@@ -495,7 +496,8 @@ ml-testing-toolkit-frontend:
     command: '["sh", "/usr/share/nginx/start.sh"]'
     pullPolicy: Always
     repository: mojaloop/ml-testing-toolkit-ui
-    tag: v11.5.0
+    # tag: v11.5.0
+    tag: v11.2.0
   ingress:
     annotations: {}
     enabled: false
