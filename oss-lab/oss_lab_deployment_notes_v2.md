@@ -168,6 +168,29 @@ cd ../ml-bootstrap
 npm run reseed:docker-live
 ```
 
+## 4 - Other Applications
+
+### 4.1 - PISP TTK + PISP Demo Server
+
+- PISP Demo Server - https://github.com/mojaloop/pisp-demo-server - Acts as PISP backend. It predates the thirdparty-scheme-adapter, and integrates with the pisp-demo-app-flutter project
+- PISP TTK - A customized version of the Testing Toolkit that speaks v0.1 of the PISP API Draft
+
+
+```bash
+# create a secret for the serviceAccountKey.json file
+kubectl create secret generic firebase-secret --from-file=../../pisp-demo-server/secret/serviceAccountKey.json
+
+# install the demo server
+kubectl apply -f ./pisp-demo/pisp-demo-server.yaml
+
+
+# install the ttk with pisp apis
+helm upgrade --install ...
+```
+
+
+### 4.2 - Mojaloop Bulk
+
 
 ## Known Issues:
 

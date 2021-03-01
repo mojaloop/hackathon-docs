@@ -1,0 +1,98 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pisp-demo-server
+  labels:
+    app: pisp-demo-server
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1 # exeed the replicas by 1 pod
+  selector:
+    matchLabels:
+      app: pisp-demo-server
+  template:
+    metadata:
+      labels:
+        app: pisp-demo-server
+    spec:
+      volumes:
+        - name: firebase-secret-volume
+          secret:
+            secretName: firebase-secret
+      containers:
+        - name: pisp-demo-server
+          image: mojaloop/pisp-demo-server:v0.1.3
+          # command: ["tail", "-f", "/dev/null"]
+          livenessProbe:
+            initialDelaySeconds: 30
+            httpGet:
+              path: /
+              port: 8080
+          readinessProbe:
+            initialDelaySeconds: 30
+            httpGet:
+              path: /
+              port: 8080
+          # env:
+          #   - name: DFSP_ID
+          #     value: {{ $participantId }}
+          #   - name: OUTBOUND_ENDPOINT
+          #     value: http://{{ $participantId }}-sdk-scheme-adapter:4001
+          #   - name: THIRDPARTY_OUTBOUND_ENDPOINT
+          #     value: http://{{ $participantId }}-thirdparty-scheme-adapter:4005
+          #   - name: HTTPS_ENABLED
+          #     value: 'false'
+          #   - name: MUTUAL_TLS_ENABLED
+          #     value: 'false'
+            # - name: VALIDATE_INBOUND_JWS
+              # value: 'FALSE'
+            # - name: JWS_SIGN
+              # value: 'FALSE'
+          volumeMounts:
+            - name: firebase-secret-volume
+              mountPath: "/opt/pisp-demo-server/secret/serviceAccountKey.json"
+              subPath: serviceAccountKey.json
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pisp-demo-server
+spec:
+  ports:
+    # TODO:
+    - port: 8080
+      name: ui
+  selector:
+    app: pisp-demo-server
+  clusterIP: None
+---
+# apiVersion: extensions/v1beta1
+# kind: Ingress
+# metadata:
+#   name: pisp-demo-server
+#   annotations:
+#     kubernetes.io/ingress.class: kong
+#     # konghq.com/strip-path: "true"
+
+#     # This is required to rewrite paths to services that contain multiple endpoints, 
+#     # e.g. /participants and /parties are both on the account-lookup-service
+#     # konghq.com/plugins: fspiop-rewrite
+
+# spec:
+#   rules:
+#     - http:
+#         paths:
+#           - path: /pineapple/(.*)
+#             backend:
+#               serviceName: pisp-demo-server
+#               servicePort: 8080
+#     # - http:
+#     #     paths:
+#     #       - path: /public/simulator
+#     #         backend:
+#     #           serviceName: pisp-demo-server
+#     #           servicePort: 8080
