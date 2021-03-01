@@ -185,13 +185,17 @@ kubectl apply -f ./pisp-demo/pisp-demo-server.yaml
 
 
 # install the ttk with pisp apis
-helm upgrade --install ...
+helm upgrade --install --namespace ml-app tp-ttk mojaloop/ml-testing-toolkit --values ./pisp-demo/tp-ttk.yaml
+
+
+# expose the 3p-ttk
+kubectl apply -f ./pisp-demo/ingress-tp-ttk.yaml
 ```
 
 
 ### 4.2 - Mojaloop Bulk
 
-
+[ todo - look more into this... ]
 ## Known Issues:
 
 ### settlement account ids are hardcoded:

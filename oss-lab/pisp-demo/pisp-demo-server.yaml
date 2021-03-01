@@ -27,15 +27,17 @@ spec:
           image: mojaloop/pisp-demo-server:v0.1.4
           # command: ["tail", "-f", "/dev/null"]
           livenessProbe:
-            initialDelaySeconds: 30
+            initialDelaySeconds: 3
+            periodSeconds: 3
             httpGet:
               path: /app/health
               port: 8080
-          readinessProbe:
-            initialDelaySeconds: 30
-            httpGet:
-              path: /app/health
-              port: 8080
+          # readinessProbe:
+          #   initialDelaySeconds: 3
+          #   periodSeconds: 3
+          #   httpGet:
+          #     path: /app/health
+          #     port: 8080
           # env:
           #   - name: DFSP_ID
           #     value: {{ $participantId }}
