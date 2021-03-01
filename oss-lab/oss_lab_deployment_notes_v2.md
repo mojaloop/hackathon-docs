@@ -190,9 +190,10 @@ curl beta.moja-lab.live/pineapple/mojaloop/health | jq
 # install the ttk with pisp apis
 helm upgrade --install --namespace ml-app tp-ttk mojaloop/ml-testing-toolkit --values ./pisp-demo/tp-ttk.yaml
 
-
 # expose the 3p-ttk
 kubectl apply -f ./pisp-demo/ingress-tp-ttk.yaml
+
+# now go to: http://tp-ttk.beta.moja-lab.live
 ```
 
 

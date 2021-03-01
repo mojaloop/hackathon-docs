@@ -24,7 +24,7 @@ spec:
             secretName: firebase-secret
       containers:
         - name: pisp-demo-server
-          image: mojaloop/pisp-demo-server:v0.1.4
+          image: mojaloop/pisp-demo-server:v0.1.5
           # command: ["tail", "-f", "/dev/null"]
           livenessProbe:
             initialDelaySeconds: 3
@@ -42,6 +42,11 @@ spec:
             # need to bind to 0.0.0.0 for kubernetes to be able to expose this.
             - name: IP_ADDRESS
               value: "0.0.0.0"
+            - name: MOJALOOP_PARTICIPANT_ID
+              value: "pineapple"
+            # The testing Toolkit for thirdparty API demos
+            - name: THIRDPARTY_API_URL
+              value: "tp-ttk-backend-1.beta.moja-lab.live"
           volumeMounts:
             - name: firebase-secret-volume
               mountPath: "/opt/pisp-demo-server/secret/serviceAccountKey.json"
