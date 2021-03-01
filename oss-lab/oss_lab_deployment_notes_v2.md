@@ -183,6 +183,9 @@ kubectl create secret generic firebase-secret --from-file=../../pisp-demo-server
 # install the demo server
 kubectl apply -f ./pisp-demo/pisp-demo-server.yaml
 
+# check that you can access the health check
+curl beta.moja-lab.live/pineapple/app/health | jq
+curl beta.moja-lab.live/pineapple/mojaloop/health | jq
 
 # install the ttk with pisp apis
 helm upgrade --install --namespace ml-app tp-ttk mojaloop/ml-testing-toolkit --values ./pisp-demo/tp-ttk.yaml
@@ -245,3 +248,13 @@ service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
 service.beta.kubernetes.io/aws-load-balancer-ssl-cert:  arn:aws:acm:eu-west-2:886403637725:certificate/87c897e0-2e4b-4b88-9d01-cd4e212a0dcb
 service.beta.kubernetes.io/aws-load-balancer-ssl-ports: https
 
+
+### nginx-ingress webhook issues:
+
+I think sometimes nginx doesn't always get cleaned up properly by helm...
+
+```bash
+kubectl get -A ValidatingWebhookConfiguration
+
+kubectl delete ValidatingWebhookConfiguration/ingress-ingress-nginx-admission  
+```
