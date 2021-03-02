@@ -24,7 +24,7 @@ spec:
             secretName: firebase-secret
       containers:
         - name: pisp-demo-server
-          image: mojaloop/pisp-demo-server:v0.1.5
+          image: mojaloop/pisp-demo-server:v0.1.6
           # command: ["tail", "-f", "/dev/null"]
           livenessProbe:
             initialDelaySeconds: 10
@@ -44,6 +44,8 @@ spec:
               value: "0.0.0.0"
             - name: MOJALOOP_PARTICIPANT_ID
               value: "pineapple"
+            - name: EXPERIMENTAL_MODE
+              value: "on"
             # The testing Toolkit for thirdparty API demos
             - name: THIRDPARTY_API_URL
               # value: "tp-ttk-backend-1.beta.moja-lab.live"
