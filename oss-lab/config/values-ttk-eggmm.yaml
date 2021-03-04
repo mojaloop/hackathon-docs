@@ -495,7 +495,7 @@ ml-testing-toolkit-frontend:
     command: '["sh", "/usr/share/nginx/start.sh"]'
     pullPolicy: Always
     repository: mojaloop/ml-testing-toolkit-ui
-    tag: v11.5.0
+    tag: v11.8.5
   ingress:
     annotations: {}
     enabled: false
