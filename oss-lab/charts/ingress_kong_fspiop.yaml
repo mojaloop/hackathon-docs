@@ -1,3 +1,4 @@
+---
 # Ingresses and request mappings for Kong API Gateway to talk to the FSPIOP API
 
 apiVersion: configuration.konghq.com/v1

@@ -81,7 +81,6 @@ kubens ml-app
 
 helm repo add kong https://charts.konghq.com
 helm repo update
-helm install kong kong/kong --set ingressController.installCRDs=false
 
 
 #switching to file based config for kong 
