@@ -1,5 +1,5 @@
+---
 # Ingresses for Kong API Gateway to talk to the Admin APIs
-
 apiVersion: configuration.konghq.com/v1
 kind: KongPlugin
 metadata:

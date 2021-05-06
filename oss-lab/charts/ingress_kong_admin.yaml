@@ -1,5 +1,5 @@
+---
 # Ingresses for Kong API Gateway to talk to the Admin APIs
-
 apiVersion: configuration.konghq.com/v1
 kind: KongPlugin
 metadata:
@@ -70,6 +70,10 @@ spec:
           - path: /api/admin/ml-api-adapter/(.*)
             backend:
               serviceName: mojaloop-ml-api-adapter-service
+              servicePort: 80
+          - path: /api/admin/oracle-simulator/(.*)
+            backend:
+              serviceName: mojaloop-simulator
               servicePort: 80
           # todo: this isn't currently working
           # - path: /api/admin/dashboard/(.*)

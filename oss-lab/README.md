@@ -63,4 +63,12 @@ http://beta.moja-lab.live/api/admin/account-lookup-service-admin
 
 
 ## TODOs
-- write todo list
+- [ ] persistent databases
+- [ ] update guides to remove testfsp
+- [ ] auto configure resetting once a week
+- [ ] rancher auto replace
+- [ ] switch to proper ml-bootstrap
+- [ ] gitops? Or some other, better way to manage?
+- [ ] fix broken guide #2 transfers
+- [ ] turn on auto-accept quotes, so that simulator-ui works again
+- [ ] double check other guides - Simulator, TTK P2P
