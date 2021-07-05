@@ -7,9 +7,7 @@ footer: Open Source on [GitHub](https://github.com/sqrthree/vuepress-theme-api),
 ---
 
 ![](/mojaloop_logo_med.png)
-
-_sandbox_
-# Getting Started
+# Getting Started with the Mojaloop Sandbox
 
 Now that your Mojaloop Sandbox is up and running, here's what you can do next:
 
@@ -18,3 +16,4 @@ Now that your Mojaloop Sandbox is up and running, here's what you can do next:
 1. [Take the DFSP Onboarding Tutorial](/3-guides/1_dfsp_setup/)
 1. [Explore the Different APIs](/1-overview/#apis) Mojaloop Offers
 1. [Read the Mojaloop Documentation](https://docs.mojaloop.io/documentation/)
+
