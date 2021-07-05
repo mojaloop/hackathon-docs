@@ -1,4 +1,11 @@
 # Changelog: [mojaloop/ml-operator/image-watcher](https://github.com/mojaloop/ml-operator)
+### [0.1.5](https://github.com/mojaloop/hackathon-docs/compare/v0.1.4...v0.1.5) (2021-07-05)
+
+
+### Maintenance
+
+* minor change to update homepage ([fd8ca0d](https://github.com/mojaloop/hackathon-docs/commit/fd8ca0dda782f9b6aedc3ed46220f6537e36788c))
+
 ### [0.1.4](https://github.com/mojaloop/hackathon-docs/compare/v0.1.3...v0.1.4) (2021-07-05)
 
 
