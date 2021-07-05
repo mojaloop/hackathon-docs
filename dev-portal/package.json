@@ -1,25 +1,20 @@
 {
-  "name": "vuepress-theme-api-starter-kit",
-  "version": "0.1.1",
-  "description": "A starter kit for https://github.com/sqrthree/vuepress-theme-api",
+  "name": "@mojaloop/dev-portal",
+  "version": "0.1.2",
+  "description": "A simple developer portal for Mojaloop Environments",
   "private": true,
   "scripts": {
     "dev": "vuepress dev docs",
     "start": "npm run build && npm run serve",
     "build": "vuepress build docs",
-    "serve": "serve ./docs/.vuepress/dist",
-    "release": "standard-version --releaseCommitMessageFormat 'chore(release): {{currentTag}} [skip ci]'"
+    "serve": "serve ./docs/.vuepress/dist"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sqrthree/vuepress-theme-api-starter-kit.git"
+    "url": "git+https://github.com/mojaloop/hackathon-docs.git"
   },
-  "author": "sqrtthree <imsqrtthree@gmail.com>",
-  "homepage": "https://github.com/sqrthree/vuepress-theme-api-starter-kit#readme",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/sqrthree/vuepress-theme-api-starter-kit/issues"
-  },
+  "author": "Lewis Daly <lewisd@crosslaketech.com>",
+  "license": "Apache 2.0",
   "dependencies": {
     "serve": "^11.1.0"
   },
