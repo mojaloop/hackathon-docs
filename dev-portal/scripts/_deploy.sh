@@ -6,9 +6,9 @@
 git push --follow-tags origin master
 
 export VERSION=`cat package.json | jq .version -r`
-echo "Deploying Version: ${VERSION}"
+echo "Deploying Version: v${VERSION}"
 docker-compose build
 
 # re-tag the image docker-compose built for us
-docker tag ldaly/dev-portal:latest ldaly/dev-portal:${VERSION}
-docker push ldaly/dev-portal:${VERSION}
+docker tag ldaly/dev-portal:latest ldaly/dev-portal:v${VERSION}
+docker push ldaly/dev-portal:v${VERSION}
