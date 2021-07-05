@@ -1,4 +1,11 @@
 # Changelog: [mojaloop/ml-operator/image-watcher](https://github.com/mojaloop/ml-operator)
+### [0.1.3](https://github.com/mojaloop/hackathon-docs/compare/v0.1.2...v0.1.3) (2021-07-05)
+
+
+### Bug Fixes
+
+* ensure we upload the actual tag to docker hub ([e3065c2](https://github.com/mojaloop/hackathon-docs/commit/e3065c2215ace84913f74bee810401cf07690b97))
+
 ### [0.1.2](https://github.com/mojaloop/hackathon-docs/compare/v0.1.1...v0.1.2) (2021-07-05)
 
 ### 0.1.1 (2021-07-05)
